@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluxoDeCaixa.Mobile", "FluxoDeCaixa.Mobile\FluxoDeCaixa.Mobile.csproj", "{DE275AAF-A47E-4619-B02D-FAE301868E30}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluxoDeCaixa.Domain", "FluxoDeCaixa.Domain\FluxoDeCaixa.Domain.csproj", "{AFADEF09-951C-4B5E-ACB5-DC118C463C16}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluxoDeCaixa.Data", "FluxoDeCaixa.Data\FluxoDeCaixa.Data.csproj", "{0DBF6D51-FC4B-48B9-A7F1-1D9BB42A4B22}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoDeCaixa.Mobile", "FluxoDeCaixa.Mobile\FluxoDeCaixa.Mobile.csproj", "{DE275AAF-A47E-4619-B02D-FAE301868E30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,14 +17,6 @@ Global
 		{DE275AAF-A47E-4619-B02D-FAE301868E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE275AAF-A47E-4619-B02D-FAE301868E30}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DE275AAF-A47E-4619-B02D-FAE301868E30}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{AFADEF09-951C-4B5E-ACB5-DC118C463C16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFADEF09-951C-4B5E-ACB5-DC118C463C16}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFADEF09-951C-4B5E-ACB5-DC118C463C16}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFADEF09-951C-4B5E-ACB5-DC118C463C16}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DBF6D51-FC4B-48B9-A7F1-1D9BB42A4B22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DBF6D51-FC4B-48B9-A7F1-1D9BB42A4B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DBF6D51-FC4B-48B9-A7F1-1D9BB42A4B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DBF6D51-FC4B-48B9-A7F1-1D9BB42A4B22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

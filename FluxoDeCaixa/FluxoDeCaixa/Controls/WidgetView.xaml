@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="FluxoDeCaixa.Controls.WidgetView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:fonts="clr-namespace:FluxoDeCaixa.Core.Utilities.Classes"
+    xmlns:local="clr-namespace:FluxoDeCaixa.Controls"
+    x:Name="WidgetBase"
+    BackgroundColor="Transparent">
+
+    <Frame BorderColor="Transparent" Style="{StaticResource BaseFrameWidgetView}">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackLayout>
+                <Grid Style="{StaticResource TitleViewWidgetView}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label x:Name="labelTitle" Style="{StaticResource LabelTitleViewWidgetView}" />
+                    <local:FontAwesomeLabel Grid.Column="1" Text="{x:Static fonts:FontAwesomeIcon.Plus}" />
+                </Grid>
+
+                <!--<BoxView Grid.Row="1" Style="{StaticResource SeparatorWidgetView}" />-->
+            </StackLayout>
+
+            <StackLayout
+                x:Name="ContentStack"
+                Grid.Row="2"
+                Padding="10" />
+
+            <StackLayout
+                x:Name="LoadingStack"
+                Grid.Row="2"
+                VerticalOptions="CenterAndExpand">
+                <ActivityIndicator
+                    HorizontalOptions="End"
+                    IsRunning="True"
+                    IsVisible="true"
+                    VerticalOptions="Center"
+                    WidthRequest="30"
+                    Color="#9CA3AF" />
+            </StackLayout>
+
+            <StackLayout
+                x:Name="SeeMoreStack"
+                Grid.Row="3"
+                IsVisible="False">
+                <!--<BoxView Style="{StaticResource SeparatorWidgetView}" />-->
+                <Button
+                    BackgroundColor="Transparent"
+                    FontAttributes="Bold"
+                    Text="Ver mais"
+                    TextColor="White" />
+            </StackLayout>
+        </Grid>
+    </Frame>
+</ContentView>
