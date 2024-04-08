@@ -1,11 +1,11 @@
-﻿global using CommunityToolkit.Maui;
+﻿global using Microsoft.AppCenter;
+global using Microsoft.AppCenter.Analytics;
+global using Microsoft.AppCenter.Crashes;
+global using CommunityToolkit.Maui;
 global using CommunityToolkit.Mvvm.ComponentModel;
 global using CommunityToolkit.Mvvm.Input;
-
-global using FluxoDeCaixa.ViewModels;
-global using FluxoDeCaixa.Views;
-global using FluxoDeCaixa.Core.Utilities.ResourceExtensions;
-
+global using FluxoDeCaixa.Mobile.ViewModels;
+global using FluxoDeCaixa.Mobile.Views;
 global using System.Collections.ObjectModel;
 global using System.ComponentModel;
 global using System.Diagnostics;

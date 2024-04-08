@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace FluxoDeCaixa;
+namespace FluxoDeCaixa.Mobile;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

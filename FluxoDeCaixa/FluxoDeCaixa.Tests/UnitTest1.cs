@@ -1,4 +1,4 @@
-﻿namespace FluxoDeCaixa.Tests;
+﻿namespace FluxoDeCaixa.Mobile.Tests;
 
 public class UnitTest1
 {

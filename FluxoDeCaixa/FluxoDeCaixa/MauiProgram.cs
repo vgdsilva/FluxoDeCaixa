@@ -1,4 +1,4 @@
-﻿namespace FluxoDeCaixa;
+﻿namespace FluxoDeCaixa.Mobile;
 
 public static class MauiProgram
 {
@@ -7,19 +7,33 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.UseMauiCommunityToolkit()
+            .UseMauiCommunityToolkit()
 			.ConfigureFonts(fonts =>
 			{
-				fonts.AddFont("FontAwesome6FreeBrands.otf", "FontAwesomeBrands");
+                //FontAwesome
+                fonts.AddFont("FontAwesome6FreeBrands.otf", "FontAwesomeBrands");
 				fonts.AddFont("FontAwesome6FreeRegular.otf", "FontAwesomeRegular");
 				fonts.AddFont("FontAwesome6FreeSolid.otf", "FontAwesomeSolid");
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
+
+                //OpenSans
+                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
 
-		builder.Services.AddSingleton<MainViewModel>();
+                //Quicksand
+                fonts.AddFont("Quicksand-Regular.ttf", "Quicksand400Font");
+                fonts.AddFont("Quicksand-Medium.ttf", "Quicksand500Font");
+                fonts.AddFont("Quicksand-SemiBold.ttf", "Quicksand600Font");
+                fonts.AddFont("Quicksand-Bold.ttf", "Quicksand700Font");
+            });
 
-		builder.Services.AddSingleton<MainPage>();
+
+		// TODO: Add App Center secrets
+		AppCenter.Start(
+			"windowsdesktop={Your Windows App secret here};" +
+			"android={Your Android App secret here};" +
+			"ios={Your iOS App secret here};" +
+			"macos={Your macOS App secret here};",
+			typeof(Analytics), typeof(Crashes));
 
 		return builder.Build();
 	}

@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios</TargetFrameworks>
-		<OutputType>Exe</OutputType>
-		<RootNamespace>FluxoDeCaixa</RootNamespace>
+		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;</TargetFrameworks>
+		<OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
+		<RootNamespace>FluxoDeCaixa.Mobile</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -11,10 +11,10 @@
 		<MauiVersion>8.0.14</MauiVersion>
 
 		<!-- Display name -->
-		<ApplicationTitle>Fluxo De Caixa</ApplicationTitle>
+		<ApplicationTitle>FluxoDeCaixa.Mobile</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.FluxoDeCaixa</ApplicationId>
+		<ApplicationId>com.companyname.FluxoDeCaixa.Mobile</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -43,43 +43,61 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="8.0.0" />
+	  <None Remove="Resources\Fonts\Quicksand-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Quicksand-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Quicksand-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Quicksand-SemiBold.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
 		<PackageReference Include="CommunityToolkit.MVVM" Version="8.2.2" />
+		<PackageReference Include="Microsoft.AppCenter.Analytics" Version="5.0.3" />
+		<PackageReference Include="Microsoft.AppCenter.Crashes" Version="5.0.3" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Essentials" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
-		<PackageReference Include="SimpleToolkit.Core" Version="4.0.0" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
-		<PackageReference Include="UraniumUI" Version="2.8.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Controls\EmptyView.xaml">
+	  <MauiXaml Update="Views\Pages\BasePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Controls\WidgetContainerView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Controls\WidgetView.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Widgets\MyAccountsWidget.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Widgets\MyCardsWidget.xaml">
+	  <MauiXaml Update="Views\Pages\Home\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="ViewModels\Widgets\" />
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
+	  <PackageReference Include="RGPopup.Maui">
+	    <Version>1.0.7</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-ios'">
+	  <PackageReference Include="RGPopup.Maui">
+	    <Version>1.0.7</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-maccatalyst'">
+	  <PackageReference Include="RGPopup.Maui">
+	    <Version>1.0.7</Version>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows10.0.19041.0'">
+	  <PackageReference Include="RGPopup.Maui">
+	    <Version>1.0.7</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 	<PropertyGroup Label="MauiAppAccelerator">
 		<wizardVersion>v1.4.3</wizardVersion>
 		<projectType>MVVMToolkit</projectType>
-		<framework>Flyout</framework>
+		<framework>Tabs</framework>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(TargetFramework)'=='net8.0-ios'">
