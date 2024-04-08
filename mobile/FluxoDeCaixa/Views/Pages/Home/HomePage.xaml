@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<base:BasePage
-    x:Class="FluxoDeCaixa.Mobile.Views.Pages.Home.HomePage"
+<ContentPage
+    x:Class="FluxoDeCaixa.Views.Pages.Home.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:base="clr-namespace:FluxoDeCaixa.Mobile.Views.Pages"
-    xmlns:controls="clr-namespace:FluxoDeCaixa.Mobile.Controls"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+    xmlns:controls="clr-namespace:FluxoDeCaixa.Controls"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    Shell.NavBarIsVisible="False">
 
-    <base:BasePage.Behaviors>
+    <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Primary}" StatusBarStyle="{OnPlatform iOS=LightContent, Android=DarkContent}" />
-    </base:BasePage.Behaviors>
+    </ContentPage.Behaviors>
 
-    <Grid BackgroundColor="#F2F5FA">
+    <Grid BackgroundColor="White">
         <ScrollView>
             <Grid>
                 <Grid.RowDefinitions>
@@ -23,7 +23,8 @@
                     <Grid
                         Padding="16"
                         ColumnDefinitions="Auto, *, Auto"
-                        ColumnSpacing="16">
+                        ColumnSpacing="16"
+                        VerticalOptions="CenterAndExpand">
                         <Frame
                             Grid.Column="0"
                             Padding="0"
@@ -31,6 +32,8 @@
                             BorderColor="Transparent"
                             CornerRadius="15"
                             HeightRequest="50"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
                             WidthRequest="50">
                             <controls:FontAwesomeLabel
                                 FontFamily="FontAwesomeSolid"
@@ -41,16 +44,16 @@
                                 VerticalOptions="CenterAndExpand" />
                         </Frame>
 
-                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="FillAndExpand">
+                        <VerticalStackLayout Grid.Column="1" VerticalOptions="CenterAndExpand">
                             <Label
                                 FontFamily="Quicksand600Font"
-                                FontSize="14"
+                                FontSize="16"
                                 HorizontalOptions="FillAndExpand"
                                 Text="Bem-vindo de volta,"
                                 TextColor="#DFDFDF" />
                             <Label
                                 FontFamily="Quicksand700Font"
-                                FontSize="16"
+                                FontSize="18"
                                 HorizontalOptions="FillAndExpand"
                                 Text="Vinicius"
                                 TextColor="{StaticResource White}" />
@@ -59,7 +62,7 @@
                         <controls:FontAwesomeLabel
                             Grid.Column="2"
                             FontFamily="FontAwesomeSolid"
-                            FontSize="20"
+                            FontSize="24"
                             Icon="Gear"
                             TextColor="{StaticResource White}"
                             VerticalOptions="CenterAndExpand" />
@@ -71,4 +74,4 @@
             </Grid>
         </ScrollView>
     </Grid>
-</base:BasePage>
+</ContentPage>

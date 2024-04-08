@@ -1,12 +1,11 @@
-using FluxoDeCaixa.Mobile.Core.Utils.Enums;
+using FluxoDeCaixa.Domain.Enums;
 
-namespace FluxoDeCaixa.Mobile.Controls;
+namespace FluxoDeCaixa.Controls;
 
 public class FontAwesomeLabel : Label
 {
-    
     public static readonly BindableProperty IconProperty =
-            BindableProperty.Create(nameof(Icon), typeof(FontAwesomeSolidIconEnum), typeof(FontAwesomeLabel), null, propertyChanged: OnIconPropertyChanged);
+               BindableProperty.Create(nameof(Icon), typeof(FontAwesomeSolidIconEnum), typeof(FontAwesomeLabel), null, propertyChanged: OnIconPropertyChanged);
 
     public FontAwesomeSolidIconEnum Icon
     {
@@ -16,9 +15,9 @@ public class FontAwesomeLabel : Label
 
 
     public FontAwesomeLabel()
-	{
-		FontFamily = "FontAwesomeSolid";
-	}
+    {
+        FontFamily = "FontAwesomeSolid";
+    }
 
 
     // Método chamado sempre que a propriedade Icon é alterada
@@ -29,7 +28,7 @@ public class FontAwesomeLabel : Label
 
         var label = (FontAwesomeLabel) bindable;
 
-        if (newValue is FontAwesomeSolidIconEnum Enum)
+        if ( newValue is FontAwesomeSolidIconEnum Enum )
             label.Text = Enum.GetEnumDescription();
     }
 }

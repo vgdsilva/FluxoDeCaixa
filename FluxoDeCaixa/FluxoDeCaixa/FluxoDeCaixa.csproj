@@ -105,4 +105,6 @@
 	  <CodesignProvision>VS: WildCard Development</CodesignProvision>
 	</PropertyGroup>
 
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionFluxoDeCaixaHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+
 </Project>
