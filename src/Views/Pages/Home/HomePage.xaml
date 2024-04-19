@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="FluxoDeCaixa.Mobile.Views.Pages.Home.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:classes="clr-namespace:FluxoDeCaixa.Mobile.Core.Utils.Classes"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#121214" StatusBarStyle="{OnPlatform Android=LightContent, iOS=DarkContent}" />
+    </ContentPage.Behaviors>
+
+    <ScrollView>
+        <Grid
+            BackgroundColor="#202024"
+            ColumnDefinitions="*"
+            RowDefinitions="57,Auto,Auto"
+            RowSpacing="0">
+            <Grid Padding="16" BackgroundColor="#121214">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image HeightRequest="20" Source="logo_fluxocaixa.png" />
+                <HorizontalStackLayout
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center">
+                    <ImageButton Source="{FontImageSource Glyph={Static classes:FontAwesomeIcons.Gear}, FontFamily=FontAwesomeSolid}" />
+                </HorizontalStackLayout>
+            </Grid>
+            <VerticalStackLayout
+                Grid.Row="1"
+                Padding="16"
+                BackgroundColor="#121214">
+                <Label
+                    FontFamily="QuicksandSemiBold"
+                    Text="Bem vindo de volta,"
+                    TextColor="White" />
+                <Label
+                    FontFamily="QuicksandBold"
+                    Text="Vinicius"
+                    TextColor="White" />
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

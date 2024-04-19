@@ -3,69 +3,75 @@
     x:Class="FluxoDeCaixa.Mobile.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:classes="clr-namespace:FluxoDeCaixa.Mobile.Core.Utils.Classes"
     xmlns:local="clr-namespace:FluxoDeCaixa.Mobile.Views.Pages"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Shell.NavBarIsVisible="False">
 
     <local:BasePage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Black}" StatusBarStyle="{OnPlatform Android=LightContent, iOS=DarkContent}" />
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Primary}" StatusBarStyle="{OnPlatform Android=LightContent, iOS=DarkContent}" />
     </local:BasePage.Behaviors>
 
     <ScrollView>
         <Grid
-            BackgroundColor="#191919"
+            BackgroundColor="{StaticResource White}"
             ColumnDefinitions="*"
             RowDefinitions="Auto,Auto,Auto"
             RowSpacing="0">
-            <Grid
-                Grid.Row="0"
-                Padding="16"
-                BackgroundColor="{StaticResource Black}"
-                ColumnDefinitions="Auto,*">
-                <Image
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    HorizontalOptions="Start"
-                    Source="logo.svg" />
-            </Grid>
+            <HorizontalStackLayout Padding="16" BackgroundColor="{StaticResource Primary}">
+                <Label Style="{StaticResource LabelMainTitle}" Text="Fluxo de caixa" />
+            </HorizontalStackLayout>
             <HorizontalStackLayout
                 Grid.Row="1"
                 Padding="16"
-                BackgroundColor="Black">
-                <Label Text="Bem vindo de volta," TextColor="White" />
-                <Label Text="Vinicius" TextColor="White" />
+                BackgroundColor="{StaticResource Primary}">
+                <Label Style="{StaticResource LabelWelcomeTitle}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Olá, " />
+                            <Span Text="Vinicius" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </HorizontalStackLayout>
-
-            <VerticalStackLayout
-                Grid.Row="2"
-                Padding="16"
-                Spacing="16">
-                <Label Text="AÇÕES RAPIDAS" TextColor="White" />
-
-                <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
-                    <Frame
-                        BackgroundColor="#0942B1"
-                        BorderColor="Transparent"
-                        CornerRadius="8"
-                        HasShadow="False"
-                        HeightRequest="114"
-                        WidthRequest="114" />
-                    <Frame
-                        BackgroundColor="#0942B1"
-                        BorderColor="Transparent"
-                        CornerRadius="8"
-                        HasShadow="False"
-                        HeightRequest="114"
-                        WidthRequest="114" />
-                    <Frame
-                        BackgroundColor="#0942B1"
-                        BorderColor="Transparent"
-                        CornerRadius="8"
-                        HasShadow="False"
-                        HeightRequest="114"
-                        WidthRequest="114" />
-                </HorizontalStackLayout>
+            <VerticalStackLayout Grid.Row="2">
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="*,Auto"
+                    VerticalOptions="Center">
+                    <VerticalStackLayout Padding="0,12" HorizontalOptions="FillAndExpand">
+                        <Label
+                            FontFamily="QuicksandBold"
+                            FontSize="16"
+                            HorizontalOptions="FillAndExpand"
+                            Text="Contas"
+                            TextColor="{StaticResource Black}" />
+                        <Label
+                            FontFamily="QuicksandBold"
+                            FontSize="18"
+                            HorizontalOptions="FillAndExpand"
+                            Text="R$ 0,17"
+                            TextColor="{StaticResource Black}" />
+                    </VerticalStackLayout>
+                    <Label
+                        Grid.Column="1"
+                        FontFamily="FontAwesomeSolid"
+                        FontSize="16"
+                        Text="{Static classes:FontAwesomeIcons.ChevronRight}"
+                        TextColor="{StaticResource Primary}"
+                        VerticalOptions="Center" />
+                </Grid>
+                <BoxView HeightRequest="1" Color="{StaticResource Gray100}" />
+                <VerticalStackLayout Padding="16">
+                    <Label
+                        FontFamily="QuicksandBold"
+                        FontSize="14"
+                        Text="AÇÕES RAPIDAS"
+                        TextColor="{StaticResource Black}" />
+                </VerticalStackLayout>
             </VerticalStackLayout>
+
+
         </Grid>
     </ScrollView>
 
