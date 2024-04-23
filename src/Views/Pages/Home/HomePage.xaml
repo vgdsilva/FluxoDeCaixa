@@ -3,7 +3,7 @@
     x:Class="FluxoDeCaixa.Mobile.Views.Pages.Home.HomePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:classes="clr-namespace:FluxoDeCaixa.Mobile.Core.Utils.Classes"
+    xmlns:classes="clr-namespace:FluxoDeCaixa.Mobile.Core.Domain.Utils.Classes"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     NavigationPage.HasNavigationBar="False">
 
@@ -26,9 +26,7 @@
                 <HorizontalStackLayout
                     Grid.Column="1"
                     HorizontalOptions="End"
-                    VerticalOptions="Center">
-                    <ImageButton Source="{FontImageSource Glyph={Static classes:FontAwesomeIcons.Gear}, FontFamily=FontAwesomeSolid}" />
-                </HorizontalStackLayout>
+                    VerticalOptions="Center" />
             </Grid>
             <VerticalStackLayout
                 Grid.Row="1"

@@ -48,6 +48,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Remove="Resources\Images\logo.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\logo.png" />
+	  <None Remove="Resources\Images\logo_fluxodecaixa.png" />
 	  <None Remove="workload-install.ps1" />
 	</ItemGroup>
 
@@ -60,6 +66,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\Pages\Dashboard\DashboardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\Home\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -69,7 +78,6 @@
 	  <Folder Include="Core\Data\Scripts\" />
 	  <Folder Include="Core\Domain\Factories\" />
 	  <Folder Include="Core\Domain\Exceptions\" />
-	  <Folder Include="Core\Domain\Enums\" />
 	  <Folder Include="Core\Domain\Repositorys\" />
 	  <Folder Include="Views\Pages\Apresentation\" />
 	</ItemGroup>
