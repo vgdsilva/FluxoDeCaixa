@@ -13,7 +13,7 @@ public partial class MainViewModel : BaseViewModels
         await Task.Delay(50000);
 
         // CONTEXTO FOR VALIDO
-        if ( true )
+        if ( false )
         {
             App.Current.MainPage = new NavigationPage(new Views.Pages.Dashboard.DashboardPage());
             return;

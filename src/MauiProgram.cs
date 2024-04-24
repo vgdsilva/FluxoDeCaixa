@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui;
+using DevExpress.Maui;
 using Microsoft.Extensions.Logging;
+using UraniumUI;
 
 namespace FluxoDeCaixa.Mobile;
 public static class MauiProgram
@@ -21,7 +23,10 @@ public static class MauiProgram
                 fonts.AddFont("Quicksand-Regular.ttf", "QuicksandRegular");
 
                 fonts.AddFont("FontAwesomeSolid6.ttf", "FontAwesomeSolid");
-            });
+            })
+            .UseUraniumUI()
+            .UseUraniumUIMaterial()
+            .UseDevExpress();
 
         return builder.Build();
     }

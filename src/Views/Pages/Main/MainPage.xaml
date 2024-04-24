@@ -4,6 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:classes="clr-namespace:FluxoDeCaixa.Mobile.Core.Domain.Utils.Classes"
+    xmlns:controls="clr-namespace:FluxoDeCaixa.Mobile.Controls"
     xmlns:local="clr-namespace:FluxoDeCaixa.Mobile.Views.Pages"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     xmlns:viewModel="clr-namespace:FluxoDeCaixa.Mobile.ViewModels.Main"
@@ -20,7 +21,43 @@
 
     <Grid RowDefinitions="*, Auto">
 
-        <Grid Grid.Row="0" IsVisible="{Binding ShowLoading, Converter={StaticResource ReverseBoolConverter}}" />
+        <Grid
+            Grid.Row="0"
+            BackgroundColor="#F2F5FA"
+            IsVisible="{Binding ShowLoading, Converter={StaticResource ReverseBoolConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="93" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <HorizontalStackLayout BackgroundColor="White" />
+
+            <VerticalStackLayout
+                Grid.Row="1"
+                Padding="24"
+                BackgroundColor="White"
+                Spacing="20"
+                VerticalOptions="StartAndExpand">
+                <Label Style="{StaticResource labelTituloQuestaoStyle}" Text="Como gostaria de ser chamado(a) ?" />
+
+                <controls:TextEdit
+                    BackgroundColor="White"
+                    BorderColor="#6B7280"
+                    LabelColor="#9CA3AF"
+                    LabelText="Preencha com seu nome" />
+            </VerticalStackLayout>
+
+            <VerticalStackLayout
+                Grid.Row="2"
+                Padding="24"
+                BackgroundColor="White">
+                <Button
+                    BackgroundColor="#26C165"
+                    HeightRequest="48"
+                    Text="Proximo" />
+            </VerticalStackLayout>
+        </Grid>
 
         <Grid
             Grid.Row="0"
