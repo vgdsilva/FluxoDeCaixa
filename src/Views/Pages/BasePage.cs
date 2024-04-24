@@ -13,7 +13,7 @@ public partial class BasePage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        ( BindingContext as BaseViewModels )?.OnAppearing();
+        ( BindingContext as BaseViewModels )?.Load_Page();
     }
 
 

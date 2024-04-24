@@ -52,6 +52,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\loading.gif" />
 	  <None Remove="Resources\Images\logo.png" />
 	  <None Remove="Resources\Images\logo_fluxodecaixa.png" />
 	  <None Remove="workload-install.ps1" />
