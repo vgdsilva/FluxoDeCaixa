@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using FluxoDeCaixa.Mobile.Core.Data;
 
 namespace FluxoDeCaixa.Mobile;
 public static class MauiProgram

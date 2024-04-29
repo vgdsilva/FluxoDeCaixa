@@ -30,8 +30,8 @@
                         VerticalOptions="Center" />
                     <BoxView HeightRequest="1" Color="#DADBE3" />
                 </StackLayout>
-                <StackLayout Grid.Row="1" BackgroundColor="{StaticResource White}">
-                    <!--<Label
+                <!--<StackLayout Grid.Row="1" BackgroundColor="{StaticResource White}">
+                    <Label
                         Padding="16"
                         FontFamily="QuicksandBold"
                         FontSize="20"

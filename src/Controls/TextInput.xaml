@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="FluxoDeCaixa.Mobile.Controls.TextInput"
+      RowDefinitions="Auto,Auto,Auto">
+
+    <Label Grid.Row="0" FontFamily="QuicksandBold" FontSize="14" Text="LabelText" TextColor="#10002E" />
+
+    <Frame BorderColor="#D5D4DC" HasShadow="False" Grid.Row="1" BackgroundColor="{StaticResource White}" Padding="12" Margin="0">
+        <Entry Placeholder="PlaceholderText" PlaceholderColor="#8B849B" FontSize="16" TextColor="#10002E" />
+    </Frame>
+
+</Grid>

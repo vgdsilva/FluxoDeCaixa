@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace FluxoDeCaixa.Mobile.Core.Domain.Entities;
 
-namespace FluxoDeCaixa.Mobile.Core.Domain.Entities
+public class Account
 {
-    class Account
-    {
-    }
+    public Guid AccountId { get; set; } = Guid.NewGuid();
+
+    public string Name { get; set; } = string.Empty;
+
+    public List<Transaction> Transactions { get; set; } = new List<Transaction>();
 }

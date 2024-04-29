@@ -41,7 +41,7 @@
                 VerticalOptions="StartAndExpand">
                 <Label Style="{StaticResource labelTituloQuestaoStyle}" Text="Como gostaria de ser chamado(a) ?" />
 
-                <controls:TextEdit
+                <Entry
                     BackgroundColor="White"
                     BorderColor="#6B7280"
                     LabelColor="#9CA3AF"

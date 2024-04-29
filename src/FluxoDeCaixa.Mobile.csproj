@@ -48,6 +48,33 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="Core\Domain\Exceptions\**" />
+	  <AndroidResource Remove="Core\Domain\Factories\**" />
+	  <AndroidResource Remove="Core\Domain\Repositorys\**" />
+	  <AndroidResource Remove="Views\Pages\Apresentation\**" />
+	  <Compile Remove="Core\Domain\Exceptions\**" />
+	  <Compile Remove="Core\Domain\Factories\**" />
+	  <Compile Remove="Core\Domain\Repositorys\**" />
+	  <Compile Remove="Views\Pages\Apresentation\**" />
+	  <EmbeddedResource Remove="Core\Domain\Exceptions\**" />
+	  <EmbeddedResource Remove="Core\Domain\Factories\**" />
+	  <EmbeddedResource Remove="Core\Domain\Repositorys\**" />
+	  <EmbeddedResource Remove="Views\Pages\Apresentation\**" />
+	  <MauiCss Remove="Core\Domain\Exceptions\**" />
+	  <MauiCss Remove="Core\Domain\Factories\**" />
+	  <MauiCss Remove="Core\Domain\Repositorys\**" />
+	  <MauiCss Remove="Views\Pages\Apresentation\**" />
+	  <MauiXaml Remove="Core\Domain\Exceptions\**" />
+	  <MauiXaml Remove="Core\Domain\Factories\**" />
+	  <MauiXaml Remove="Core\Domain\Repositorys\**" />
+	  <MauiXaml Remove="Views\Pages\Apresentation\**" />
+	  <None Remove="Core\Domain\Exceptions\**" />
+	  <None Remove="Core\Domain\Factories\**" />
+	  <None Remove="Core\Domain\Repositorys\**" />
+	  <None Remove="Views\Pages\Apresentation\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiImage Remove="Resources\Images\logo.png" />
 	</ItemGroup>
 
@@ -62,30 +89,18 @@
 		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 		<PackageReference Include="DevExpress.Maui.Editors" Version="23.2.5" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.10" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
 		<PackageReference Include="UraniumUI.Material" Version="2.8.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Controls\ButtonForm.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\Dashboard\DashboardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\Home\HomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Core\Data\Scripts\" />
-	  <Folder Include="Core\Domain\Factories\" />
-	  <Folder Include="Core\Domain\Exceptions\" />
-	  <Folder Include="Core\Domain\Repositorys\" />
-	  <Folder Include="Views\Pages\Apresentation\" />
 	</ItemGroup>
 
 </Project>
