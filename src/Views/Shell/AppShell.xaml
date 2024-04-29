@@ -4,12 +4,22 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:FluxoDeCaixa.Mobile"
-    Shell.FlyoutBehavior="Disabled"
+    xmlns:dash="clr-namespace:FluxoDeCaixa.Mobile.Views.Pages.Dashboard"
+    Shell.FlyoutBehavior="Flyout"
     Title="FluxoDeCaixa.Mobile">
 
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <StackLayout HeightRequest="100"></StackLayout>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+    
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+        Title="Dashboard"
+        ContentTemplate="{DataTemplate dash:DashboardPage}"
+        Route="DashboardPage" />
+    
+    
 
 </Shell>

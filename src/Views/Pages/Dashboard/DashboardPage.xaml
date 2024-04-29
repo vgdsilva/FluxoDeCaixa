@@ -31,14 +31,14 @@
                     <BoxView HeightRequest="1" Color="#DADBE3" />
                 </StackLayout>
                 <StackLayout Grid.Row="1" BackgroundColor="{StaticResource White}">
-                    <Label
+                    <!--<Label
                         Padding="16"
                         FontFamily="QuicksandBold"
                         FontSize="20"
                         Text="Dashboard"
                         TextColor="Black" />
                     <BoxView HeightRequest="1" Color="#DADBE3" />
-                </StackLayout>
+                </StackLayout>-->
                 <StackLayout
                     Grid.Row="2"
                     Padding="16"
