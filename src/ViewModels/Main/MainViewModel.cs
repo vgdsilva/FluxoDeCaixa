@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using FluxoDeCaixa.Mobile.Core.Data;
 
 namespace FluxoDeCaixa.Mobile.ViewModels.Main;
 
@@ -12,8 +13,7 @@ public partial class MainViewModel : BaseViewModels
 
         await Task.Delay(50000);
 
-        // CONTEXTO FOR VALIDO
-        if ( false )
+        if (Preferences.ContainsKey(nameof(Database)))
         {
             App.Current.MainPage = new NavigationPage(new Views.Pages.Dashboard.DashboardPage());
             return;

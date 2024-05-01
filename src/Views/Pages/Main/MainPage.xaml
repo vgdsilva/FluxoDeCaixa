@@ -41,11 +41,9 @@
                 VerticalOptions="StartAndExpand">
                 <Label Style="{StaticResource labelTituloQuestaoStyle}" Text="Como gostaria de ser chamado(a) ?" />
 
-                <Entry
-                    BackgroundColor="White"
-                    BorderColor="#6B7280"
-                    LabelColor="#9CA3AF"
-                    LabelText="Preencha com seu nome" />
+                <controls:TextInput PlaceholderText="Preencha seu nome" LabelText="Nome" />
+
+                <controls:PickerInput PlaceholderText="Selecione uma moeda" LabelText="Moeda"></controls:PickerInput>
             </VerticalStackLayout>
 
             <VerticalStackLayout
