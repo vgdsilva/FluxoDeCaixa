@@ -6,9 +6,9 @@
       RowDefinitions="Auto,Auto,Auto"
       RowSpacing="8">
 
-    <Label Grid.Row="0" FontFamily="QuicksandBold" FontSize="14" Text="{Binding Source={Reference gridInput}, Path=LabelText}" TextColor="#10002E" />
+    <Label x:Name="lblLabelText" Grid.Row="0" FontFamily="QuicksandBold" FontSize="14" Text="{Binding Source={Reference gridInput}, Path=LabelText}" TextColor="#10002E" />
 
     <Frame BorderColor="#D5D4DC" HasShadow="False" Grid.Row="1" BackgroundColor="{StaticResource White}" Padding="12,4" Margin="0" CornerRadius="8">
-        <Picker x:Name="picker" Title="{Binding Source={Reference gridInput}, Path=PlaceholderText}" TitleColor="#8B849B" FontSize="16" TextColor="#10002E" Margin="0"/>
+        <Picker x:Name="picker"  Title="{Binding Source={Reference gridInput}, Path=PlaceholderText}" TitleColor="#8B849B" FontSize="16" TextColor="#10002E" Margin="0"/>
     </Frame>
 </Grid>

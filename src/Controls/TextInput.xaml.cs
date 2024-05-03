@@ -24,12 +24,26 @@ public partial class TextInput : Grid
             returnType: typeof(string),
             declaringType: typeof(PickerInput),
             defaultValue: string.Empty,
-            defaultBindingMode: BindingMode.TwoWay);
+            defaultBindingMode: BindingMode.TwoWay,
+            propertyChanged: OnLabelTextPropertyChanged);
 
     public string LabelText
     {
         get => (string) GetValue(LabelTextProperty);
         set => SetValue(LabelTextProperty, value);
+    }
+
+    static void OnLabelTextPropertyChanged (BindableObject bindable, object oldValue, object newValue)
+    {
+        if (bindable is null)
+            return;
+
+        TextInput input = bindable as TextInput;
+
+        if (string.IsNullOrEmpty(newValue.ToString()))
+            input.LabelTextField.IsVisible = false;
+
+        input.LabelTextField.IsVisible = true;
     }
 
 

@@ -19,8 +19,24 @@ public partial class SetupModel : BaseModels
     [ObservableProperty]
     decimal currentAmount = 0;
 
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsApresentation))]
+    [NotifyPropertyChangedFor(nameof(IsStartLogin))]
+    SetupView screenType;
+
+
+    public bool IsApresentation => ScreenType == SetupView.Apresentation;
+    public bool IsStartLogin => ScreenType == SetupView.StartLogin;
+
     public SetupModel()
     {
-        
+        ScreenType = SetupView.Apresentation;
     }
+}
+
+public enum SetupView
+{
+    Apresentation = 0,
+    StartLogin = 1,
 }

@@ -27,10 +27,20 @@ public partial class MainViewModel : BaseViewModels
             App.Current.MainPage = new NavigationPage(new Views.Pages.Dashboard.DashboardPage());
             return;
         }
-
-        ShowLoading = false;
     }
 
+    [RelayCommand]
+    void CreateNewUser()
+    {
+        try
+        {
+            Model.ScreenType = SetupView.StartLogin;
+        }
+        catch ( Exception ex )
+        {
+
+        }
+    }
 
 
     [RelayCommand]
