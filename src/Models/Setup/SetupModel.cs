@@ -25,13 +25,37 @@ public partial class SetupModel : BaseModels
     [NotifyPropertyChangedFor(nameof(IsStartLogin))]
     SetupView screenType;
 
-
     public bool IsApresentation => ScreenType == SetupView.Apresentation;
     public bool IsStartLogin => ScreenType == SetupView.StartLogin;
+
+
+
+    [ObservableProperty]
+    [NotifyPropertyChangedFor(nameof(IsNameStage))]
+    [NotifyPropertyChangedFor(nameof(IsCurrencyStage))]
+    [NotifyPropertyChangedFor(nameof(IsAmmountStage))]
+    [NotifyPropertyChangedFor(nameof(IsConfirmInfoStage))]
+    StartLoginStage loginStage;
+
+    public bool IsNameStage => LoginStage == StartLoginStage.Name;
+    public bool IsCurrencyStage => LoginStage == StartLoginStage.Currency;
+    public bool IsAmmountStage => LoginStage == StartLoginStage.Ammount;
+    public bool IsConfirmInfoStage => LoginStage == StartLoginStage.ConfirmInfo;
+
+
+    [ObservableProperty]
+    List<Coin> coins;
 
     public SetupModel()
     {
         ScreenType = SetupView.Apresentation;
+        LoginStage = StartLoginStage.Name;
+        Coins = new List<Coin>
+        {
+            Currency.REAL(),
+            Currency.DOLAR(),
+            Currency.PESO()
+        };
     }
 }
 
@@ -39,4 +63,12 @@ public enum SetupView
 {
     Apresentation = 0,
     StartLogin = 1,
+}
+
+public enum StartLoginStage
+{
+    Name = 0,
+    Currency = 1,
+    Ammount = 2,
+    ConfirmInfo = 3,
 }

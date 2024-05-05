@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Maui;
+using DevExpress.Maui;
 using FluxoDeCaixa.Mobile.Core.Data;
 
 namespace FluxoDeCaixa.Mobile;
@@ -21,7 +22,8 @@ public static class MauiProgram
                 fonts.AddFont("Quicksand-Regular.ttf", "QuicksandRegular");
 
                 fonts.AddFont("FontAwesomeSolid6.ttf", "FontAwesomeSolid");
-            });
+            })
+            .UseDevExpress();
 
         return builder.Build();
     }

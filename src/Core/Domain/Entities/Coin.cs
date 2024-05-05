@@ -1,6 +1,4 @@
-﻿using AndroidX.ConstraintLayout.Core.Widgets.Analyzer;
-
-namespace FluxoDeCaixa.Mobile.Core.Domain.Entities;
+﻿namespace FluxoDeCaixa.Mobile.Core.Domain.Entities;
 
 public class Coin
 {
@@ -13,4 +11,6 @@ public class Coin
     public char ThousandGroupingSymbol { get; set; } = '.';
 
     public char DecimalGroupingSymbol { get; set; } = ',';
+
+    
 }
