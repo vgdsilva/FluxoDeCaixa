@@ -9,10 +9,36 @@
     </Style>
 
     <Style
+        x:Key="DefaultFormStyle"
+        BasedOn="{StaticResource DefaultViewStyle}"
+        TargetType="dxe:EditBase">
+        <Setter Property="TextFontFamily" Value="QuicksandMedium" />
+        <Setter Property="TextFontSize" Value="16" />
+        <Setter Property="ClearIconVisibility" Value="Never" />
+        <Setter Property="FocusedLabelColor" Value="{StaticResource Primary}" />
+        <Setter Property="FocusedBorderColor" Value="{StaticResource Primary}" />
+        <Setter Property="CursorColor" Value="{StaticResource Primary}" />
+        <Setter Property="LabelFontSize" Value="12" />
+        <Setter Property="TextColor" Value="{StaticResource Black}" />
+        <Setter Property="TextFontSize" Value="16" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource Gray100}" />
+        <Setter Property="LabelColor" Value="{StaticResource Gray400}" />
+        <Setter Property="BorderColor" Value="{StaticResource Gray500}" />
+        <Setter Property="BoxHeight" Value="48" />
+        <Setter Property="DisabledBackgroundColor" Value="{StaticResource Gray100}" />
+        <Setter Property="DisabledBorderColor" Value="{StaticResource Gray300}" />
+        <Setter Property="DisabledTextColor" Value="{StaticResource Gray500}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="BottomTextFontFamily" Value="QuicksandMedium" />
+        <Setter Property="BottomTextFontSize" Value="12" />
+        <Setter Property="ErrorColor" Value="Red" />
+    </Style>
+
+    <Style
         x:Key="DefaultLabelStyle"
         BasedOn="{StaticResource DefaultViewStyle}"
         TargetType="Label">
-        <Setter Property="FontFamily" Value="Quicksand-Medium" />
+        <Setter Property="FontFamily" Value="QuicksandMedium" />
         <Setter Property="FontAttributes" Value="None" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="TextColor" Value="{StaticResource Black}" />
@@ -37,7 +63,7 @@
     </Style>
 
 
-    <Style BasedOn="{StaticResource DefaultViewStyle}" TargetType="dxe:EditBase" ApplyToDerivedTypes="True">
+    <Style BasedOn="{StaticResource DefaultViewStyle}" TargetType="dxe:EditBase">
         <Setter Property="TextFontFamily" Value="QuicksandRegular" />
         <Setter Property="TextFontSize" Value="16" />
         <Setter Property="ClearIconVisibility" Value="Never" />
@@ -57,19 +83,14 @@
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="BottomTextFontFamily" Value="QuicksandRegular" />
         <Setter Property="BottomTextFontSize" Value="12" />
-        <!--<Setter Property="ErrorColor" Value="{StaticResource ColorRed500}" />-->
-        <!--<Setter Property="ClearIcon" Value="icon_close_input" />-->
     </Style>
 
-
-    <Style BasedOn="{StaticResource DefaultFormStyle}" TargetType="dxe:ComboBoxEdit" ApplyToDerivedTypes="True">
+    <Style BasedOn="{StaticResource DefaultFormStyle}" TargetType="dxe:ComboBoxEdit">
         <Setter Property="FocusedBorderColor" Value="{StaticResource Primary}" />
         <Setter Property="FocusedLabelColor" Value="{StaticResource Primary}" />
         <Setter Property="DropDownSelectedItemBackgroundColor" Value="{StaticResource Primary}" />
         <Setter Property="DropDownSelectedItemTextColor" Value="{StaticResource White}" />
         <Setter Property="CornerRadius" Value="4" />
-        <!--<Setter Property="DropDownIcon" Value="icon_trailing_down.png" />
-        <Setter Property="DropUpIcon" Value="icon_trailing_up.png" />-->
         <Setter Property="FilterMode" Value="Contains" />
     </Style>
 

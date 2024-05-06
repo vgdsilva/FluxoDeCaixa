@@ -1,16 +1,19 @@
 ﻿using FluxoDeCaixa.Mobile.Core.Domain.Entities;
+using SQLite;
 
 namespace FluxoDeCaixa.Mobile.Core.Data; 
 
-public class Database
+public class Database : IDisposable
 {
+    public SQLiteConnection SQLConnection { get; set; }
 
-    public User CurrentUser { get; set; } = new User();
+    public Database(string ConnectionString)
+    {
+        SQLConnection = new SQLiteConnection(ConnectionString);
+    }
 
-    public List<Account> Accounts { get; set; } = new List<Account>();
-
-    public List<Transaction> Transactions { get; set; } = new List<Transaction>();
-
-
-    
+    public void Dispose()
+    {
+        
+    }
 }

@@ -110,6 +110,13 @@
 	  <MauiXaml Update="Views\Pages\Dashboard\DashboardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\Home\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Core\Data\Scripts\" />
 	</ItemGroup>
 
 </Project>

@@ -98,7 +98,7 @@
                 Grid.Row="1"
                 Padding="24,20"
                 BackgroundColor="White"
-                Spacing="20"
+                Spacing="16"
                 VerticalOptions="StartAndExpand">
                 <Label Style="{StaticResource labelTituloQuestaoStyle}" 
                        Text="{Binding TitleQuestion}" />
@@ -107,29 +107,61 @@
 
                 <controls:TextFormEdit Text="{Binding Model.Alias}" 
                                        IsVisible="{Binding Model.IsNameStage}"
-                                       LabelText="Name" />
+                                       Margin="0,-16,0,0"
+                                       LabelText="Resposta" />
 
-                <!--<controls:ComboBoxFromEdit IsVisible="{Binding Model.IsCurrencyStage}"
-                                           DisplayMember="Description"/>-->
+                <controls:ComboBoxFromEdit IsVisible="{Binding Model.IsCurrencyStage}"
+                                           ItemsSource="{Binding Model.Coins}"
+                                           LabelText="Resposta"
+                                           DisplayMember="Description">
+                    <controls:ComboBoxFromEdit.ItemTemplate>
+                        <DataTemplate>
+                            <HorizontalStackLayout Spacing="15">
+                                <Label Margin="10,15,0,15" Text="{Binding Simbolo}" TextColor="Black" FontAttributes="Bold"/>
+                                <Label Margin="15,15,0,15" Grid.Column="1" Text="{Binding Description}" TextColor="Black"/>
+                            </HorizontalStackLayout>
+                        </DataTemplate>
+                    </controls:ComboBoxFromEdit.ItemTemplate>
+                </controls:ComboBoxFromEdit>
 
                 <controls:NumericFormEdit Value="{Binding Model.CurrentAmount}" 
+                                          LabelText="Resposta"
                                           IsVisible="{Binding Model.IsAmmountStage}" />
 
 
-                <!--<Grid IsVisible="{Binding Model.IsCurrencyStage}">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                        <RowDefinition Height="Auto"></RowDefinition>
-                    </Grid.RowDefinitions>
+                <VerticalStackLayout Spacing="16" IsVisible="{Binding Model.IsConfirmInfoStage}">
+                    <VerticalStackLayout>
+                        <Label Text="Seu nome:"  FontFamily="QuicksandMedium" FontSize="14" TextColor="{StaticResource Gray500}"></Label>
+                        <Label Text="{Binding Model.Alias}" FontFamily="QuicksandSemiBold" FontSize="16" TextColor="Black"></Label>
+                    </VerticalStackLayout>
 
-                    <Label Grid.Row="0" Text="LabelText"></Label>
-                    <Frame Grid.Row="1" BorderColor="{StaticResource Gray400}" CornerRadius="4" Padding="0">
-                        <Grid ColumnDefinitions="*,Auto,Auto" Margin="16,11,12,11">
-                            <Label Text="PlaceholderText"></Label>
-                        </Grid>
-                    </Frame>
-                </Grid>-->
+                    <VerticalStackLayout>
+                        <Label Text="Seu moeda de uso:"  FontFamily="QuicksandMedium" FontSize="14" TextColor="{StaticResource Gray500}"></Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Model.CurrentCurrancy.Simbolo}" FontFamily="QuicksandSemiBold" FontSize="16" TextColor="Black"></Span>
+                                    <Span Text=" - "></Span>
+                                    <Span Text="{Binding Model.CurrentCurrancy.Description}" FontFamily="QuicksandSemiBold" FontSize="16" TextColor="Black"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout>
+                        <Label Text="Seu saldo no momento atual:" FontFamily="QuicksandMedium" FontSize="14" TextColor="{StaticResource Gray500}"></Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="{Binding Model.CurrentCurrancy.Simbolo}" FontFamily="QuicksandSemiBold" FontSize="16" TextColor="Black"></Span>
+                                    <Span Text=" "></Span>
+                                    <Span Text="{Binding Model.CurrentAmount}" FontFamily="QuicksandSemiBold" FontSize="16" TextColor="Black"></Span>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
 
             </VerticalStackLayout>
 

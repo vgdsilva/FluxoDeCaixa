@@ -19,12 +19,16 @@ public class AppContext
         } 
     }
 
+    public static string GetFolderDatabasePath() => Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+    public static string databasePath = Path.Combine(GetFolderDatabasePath(), "database.db");
+
+    public Database GetDatabase() => new Database(databasePath);
 
     public bool IsValidContext()
     {
 
 
 
-        return true;
+        return false;
     }
 }

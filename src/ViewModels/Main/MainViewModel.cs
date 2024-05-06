@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using FluxoDeCaixa.Mobile.Core.Data;
-using FluxoDeCaixa.Mobile.Core.Domain.Entities;
 using FluxoDeCaixa.Mobile.Models.Setup;
+using FluxoDeCaixa.Mobile.Views.Pages.Home;
+using FluxoDeCaixa.Mobile;
 
 namespace FluxoDeCaixa.Mobile.ViewModels.Main;
 
@@ -33,10 +33,9 @@ public partial class MainViewModel : BaseViewModels
 
     public async override void Load_Page()
     {
-
         if (Core.Data.AppContext.Instance.IsValidContext())
         {
-            App.Current.MainPage = new NavigationPage(new Views.Pages.Dashboard.DashboardPage());
+            App.Current.MainPage = new AppShell();
             return;
         }
     }
