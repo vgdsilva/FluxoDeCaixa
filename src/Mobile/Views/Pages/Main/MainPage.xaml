@@ -110,7 +110,7 @@
                                        Margin="0,-16,0,0"
                                        LabelText="Resposta" />
 
-                <controls:ComboBoxFromEdit IsVisible="{Binding Model.IsCurrencyStage}"
+                <!--<controls:ComboBoxFromEdit IsVisible="{Binding Model.IsCurrencyStage}"
                                            ItemsSource="{Binding Model.Coins}"
                                            LabelText="Resposta"
                                            DisplayMember="Description">
@@ -122,7 +122,7 @@
                             </HorizontalStackLayout>
                         </DataTemplate>
                     </controls:ComboBoxFromEdit.ItemTemplate>
-                </controls:ComboBoxFromEdit>
+                </controls:ComboBoxFromEdit>-->
 
                 <controls:NumericFormEdit Value="{Binding Model.CurrentAmount}" 
                                           LabelText="Resposta"

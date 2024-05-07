@@ -43,19 +43,10 @@ public partial class SetupModel : BaseModels
     public bool IsConfirmInfoStage => LoginStage == StartLoginStage.ConfirmInfo;
 
 
-    [ObservableProperty]
-    List<Coin> coins;
-
     public SetupModel()
     {
         ScreenType = SetupView.Apresentation;
         LoginStage = StartLoginStage.Name;
-        Coins = new List<Coin>
-        {
-            Currency.REAL(),
-            Currency.DOLAR(),
-            Currency.PESO()
-        };
     }
 }
 
