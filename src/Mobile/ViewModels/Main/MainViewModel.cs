@@ -3,6 +3,7 @@ using CommunityToolkit.Mvvm.Input;
 using FluxoDeCaixa.Mobile.Models.Setup;
 using FluxoDeCaixa.Mobile.Views.Pages.Home;
 using FluxoDeCaixa.Mobile;
+using System.Reflection;
 
 namespace FluxoDeCaixa.Mobile.ViewModels.Main;
 
@@ -82,7 +83,6 @@ public partial class MainViewModel : BaseViewModels
 
         }
     }
-
 
     [RelayCommand]
     void LoginStagePrevious()

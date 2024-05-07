@@ -1,4 +1,5 @@
 ﻿using FluxoDeCaixa.Mobile.Views.Pages.Dashboard;
+using FluxoDeCaixa.Mobile.Views.Pages.Home;
 
 namespace FluxoDeCaixa.Mobile;
 
@@ -8,6 +9,6 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        MainPage = new MainPage();
+        MainPage = new HomePage();
     }
 }
