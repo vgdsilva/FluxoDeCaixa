@@ -5,11 +5,9 @@ namespace FluxoDeCaixa.Mobile.Core.Domain.Entities;
 
 public class User
 {
-    public Guid UserId { get; set; } = Guid.NewGuid();
+    public int UserId { get; set; }
 
-    public string Alias { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
 
-    public int MyProperty { get; set; }
-
-    public List<Account> Wallet { get; set; } = new List<Account>();
+    
 }
