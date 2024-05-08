@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluxoDeCaixa", "FluxoDeCaixa\FluxoDeCaixa.csproj", "{5872CC48-2E5C-41F0-A588-F6C7D5144A0E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoDeCaixa.Commun", "..\Commun\FluxoDeCaixa.Commun\FluxoDeCaixa.Commun.csproj", "{2B87501B-251B-40EB-AB07-89E40148F312}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5872CC48-2E5C-41F0-A588-F6C7D5144A0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5872CC48-2E5C-41F0-A588-F6C7D5144A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5872CC48-2E5C-41F0-A588-F6C7D5144A0E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5872CC48-2E5C-41F0-A588-F6C7D5144A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5872CC48-2E5C-41F0-A588-F6C7D5144A0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5872CC48-2E5C-41F0-A588-F6C7D5144A0E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2B87501B-251B-40EB-AB07-89E40148F312}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B87501B-251B-40EB-AB07-89E40148F312}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B87501B-251B-40EB-AB07-89E40148F312}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B87501B-251B-40EB-AB07-89E40148F312}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {42554921-66AC-4995-AC27-6DBA929B7D8A}
+	EndGlobalSection
+EndGlobal
