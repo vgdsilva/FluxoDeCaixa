@@ -1,5 +1,5 @@
 ﻿namespace Domain.Entities;
-public class User
+public class User 
 {
     public int UserID { get; set; }
 
