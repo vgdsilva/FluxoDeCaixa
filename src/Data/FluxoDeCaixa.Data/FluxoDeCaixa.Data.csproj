@@ -15,4 +15,8 @@
     <ProjectReference Include="..\..\Commun\FluxoDeCaixa.Commun\FluxoDeCaixa.Commun.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+
 </Project>
