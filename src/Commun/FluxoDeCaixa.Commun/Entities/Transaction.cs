@@ -1,4 +1,6 @@
-﻿namespace FluxoDeCaixa.Commun.Entities;
+﻿using FluxoDeCaixa.Commun.Enums;
+
+namespace FluxoDeCaixa.Commun.Entities;
 
 [Table("transaction")]
 public class Transaction : Entity
@@ -7,7 +9,7 @@ public class Transaction : Entity
     public string Description { get; set; } = string.Empty;
 
     [Column(TypeName = "integer")] 
-    public int TransactionType { get; set; } = 0;
+    public int TransactionType { get; set; }
 
     [Column(TypeName = "decimal")]
     public decimal Value { get; set; } = 0;

@@ -1,8 +1,6 @@
-﻿using CommunityToolkit.Maui;
-using DevExpress.Maui;
-using FluxoDeCaixa.Mobile.Core.Data;
+﻿using Microsoft.Extensions.Logging;
 
-namespace FluxoDeCaixa.Mobile;
+namespace FluxoDeCaixa;
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
@@ -10,20 +8,15 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .UseMauiApp<App>()
-            .UseMauiCommunityToolkit()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+            });
 
-                fonts.AddFont("Quicksand-Bold.ttf", "QuicksandBold");
-                fonts.AddFont("Quicksand-SemiBold.ttf", "QuicksandSemiBold");
-                fonts.AddFont("Quicksand-Medium.ttf", "QuicksandMedium");
-                fonts.AddFont("Quicksand-Regular.ttf", "QuicksandRegular");
-
-                fonts.AddFont("FontAwesomeSolid6.ttf", "FontAwesomeSolid");
-            })
-            .UseDevExpress();
+#if DEBUG
+		builder.Logging.AddDebug();
+#endif
 
         return builder.Build();
     }

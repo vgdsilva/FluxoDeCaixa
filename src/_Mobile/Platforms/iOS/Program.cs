@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace FluxoDeCaixa;
+namespace FluxoDeCaixa.Mobile;
 public class Program
 {
     // This is the main entry point of the application.
