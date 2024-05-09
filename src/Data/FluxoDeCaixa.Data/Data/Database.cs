@@ -28,7 +28,7 @@ public class Database : IDisposable
         return rowsAffected;
     }
 
-    public List<T> Query<T>(string SQL) where T : new()
+    public List<T> QueryList<T>(string SQL) where T : new()
     {
         try
         {
@@ -47,6 +47,12 @@ public class Database : IDisposable
             Debug.WriteLine("/!\\ {0}: Erro ao executar a SQL: {1}", new object[] { ex.Message, SQL });
             throw ex;
         }
+    }
+
+    public T QueryFirstOrDefault<T>(string SQL) where T : new()
+    {
+        var resultados = QueryList<T>(SQL);
+        return resultados.FirstOrDefault();
     }
 
     public void Dispose()
