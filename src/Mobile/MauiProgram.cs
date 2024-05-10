@@ -1,4 +1,7 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FluxoDeCaixa.Core.Configuration;
+using FluxoDeCaixa.Data.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace FluxoDeCaixa;
 public static class MauiProgram
@@ -17,6 +20,9 @@ public static class MauiProgram
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+
+
+        builder.Services.AddDbContext<SQLiteContext>(options => options.UseSqlite($"Filname={Factory.databasePath}", x => x.MigrationsAssembly(nameof(FluxoDeCaixa.Data))));
 
         return builder.Build();
     }

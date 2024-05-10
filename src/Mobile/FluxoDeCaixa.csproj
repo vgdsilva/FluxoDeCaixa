@@ -25,7 +25,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appiconfg.svg" Color="#000000" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#000000" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#FFFFFF" BaseSize="128,128" />
@@ -42,6 +42,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Database\databaseSample.db" />
+	  <None Remove="Resources\Images\icon_start.png" />
+	  <None Remove="Resources\Images\img_logo.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Database\databaseSample.db" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
@@ -50,6 +60,15 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Commun\FluxoDeCaixa.Commun\FluxoDeCaixa.Commun.csproj" />
 	  <ProjectReference Include="..\Data\FluxoDeCaixa.Data\FluxoDeCaixa.Data.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Controls\TextEdit.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\Starter\StarterPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
