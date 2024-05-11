@@ -35,9 +35,22 @@ public class AtualizacaoDB
 
     public static void AtualizaBancoDeDados(Database db)
     {
-        var migrationsJaExecutados = ListExecutedMigrations(db);
+        List<string> migrationsPendentes = new List<string>();
 
-        var migrationsPendentes = ListPendingMigrations(db, migrationsJaExecutados);
+        bool ExistsScriptsHistory = false;
+        if ( ExistsScriptsHistory )
+        {
+            var migrationsJaExecutados = ListExecutedMigrations(db);
+
+            migrationsPendentes = ListPendingMigrations(db, migrationsJaExecutados);
+        }
+        else
+        {
+            migrationsPendentes = ListPendingMigrations(db, null);
+        }
+
+
+        
 
         if ( migrationsPendentes.Count > 0 )
         {
@@ -103,7 +116,7 @@ public class AtualizacaoDB
 
     static List<string> ListExecutedMigrations(Database db)
     {
-        var executedMigrations = db.QueryList<object>("SELECT UPPER(MigrationId) AS RESULTADO FROM __EFMigrationsHistory ORDER BY MigrationId");
+        var executedMigrations = db.QueryList<object>("SELECT UPPER(ScriptId) AS RESULTADO FROM __ScriptsHistory ORDER BY ScriptId");
         return executedMigrations.Select(x => x.ToString()).ToList();
     }
 

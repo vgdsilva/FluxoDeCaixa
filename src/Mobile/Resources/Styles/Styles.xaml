@@ -6,6 +6,7 @@
 
     <Style TargetType="Frame" x:Key="BorderFrameTextEdit">
         <Setter Property="HasShadow" Value="False" />
+        <Setter Property="Padding" Value="16,6,12,6" />
     </Style>
 
     <Style TargetType="ActivityIndicator">
@@ -395,6 +396,10 @@
                 </VisualStateGroup>
             </VisualStateGroupList>
         </Setter>
+    </Style>
+
+    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
+        <Setter Property="HideSoftInputOnTapped" Value="True"/>
     </Style>
 
     <Style TargetType="Page" ApplyToDerivedTypes="True">
