@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Grid xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Class="FluxoDeCaixa.Controls.TextEdit"
+      RowDefinitions="Auto,Auto,Auto"
+      RowSpacing="6"
+      x:Name="textEdit_Grid"
+      BindingContext="{Binding Source={x:Reference textEdit_Grid}}">
+
+    <StackLayout x:Name="labelText_Stack" Grid.Row="0">
+        <Label Text="{Binding LabelText}" 
+               TextColor="{Binding LabelTextColor}" 
+               FontSize="{Binding LabelTextSize}" />
+    </StackLayout>
+    <Frame Grid.Row="1" 
+           Style="{StaticResource BorderFrameTextEdit}" 
+           BorderColor="{Binding BorderColor}">
+        <Grid ColumnDefinitions="Auto,*,Auto">
+            <Entry Grid.Column="1" 
+                   TextColor="{Binding TextColor}" 
+                   FontSize="{Binding TextSize}" 
+                   Placeholder="{Binding PlaceholderText}" 
+                   PlaceholderColor="{Binding PlaceholderTextColor}"
+                   BackgroundColor="Transparent"/>
+        </Grid>
+    </Frame>
+    <StackLayout Grid.Row="2" IsVisible="False">
+        <Label Text="Description line" TextColor="#8E8EA9" FontSize="14"/>
+    </StackLayout>
+
+</Grid>
+    
+    
+
