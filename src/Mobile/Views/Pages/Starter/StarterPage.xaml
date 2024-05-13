@@ -3,32 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FluxoDeCaixa.Views.Pages.Starter.StarterPage"
              xmlns:controls="clr-namespace:FluxoDeCaixa.Controls"
+             HideSoftInputOnTapped="True"
              BackgroundColor="{StaticResource White}">
     <Grid>
 
-        <StackLayout Padding="24">
-
-            <controls:TextEdit LabelText="Nome" 
-                               LabelTextSize="16"
-                               PlaceholderText="Insira seu nome"
-                               TextSize="16"/>
-
-        </StackLayout>
-
-        <Grid IsVisible="False" RowDefinitions="Auto,*,Auto">
+        <Grid RowDefinitions="Auto,*,Auto">
             <StackLayout Padding="24">
                 <Image Source="img_logo.png" 
                        Aspect="AspectFit" />
             </StackLayout>
 
-            <StackLayout Grid.Row="1" Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="24">
+            <StackLayout Padding="24" Grid.Row="1" Spacing="16">
+
+                <controls:TextEdit LabelText="Como gostaria de ser chamado?" 
+                                   LabelTextSize="16"
+                                   PlaceholderText="Insira seu nome"
+                                   TextSize="16" />
+
+                <controls:TextEdit LabelText="Qual a sua moeda de uso?" 
+                                   LabelTextSize="16"
+                                   PlaceholderText="Escolha sua moeda"
+                                   TextSize="16" />
+
+                <controls:TextEdit LabelText="Qual seu saldo atual?" 
+                                   LabelTextSize="16"
+                                   PlaceholderText="Insira o valor"
+                                   TextSize="16" />
+
+            </StackLayout>
+
+            <StackLayout IsVisible="False" Grid.Row="1" Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="24">
                 <Image Source="icon_start.png"
                        Aspect="AspectFit" />
+                
                 <Label Text="Seja bem-vindo!"
                        FontSize="Title"
                        FontAttributes="Bold"
                        TextColor="Black"
                        HorizontalTextAlignment="Center"></Label>
+                
                 <Label Text="Gerencie suas finanças com facilidade. Mantenha o controle de seus gastos, visualize seus saldos e acompanhe seus cartões de gastos, tudo em um só lugar."
                        HorizontalTextAlignment="Center"
                        TextColor="Black"

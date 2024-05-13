@@ -15,8 +15,10 @@
     <Frame Grid.Row="1" 
            Style="{StaticResource BorderFrameTextEdit}" 
            BorderColor="{Binding BorderColor}">
-        <Grid ColumnDefinitions="Auto,*,Auto">
-            <Entry Grid.Column="1" 
+        <Grid ColumnDefinitions="Auto,*,Auto" HeightRequest="40">
+            
+            
+            <Entry Grid.Column="1"
                    TextColor="{Binding TextColor}" 
                    FontSize="{Binding TextSize}" 
                    Placeholder="{Binding PlaceholderText}" 
