@@ -26,8 +26,8 @@
                    BackgroundColor="Transparent"/>
         </Grid>
     </Frame>
-    <StackLayout Grid.Row="2" IsVisible="False">
-        <Label Text="Description line" TextColor="#8E8EA9" FontSize="14"/>
+    <StackLayout Grid.Row="2">
+        <Label IsVisible="False" Text="Description line" TextColor="#8E8EA9" FontSize="14"/>
     </StackLayout>
 
 </Grid>

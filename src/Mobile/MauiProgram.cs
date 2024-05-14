@@ -1,4 +1,5 @@
-﻿using FluxoDeCaixa.Core.Configuration;
+﻿using DevExpress.Maui;
+using FluxoDeCaixa.Core.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -14,7 +15,8 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-            });
+            })
+            .UseDevExpress();
 
 #if DEBUG
 		builder.Logging.AddDebug();

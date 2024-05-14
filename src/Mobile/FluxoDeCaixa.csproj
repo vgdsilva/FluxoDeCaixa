@@ -43,6 +43,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Database\databaseSample.db" />
+	  <None Remove="Resources\Images\icon_drop_down.png" />
+	  <None Remove="Resources\Images\icon_drop_up.png" />
 	  <None Remove="Resources\Images\icon_start.png" />
 	  <None Remove="Resources\Images\img_logo.png" />
 	</ItemGroup>
@@ -52,8 +54,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
+		<PackageReference Include="DevExpress.Maui.Editors" Version="23.2.6" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 	</ItemGroup>
 
@@ -63,6 +66,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\ComboBox.xaml.cs">
+	    <DependentUpon>ComboBox.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Controls\ComboBox.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Controls\TextEdit.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

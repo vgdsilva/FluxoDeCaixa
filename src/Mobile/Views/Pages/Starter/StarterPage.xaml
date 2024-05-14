@@ -20,10 +20,10 @@
                                    PlaceholderText="Insira seu nome"
                                    TextSize="16" />
 
-                <controls:TextEdit LabelText="Qual a sua moeda de uso?" 
+                <!--<controls:ComboBox LabelText="Qual a sua moeda de uso?" 
                                    LabelTextSize="16"
                                    PlaceholderText="Escolha sua moeda"
-                                   TextSize="16" />
+                                   TextSize="16" />-->
 
                 <controls:TextEdit LabelText="Qual seu saldo atual?" 
                                    LabelTextSize="16"
