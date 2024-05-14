@@ -43,6 +43,10 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Database\databaseSample.db" />
+	  <None Remove="Resources\Fonts\Quicksand-Bold.ttf" />
+	  <None Remove="Resources\Fonts\Quicksand-Medium.ttf" />
+	  <None Remove="Resources\Fonts\Quicksand-Regular.ttf" />
+	  <None Remove="Resources\Fonts\Quicksand-SemiBold.ttf" />
 	  <None Remove="Resources\Images\icon_drop_down.png" />
 	  <None Remove="Resources\Images\icon_drop_up.png" />
 	  <None Remove="Resources\Images\icon_start.png" />
@@ -66,18 +70,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Controls\ComboBox.xaml.cs">
-	    <DependentUpon>ComboBox.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Controls\ComboBox.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Controls\TextEdit.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\Starter\StarterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

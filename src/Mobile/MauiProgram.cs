@@ -1,4 +1,5 @@
-﻿using DevExpress.Maui;
+﻿using CommunityToolkit.Maui;
+using DevExpress.Maui;
 using FluxoDeCaixa.Core.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
@@ -15,8 +16,14 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+
+                fonts.AddFont("Quicksand-Regular.ttf", "Quicksand400Font");
+                fonts.AddFont("Quicksand-Medium.ttf", "Quicksand500Font");
+                fonts.AddFont("Quicksand-SemiBold.ttf","Quicksand600Font");
+                fonts.AddFont("Quicksand-Bold.ttf", "Quicksand700Font");
             })
-            .UseDevExpress();
+            .UseDevExpress()
+            .UseMauiCommunityToolkit();
 
 #if DEBUG
 		builder.Logging.AddDebug();

@@ -2,7 +2,46 @@
 <?xaml-comp compile="true" ?>
 <ResourceDictionary 
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+    xmlns:controls="clr-namespace:FluxoDeCaixa.Controls">
+
+    <Style x:Key="DefaultViewStyle" TargetType="View">
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+    
+
+    <Style BasedOn="{StaticResource DefaultViewStyle}" TargetType="dxe:EditBase" ApplyToDerivedTypes="True">
+        <Setter Property="TextFontFamily" Value="Quicksand400Font" />
+        <Setter Property="TextFontSize" Value="16" />
+        <Setter Property="ClearIconVisibility" Value="Never" />
+        <Setter Property="FocusedLabelColor" Value="{StaticResource Primary}" />
+        <Setter Property="FocusedBorderColor" Value="{StaticResource Primary}" />
+        <Setter Property="CursorColor" Value="{StaticResource Primary}" />
+        <Setter Property="LabelFontSize" Value="12" />
+        <Setter Property="TextColor" Value="{StaticResource Black}" />
+        <Setter Property="TextFontSize" Value="16" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource Gray100}" />
+        <Setter Property="LabelColor" Value="{StaticResource Gray400}" />
+        <Setter Property="BorderColor" Value="{StaticResource Gray500}" />
+        <Setter Property="BoxHeight" Value="48" />
+        <Setter Property="DisabledBackgroundColor" Value="{StaticResource Gray100}" />
+        <Setter Property="DisabledBorderColor" Value="{StaticResource Gray300}" />
+        <Setter Property="DisabledTextColor" Value="{StaticResource Gray500}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="BottomTextFontFamily" Value="Quicksand400Font" />
+        <Setter Property="BottomTextFontSize" Value="12" />
+        <Setter Property="ErrorColor" Value="Red" />
+        
+        <!--<Setter Property="FocusedBorderColor" Value="{StaticResource Primary}" />
+        <Setter Property="FocusedLabelColor" Value="{StaticResource Primary}" />
+        <Setter Property="DropDownSelectedItemBackgroundColor" Value="{StaticResource Primary}" />
+        <Setter Property="DropDownSelectedItemTextColor" Value="{StaticResource White}" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="FilterMode" Value="Contains" />-->
+    </Style>
+
 
     <Style TargetType="Frame" x:Key="BorderFrameTextEdit">
         <Setter Property="HasShadow" Value="False" />

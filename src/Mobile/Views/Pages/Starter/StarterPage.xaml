@@ -2,9 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FluxoDeCaixa.Views.Pages.Starter.StarterPage"
+             xmlns:vm="clr-namespace:FluxoDeCaixa.ViewModels.Starter"
              xmlns:controls="clr-namespace:FluxoDeCaixa.Controls"
-             HideSoftInputOnTapped="True"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
              BackgroundColor="{StaticResource White}">
+
+    <ContentPage.BindingContext>
+        <vm:StarterViewModel />
+    </ContentPage.BindingContext>
+    
     <Grid>
 
         <Grid RowDefinitions="Auto,*,Auto">
@@ -15,20 +21,22 @@
 
             <StackLayout Padding="24" Grid.Row="1" Spacing="16">
 
-                <controls:TextEdit LabelText="Como gostaria de ser chamado?" 
-                                   LabelTextSize="16"
-                                   PlaceholderText="Insira seu nome"
-                                   TextSize="16" />
+                <Label Text="Como gostaria de ser chamado ?"
+                       FontSize="16"
+                       TextColor="#6B7280"
+                       FontFamily="Quicksand700Font"></Label>
+                
+                <dxe:TextEdit LabelText="Resposta"
+                              Text="{Binding DataModel.Name}"/>
 
-                <!--<controls:ComboBox LabelText="Qual a sua moeda de uso?" 
-                                   LabelTextSize="16"
-                                   PlaceholderText="Escolha sua moeda"
-                                   TextSize="16" />-->
+                <Label Text="Qual seu saldo atual ?"
+                       FontSize="16"
+                       TextColor="#6B7280"
+                       FontFamily="Quicksand700Font"></Label>
+                
+                <dxe:NumericEdit LabelText="Resposta"
+                                 Value="{Binding DataModel.Balance}"/>
 
-                <controls:TextEdit LabelText="Qual seu saldo atual?" 
-                                   LabelTextSize="16"
-                                   PlaceholderText="Insira o valor"
-                                   TextSize="16" />
 
             </StackLayout>
 
