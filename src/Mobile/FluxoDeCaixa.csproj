@@ -68,7 +68,12 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\Commun\FluxoDeCaixa.Commun\FluxoDeCaixa.Commun.csproj" />
-	  <ProjectReference Include="..\Data\FluxoDeCaixa.Data\FluxoDeCaixa.Data.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="DataAccessObject.SQLite">
+	    <HintPath>..\ExternalLibrary\DataAccessObject.SQLite.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>

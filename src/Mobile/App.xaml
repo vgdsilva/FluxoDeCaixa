@@ -2,6 +2,7 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:FluxoDeCaixa"
+             xmlns:converts="clr-namespace:FluxoDeCaixa.Core.Utils.Converters"
              x:Class="FluxoDeCaixa.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -9,6 +10,10 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            
+            <!-- Converters -->
+            <converts:ReverseBoolConverter x:Key="ReverseBoolConverter" />
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

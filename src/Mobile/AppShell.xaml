@@ -7,9 +7,12 @@
     Shell.FlyoutBehavior="Disabled"
     Title="FluxoDeCaixa">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate local:MainPage}"
-        Route="MainPage" />
+    <TabBar>
+        <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+        <ShellContent Title="Wallet" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+        <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+        <ShellContent Title="Settings" ContentTemplate="{DataTemplate local:MainPage}" Route="MainPage" />
+    </TabBar>
+    
 
 </Shell>

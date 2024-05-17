@@ -13,34 +13,13 @@
     
     <Grid>
 
-        <Grid RowDefinitions="Auto,*,Auto">
+        <Grid RowDefinitions="Auto,*,Auto"  >
             <StackLayout Padding="24">
                 <Image Source="img_logo.png" 
                        Aspect="AspectFit" />
             </StackLayout>
 
-            <StackLayout Padding="24" Grid.Row="1" Spacing="16">
-
-                <Label Text="Como gostaria de ser chamado ?"
-                       FontSize="16"
-                       TextColor="#6B7280"
-                       FontFamily="Quicksand700Font"></Label>
-                
-                <dxe:TextEdit LabelText="Resposta"
-                              Text="{Binding DataModel.Name}"/>
-
-                <Label Text="Qual seu saldo atual ?"
-                       FontSize="16"
-                       TextColor="#6B7280"
-                       FontFamily="Quicksand700Font"></Label>
-                
-                <dxe:NumericEdit LabelText="Resposta"
-                                 Value="{Binding DataModel.Balance}"/>
-
-
-            </StackLayout>
-
-            <StackLayout IsVisible="False" Grid.Row="1" Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="24">
+            <StackLayout IsVisible="{Binding IsInstanceDatabase, Converter={StaticResource ReverseBoolConverter}}" Grid.Row="1" Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="24">
                 <Image Source="icon_start.png"
                        Aspect="AspectFit" />
                 
@@ -57,8 +36,20 @@
                        ></Label>
             </StackLayout>
 
+            <StackLayout IsVisible="{Binding IsInstanceDatabase}" Grid.Row="1" Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="24">
+                <ActivityIndicator HeightRequest="64" 
+                                   IsRunning="True" 
+                                   Color="{StaticResource Primary}" />
+
+                <Label FontSize="16" 
+                       Text="Carregando base ..." 
+                       TextColor="{StaticResource Black}" />
+            </StackLayout>
+
             <StackLayout Grid.Row="2" Padding="24">
-                <Button Text="Começar"></Button>
+                <Button Text="Começar" 
+                        Command="{Binding InitCommand}" 
+                        IsVisible="{Binding IsInstanceDatabase, Converter={StaticResource ReverseBoolConverter}}"></Button>
             </StackLayout>
         </Grid>
         
