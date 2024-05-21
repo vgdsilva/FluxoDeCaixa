@@ -1,161 +1,161 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version=""1.0"" encoding=""utf-8"" ?>
 <local:BasePage
-    x:Class="FluxoDeCaixa.Mobile.MainPage"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:classes="clr-namespace:FluxoDeCaixa.Mobile.Core.Domain.Utils.Classes"
-    xmlns:controls="clr-namespace:FluxoDeCaixa.Mobile.Controls"
-    xmlns:local="clr-namespace:FluxoDeCaixa.Mobile.Views.Pages"
-    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:viewModel="clr-namespace:FluxoDeCaixa.Mobile.ViewModels.Main"
-    BackgroundColor="{StaticResource Black}"
-    Shell.NavBarIsVisible="False">
+    x:Class=""FluxoDeCaixa.Mobile.MainPage""
+    xmlns=""http://schemas.microsoft.com/dotnet/2021/maui""
+    xmlns:x=""http://schemas.microsoft.com/winfx/2009/xaml""
+    xmlns:classes=""clr-namespace:FluxoDeCaixa.Mobile.Core.Domain.Utils.Classes""
+    xmlns:controls=""clr-namespace:FluxoDeCaixa.Mobile.Controls""
+    xmlns:local=""clr-namespace:FluxoDeCaixa.Mobile.Views.Pages""
+    xmlns:toolkit=""http://schemas.microsoft.com/dotnet/2022/maui/toolkit""
+    xmlns:viewModel=""clr-namespace:FluxoDeCaixa.Mobile.ViewModels.Main""
+    BackgroundColor=""{StaticResource Black}""
+    Shell.NavBarIsVisible=""False"">
 
     <local:BasePage.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource Black}" StatusBarStyle="{OnPlatform Android=LightContent, iOS=DarkContent}" />
+        <toolkit:StatusBarBehavior StatusBarColor=""{StaticResource Black}"" StatusBarStyle=""{OnPlatform Android=LightContent, iOS=DarkContent}"" />
     </local:BasePage.Behaviors>
 
     <local:BasePage.BindingContext>
         <viewModel:MainViewModel />
     </local:BasePage.BindingContext>
 
-    <Grid RowDefinitions="*, Auto">
+    <Grid RowDefinitions=""*, Auto"">
 
-        <Grid BackgroundColor="{StaticResource White}" IsVisible="{Binding Model.IsApresentation}">
+        <Grid BackgroundColor=""{StaticResource White}"" IsVisible=""{Binding Model.IsApresentation}"">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height=""Auto""></RowDefinition>
+                <RowDefinition Height=""*""></RowDefinition>
+                <RowDefinition Height=""Auto""></RowDefinition>
             </Grid.RowDefinitions>
             
-            <StackLayout Grid.Row="0" Padding="24">
-                <Image Source="icon_logo.png" Aspect="AspectFit" HeightRequest="24"></Image>
+            <StackLayout Grid.Row=""0"" Padding=""24"">
+                <Image Source=""icon_logo.png"" Aspect=""AspectFit"" HeightRequest=""24""></Image>
             </StackLayout>
 
-            <StackLayout Grid.Row="1" Padding="24,0">
-                <Grid RowDefinitions="Auto,Auto" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" RowSpacing="32">
+            <StackLayout Grid.Row=""1"" Padding=""24,0"">
+                <Grid RowDefinitions=""Auto,Auto"" VerticalOptions=""CenterAndExpand"" HorizontalOptions=""CenterAndExpand"" RowSpacing=""32"">
 
-                    <Image Source="icon_start.png" Aspect="AspectFit"></Image>
-                    <StackLayout Spacing="18" Grid.Row="1">
-                        <Label Text="Seja bem-vindo!"
-                               FontSize="32"
-                               TextColor="{StaticResource Black}"
-                               FontFamily="QuicksandBold"
-                               HorizontalTextAlignment="Center"></Label> 
-                        <Label Text="Gerencie suas finanças com facilidade. Mantenha o controle de seus gastos, visualize seus saldos e acompanhe seus cartões de gastos, tudo em um só lugar." 
-                               FontSize="16" 
-                               TextColor="{StaticResource Gray900}" 
-                               FontFamily="QuicksandRegular"
-                               HorizontalTextAlignment="Center"></Label>
+                    <Image Source=""icon_start.png"" Aspect=""AspectFit""></Image>
+                    <StackLayout Spacing=""18"" Grid.Row=""1"">
+                        <Label Text=""Seja bem-vindo!""
+                               FontSize=""32""
+                               TextColor=""{StaticResource Black}""
+                               FontFamily=""QuicksandBold""
+                               HorizontalTextAlignment=""Center""></Label> 
+                        <Label Text=""Gerencie suas finanças com facilidade. Mantenha o controle de seus gastos, visualize seus saldos e acompanhe seus cartões de gastos, tudo em um só lugar."" 
+                               FontSize=""16"" 
+                               TextColor=""{StaticResource Gray900}"" 
+                               FontFamily=""QuicksandRegular""
+                               HorizontalTextAlignment=""Center""></Label>
                     </StackLayout>
                 </Grid>
             </StackLayout>
 
-            <StackLayout Grid.Row="2" Padding="24">
-                <Button Text="Começar" Command="{Binding CreateNewUserCommand}"></Button>
+            <StackLayout Grid.Row=""2"" Padding=""24"">
+                <Button Text=""Começar"" Command=""{Binding CreateNewUserCommand}""></Button>
             </StackLayout>
         </Grid>
         
         <Grid
-            Grid.Row="0"
-            BackgroundColor="#F2F5FA"
-            IsVisible="{Binding Model.IsStartLogin}">
+            Grid.Row=""0""
+            BackgroundColor=""#F2F5FA""
+            IsVisible=""{Binding Model.IsStartLogin}"">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height=""Auto"" />
+                <RowDefinition Height=""*"" />
+                <RowDefinition Height=""Auto"" />
             </Grid.RowDefinitions>
 
-            <Grid IsVisible="{Binding Model.IsNameStage}" BackgroundColor="White" Padding="24,56,24,32" ColumnDefinitions="1*,1*,1*,1*" ColumnSpacing="5" VerticalOptions="CenterAndExpand">
-                <StackLayout Grid.Column="0" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}"></StackLayout>
-                <StackLayout Grid.Column="1" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Gray100}"></StackLayout>
-                <StackLayout Grid.Column="2" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Gray100}"></StackLayout>
-                <StackLayout Grid.Column="3" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Gray100}"></StackLayout>
+            <Grid IsVisible=""{Binding Model.IsNameStage}"" BackgroundColor=""White"" Padding=""24,56,24,32"" ColumnDefinitions=""1*,1*,1*,1*"" ColumnSpacing=""5"" VerticalOptions=""CenterAndExpand"">
+                <StackLayout Grid.Column=""0"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Primary}""></StackLayout>
+                <StackLayout Grid.Column=""1"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Gray100}""></StackLayout>
+                <StackLayout Grid.Column=""2"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Gray100}""></StackLayout>
+                <StackLayout Grid.Column=""3"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Gray100}""></StackLayout>
             </Grid>
 
-            <Grid IsVisible="{Binding Model.IsCurrencyStage}" BackgroundColor="White" Padding="24,56,24,32" ColumnDefinitions="1*,1*,1*,1*" ColumnSpacing="5" VerticalOptions="CenterAndExpand">
-                <StackLayout Grid.Column="0" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}"></StackLayout>
-                <StackLayout Grid.Column="1" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}"></StackLayout>
-                <StackLayout Grid.Column="2" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Gray100}"></StackLayout>
-                <StackLayout Grid.Column="3" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Gray100}"></StackLayout>
+            <Grid IsVisible=""{Binding Model.IsCurrencyStage}"" BackgroundColor=""White"" Padding=""24,56,24,32"" ColumnDefinitions=""1*,1*,1*,1*"" ColumnSpacing=""5"" VerticalOptions=""CenterAndExpand"">
+                <StackLayout Grid.Column=""0"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Primary}""></StackLayout>
+                <StackLayout Grid.Column=""1"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Primary}""></StackLayout>
+                <StackLayout Grid.Column=""2"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Gray100}""></StackLayout>
+                <StackLayout Grid.Column=""3"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Gray100}""></StackLayout>
             </Grid>
 
-            <Grid IsVisible="{Binding Model.IsAmmountStage}" BackgroundColor="White" Padding="24,56,24,32" ColumnDefinitions="1*,1*,1*,1*" ColumnSpacing="5" VerticalOptions="CenterAndExpand">
-                <StackLayout Grid.Column="0" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}"></StackLayout>
-                <StackLayout Grid.Column="1" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}"></StackLayout>
-                <StackLayout Grid.Column="2" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}"></StackLayout>
-                <StackLayout Grid.Column="3" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Gray100}"></StackLayout>
+            <Grid IsVisible=""{Binding Model.IsAmmountStage}"" BackgroundColor=""White"" Padding=""24,56,24,32"" ColumnDefinitions=""1*,1*,1*,1*"" ColumnSpacing=""5"" VerticalOptions=""CenterAndExpand"">
+                <StackLayout Grid.Column=""0"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Primary}""></StackLayout>
+                <StackLayout Grid.Column=""1"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Primary}""></StackLayout>
+                <StackLayout Grid.Column=""2"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Primary}""></StackLayout>
+                <StackLayout Grid.Column=""3"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Gray100}""></StackLayout>
             </Grid>
 
-            <Grid IsVisible="{Binding Model.IsConfirmInfoStage}" BackgroundColor="White" Padding="24,56,24,32" ColumnDefinitions="1*,1*,1*,1*" ColumnSpacing="5" VerticalOptions="CenterAndExpand">
-                <StackLayout Grid.Column="0" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}"></StackLayout>
-                <StackLayout Grid.Column="1" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}"></StackLayout>
-                <StackLayout Grid.Column="2" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}"></StackLayout>
-                <StackLayout Grid.Column="3" HeightRequest="5" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource Primary}"></StackLayout>
+            <Grid IsVisible=""{Binding Model.IsConfirmInfoStage}"" BackgroundColor=""White"" Padding=""24,56,24,32"" ColumnDefinitions=""1*,1*,1*,1*"" ColumnSpacing=""5"" VerticalOptions=""CenterAndExpand"">
+                <StackLayout Grid.Column=""0"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Primary}""></StackLayout>
+                <StackLayout Grid.Column=""1"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Primary}""></StackLayout>
+                <StackLayout Grid.Column=""2"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Primary}""></StackLayout>
+                <StackLayout Grid.Column=""3"" HeightRequest=""5"" HorizontalOptions=""FillAndExpand"" BackgroundColor=""{StaticResource Primary}""></StackLayout>
             </Grid>
 
             <VerticalStackLayout
-                Grid.Row="1"
-                Padding="24,20"
-                BackgroundColor="White"
-                Spacing="16"
-                VerticalOptions="StartAndExpand">
-                <Label Style="{StaticResource labelTituloQuestaoStyle}" 
-                       Text="{Binding TitleQuestion}" />
-                <Label Style="{StaticResource labelSubTituloQuestaoStyle}" 
-                       Text="{Binding SubTitleQuestion}" />
+                Grid.Row=""1""
+                Padding=""24,20""
+                BackgroundColor=""White""
+                Spacing=""16""
+                VerticalOptions=""StartAndExpand"">
+                <Label Style=""{StaticResource labelTituloQuestaoStyle}"" 
+                       Text=""{Binding TitleQuestion}"" />
+                <Label Style=""{StaticResource labelSubTituloQuestaoStyle}"" 
+                       Text=""{Binding SubTitleQuestion}"" />
 
-                <controls:TextFormEdit Text="{Binding Model.Alias}" 
-                                       IsVisible="{Binding Model.IsNameStage}"
-                                       Margin="0,-16,0,0"
-                                       LabelText="Resposta" />
+                <controls:TextFormEdit Text=""{Binding Model.Alias}"" 
+                                       IsVisible=""{Binding Model.IsNameStage}""
+                                       Margin=""0,-16,0,0""
+                                       LabelText=""Resposta"" />
 
-                <!--<controls:ComboBoxFromEdit IsVisible="{Binding Model.IsCurrencyStage}"
-                                           ItemsSource="{Binding Model.Coins}"
-                                           LabelText="Resposta"
-                                           DisplayMember="Description">
+                <!--<controls:ComboBoxFromEdit IsVisible=""{Binding Model.IsCurrencyStage}""
+                                           ItemsSource=""{Binding Model.Coins}""
+                                           LabelText=""Resposta""
+                                           DisplayMember=""Description"">
                     <controls:ComboBoxFromEdit.ItemTemplate>
                         <DataTemplate>
-                            <HorizontalStackLayout Spacing="15">
-                                <Label Margin="10,15,0,15" Text="{Binding Simbolo}" TextColor="Black" FontAttributes="Bold"/>
-                                <Label Margin="15,15,0,15" Grid.Column="1" Text="{Binding Description}" TextColor="Black"/>
+                            <HorizontalStackLayout Spacing=""15"">
+                                <Label Margin=""10,15,0,15"" Text=""{Binding Simbolo}"" TextColor=""Black"" FontAttributes=""Bold""/>
+                                <Label Margin=""15,15,0,15"" Grid.Column=""1"" Text=""{Binding Description}"" TextColor=""Black""/>
                             </HorizontalStackLayout>
                         </DataTemplate>
                     </controls:ComboBoxFromEdit.ItemTemplate>
                 </controls:ComboBoxFromEdit>-->
 
-                <controls:NumericFormEdit Value="{Binding Model.CurrentAmount}" 
-                                          LabelText="Resposta"
-                                          IsVisible="{Binding Model.IsAmmountStage}" />
+                <controls:NumericFormEdit Value=""{Binding Model.CurrentAmount}"" 
+                                          LabelText=""Resposta""
+                                          IsVisible=""{Binding Model.IsAmmountStage}"" />
 
 
-                <VerticalStackLayout Spacing="16" IsVisible="{Binding Model.IsConfirmInfoStage}">
+                <VerticalStackLayout Spacing=""16"" IsVisible=""{Binding Model.IsConfirmInfoStage}"">
                     <VerticalStackLayout>
-                        <Label Text="Seu nome:"  FontFamily="QuicksandMedium" FontSize="14" TextColor="{StaticResource Gray500}"></Label>
-                        <Label Text="{Binding Model.Alias}" FontFamily="QuicksandSemiBold" FontSize="16" TextColor="Black"></Label>
+                        <Label Text=""Seu nome:""  FontFamily=""QuicksandMedium"" FontSize=""14"" TextColor=""{StaticResource Gray500}""></Label>
+                        <Label Text=""{Binding Model.Alias}"" FontFamily=""QuicksandSemiBold"" FontSize=""16"" TextColor=""Black""></Label>
                     </VerticalStackLayout>
 
                     <VerticalStackLayout>
-                        <Label Text="Seu moeda de uso:"  FontFamily="QuicksandMedium" FontSize="14" TextColor="{StaticResource Gray500}"></Label>
+                        <Label Text=""Seu moeda de uso:""  FontFamily=""QuicksandMedium"" FontSize=""14"" TextColor=""{StaticResource Gray500}""></Label>
                         <Label>
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{Binding Model.CurrentCurrancy.Simbolo}" FontFamily="QuicksandSemiBold" FontSize="16" TextColor="Black"></Span>
-                                    <Span Text=" - "></Span>
-                                    <Span Text="{Binding Model.CurrentCurrancy.Description}" FontFamily="QuicksandSemiBold" FontSize="16" TextColor="Black"></Span>
+                                    <Span Text=""{Binding Model.CurrentCurrancy.Simbolo}"" FontFamily=""QuicksandSemiBold"" FontSize=""16"" TextColor=""Black""></Span>
+                                    <Span Text="" - ""></Span>
+                                    <Span Text=""{Binding Model.CurrentCurrancy.Description}"" FontFamily=""QuicksandSemiBold"" FontSize=""16"" TextColor=""Black""></Span>
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
                     </VerticalStackLayout>
 
                     <VerticalStackLayout>
-                        <Label Text="Seu saldo no momento atual:" FontFamily="QuicksandMedium" FontSize="14" TextColor="{StaticResource Gray500}"></Label>
+                        <Label Text=""Seu saldo no momento atual:"" FontFamily=""QuicksandMedium"" FontSize=""14"" TextColor=""{StaticResource Gray500}""></Label>
                         <Label>
                             <Label.FormattedText>
                                 <FormattedString>
-                                    <Span Text="{Binding Model.CurrentCurrancy.Simbolo}" FontFamily="QuicksandSemiBold" FontSize="16" TextColor="Black"></Span>
-                                    <Span Text=" "></Span>
-                                    <Span Text="{Binding Model.CurrentAmount}" FontFamily="QuicksandSemiBold" FontSize="16" TextColor="Black"></Span>
+                                    <Span Text=""{Binding Model.CurrentCurrancy.Simbolo}"" FontFamily=""QuicksandSemiBold"" FontSize=""16"" TextColor=""Black""></Span>
+                                    <Span Text="" ""></Span>
+                                    <Span Text=""{Binding Model.CurrentAmount}"" FontFamily=""QuicksandSemiBold"" FontSize=""16"" TextColor=""Black""></Span>
                                 </FormattedString>
                             </Label.FormattedText>
                         </Label>
@@ -165,36 +165,36 @@
 
             </VerticalStackLayout>
 
-            <VerticalStackLayout Grid.Row="2" Padding="24" BackgroundColor="White" Spacing="10">
-                <Button Text="{Binding PrincipalButtonText}" 
-                        Command="{Binding LoginStageNextCommand}"/>
-                <Button Text="Voltar" 
-                        IsVisible="{Binding Model.IsNameStage, Converter={StaticResource ReverseBoolConverter}}"
-                        Command="{Binding LoginStagePreviousCommand}"
-                        BackgroundColor="{StaticResource White}" 
-                        BorderWidth="1" 
-                        BorderColor="{StaticResource Primary}" 
-                        TextColor="{StaticResource Primary}" />
+            <VerticalStackLayout Grid.Row=""2"" Padding=""24"" BackgroundColor=""White"" Spacing=""10"">
+                <Button Text=""{Binding PrincipalButtonText}"" 
+                        Command=""{Binding LoginStageNextCommand}""/>
+                <Button Text=""Voltar"" 
+                        IsVisible=""{Binding Model.IsNameStage, Converter={StaticResource ReverseBoolConverter}}""
+                        Command=""{Binding LoginStagePreviousCommand}""
+                        BackgroundColor=""{StaticResource White}"" 
+                        BorderWidth=""1"" 
+                        BorderColor=""{StaticResource Primary}"" 
+                        TextColor=""{StaticResource Primary}"" />
             </VerticalStackLayout>
         </Grid>
 
         <Grid
-            Grid.Row="0"
-            HorizontalOptions="CenterAndExpand"
-            IsVisible="False"
-            RowDefinitions="*,Auto"
-            RowSpacing="10"
-            VerticalOptions="CenterAndExpand">
+            Grid.Row=""0""
+            HorizontalOptions=""CenterAndExpand""
+            IsVisible=""False""
+            RowDefinitions=""*,Auto""
+            RowSpacing=""10""
+            VerticalOptions=""CenterAndExpand"">
             <ActivityIndicator
-                HeightRequest="64"
-                IsRunning="True"
-                Color="{StaticResource White}" />
+                HeightRequest=""64""
+                IsRunning=""True""
+                Color=""{StaticResource White}"" />
 
             <Label
-                Grid.Row="1"
-                FontSize="16"
-                Text="Carregando base ..."
-                TextColor="White" />
+                Grid.Row=""1""
+                FontSize=""16""
+                Text=""Carregando base ...""
+                TextColor=""White"" />
         </Grid>
     </Grid>
 
