@@ -31,8 +31,6 @@ public partial class StarterViewModel : BaseViewModels
                 Task.Run(Core.Configuration.Factory.CreateDatabaseConfiguration().SynchronizeTables);
                 Task.Delay(1000);
 
-                CreateOperationCategory.Handle(new());
-
                 App.Current.MainPage = new AppShell();
             }
         }

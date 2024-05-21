@@ -44,9 +44,11 @@ public static class CreateOperationCategory
         }
     }
 
-    public static void Validate(Domain.Entities.OperationCategory entity)
+    public static bool Validate(Domain.Entities.OperationCategory entity)
     {
         if ( entity.OperationCategoryID.IsNewEntity() )
             entity.OperationCategoryID = Guid.NewGuid().ToString();
+
+        return true;
     }
 }
