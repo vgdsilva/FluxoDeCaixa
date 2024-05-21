@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<local:BasePages xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FluxoDeCaixa.Views.Pages.Starter.StarterPage"
+             xmlns:local="clr-namespace:FluxoDeCaixa.Views.Pages"
              xmlns:vm="clr-namespace:FluxoDeCaixa.ViewModels.Starter"
-             xmlns:controls="clr-namespace:FluxoDeCaixa.Controls"
-             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:mtk="clr-namespace:CommunityToolkit.Maui.Core.Views;assembly=CommunityToolkit.Maui.Core"
+             x:Class="FluxoDeCaixa.Views.Pages.Starter.StarterPage"
              BackgroundColor="{StaticResource White}">
 
-    <ContentPage.BindingContext>
+    <local:BasePages.BindingContext>
         <vm:StarterViewModel />
-    </ContentPage.BindingContext>
+    </local:BasePages.BindingContext>
+
+    <local:BasePages.Behaviors>
+        <tk:StatusBarBehavior StatusBarColor="White" StatusBarStyle="{OnPlatform Android=DarkContent}"/>
+    </local:BasePages.Behaviors>
     
-    <Grid>
+    <Grid >
 
         <Grid RowDefinitions="Auto,*,Auto"  >
             <StackLayout Padding="24">
@@ -25,7 +30,7 @@
                 
                 <Label Text="Seja bem-vindo!"
                        FontSize="Title"
-                       FontAttributes="Bold"
+                       FontFamily="Quicksand-bold"
                        TextColor="Black"
                        HorizontalTextAlignment="Center"></Label>
                 
@@ -36,14 +41,24 @@
                        ></Label>
             </StackLayout>
 
-            <StackLayout IsVisible="{Binding IsInstanceDatabase}" Grid.Row="1" Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="24">
+            <StackLayout IsVisible="{Binding IsInstanceDatabase}" Grid.Row="1" Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="32">
+                <Image Source="icon_loading.png" Aspect="AspectFit" />
+
+                <Label FontSize="24" 
+                       FontFamily="Quicksand-Bold"
+                       HorizontalOptions="Center"
+                       Text="Loading ..." 
+                       TextColor="{StaticResource Black}" />
+
                 <ActivityIndicator HeightRequest="64" 
                                    IsRunning="True" 
                                    Color="{StaticResource Primary}" />
 
                 <Label FontSize="16" 
-                       Text="Carregando base ..." 
-                       TextColor="{StaticResource Black}" />
+                       FontFamily="Quicksand-Regular"
+                       Text="Preparando o seu fluxo de dados" 
+                       HorizontalOptions="Center"
+                       TextColor="#212121" />
             </StackLayout>
 
             <StackLayout Grid.Row="2" Padding="24">
@@ -54,4 +69,4 @@
         </Grid>
         
     </Grid>
-</ContentPage>
+</local:BasePages>

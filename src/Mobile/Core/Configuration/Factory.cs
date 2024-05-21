@@ -13,13 +13,10 @@ public class Factory
 
     public static void InitInstanceDatabase()
     {
-        if ( !File.Exists(databasePath) )
+        if (!ExistsDatabase())
         {
-            //FileUtils.CopyResourceMobileIfNotExists(typeof(App), databaseSample, databasePath);
-
             DatabaseConfiguration configuration = CreateDatabaseConfiguration();
-
-            configuration.CreateDatabase();
+            configuration.SynchronizeTables();
         }
     }
 
@@ -28,7 +25,7 @@ public class Factory
         DatabaseConfiguration configuration = new DatabaseConfiguration(databasePath, dce =>
         {
             dce.RegisterTable<User>();
-            dce.RegisterTable<Transaction>();
+            dce.RegisterTable<Operation>();
         });
 
         return configuration;
@@ -37,4 +34,6 @@ public class Factory
 
     public static Database GetDatabase() => 
         CreateDatabaseConfiguration().CreateDatabase();
+
+    public static bool ExistsDatabase() => File.Exists(databasePath);
 }

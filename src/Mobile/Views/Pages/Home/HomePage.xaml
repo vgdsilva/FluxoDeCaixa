@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<local:BasePages xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:FluxoDeCaixa.Views.Pages"
+             xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="FluxoDeCaixa.Views.Pages.Home.HomePage"
+             BackgroundColor="#202024">
+
+    <local:BasePages.Behaviors>
+        <tk:StatusBarBehavior StatusBarColor="#121214" StatusBarStyle="{OnPlatform Android=LightContent}"/>
+    </local:BasePages.Behaviors>
+
+    <ScrollView>
+        <Grid  RowDefinitions="Auto,*" HorizontalOptions="FillAndExpand">
+            <StackLayout HorizontalOptions="FillAndExpand" Padding="24" Spacing="24" BackgroundColor="#121214">
+                <Image Source="img_logo.png" 
+                       HorizontalOptions="StartAndExpand"
+                       Aspect="AspectFit" />
+
+                <Label Text="Seja bem-vindo(a) à sua jornada financeira!"
+                       FontFamily="Quicksand-Bold"
+                       FontSize="16"
+                       TextColor="White"
+                       HorizontalTextAlignment="Start"
+                       HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+
+
+        </Grid>
+    </ScrollView>
+
+</local:BasePages>

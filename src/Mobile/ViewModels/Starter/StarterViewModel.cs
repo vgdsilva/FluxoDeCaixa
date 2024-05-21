@@ -14,8 +14,29 @@ public partial class StarterViewModel : BaseViewModels
 
     public StarterViewModel()
     {
+        if ( Core.Configuration.Factory.ExistsDatabase() )
+            App.Current.MainPage = new AppShell();
+
         DataModel = new();
         IsInstanceDatabase = false;
+    }
+
+    public override void OnAppearing()
+    {
+        try
+        {
+            if (Core.Configuration.Factory.ExistsDatabase())
+            {
+                Task.Run(Core.Configuration.Factory.CreateDatabaseConfiguration().SynchronizeTables);
+                Task.Delay(1000);
+
+                App.Current.MainPage = new AppShell();
+            }
+        }
+        catch (Exception ex)
+        {
+            ShowToast(ex.Message);
+        }
     }
 
 
@@ -25,14 +46,15 @@ public partial class StarterViewModel : BaseViewModels
         try
         {
             IsInstanceDatabase = true;
-            Core.Configuration.Factory.InitInstanceDatabase();
-            await Task.Delay(2000);
+            await Task.Run(Core.Configuration.Factory.InitInstanceDatabase);
+            await Task.Delay(1000);
 
             App.Current.MainPage = new AppShell();
         }
         catch ( Exception ex )
         {
-
+            ShowToast(ex.Message);
+            IsInstanceDatabase = false;
         }
     }
 }
