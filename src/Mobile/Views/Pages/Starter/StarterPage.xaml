@@ -6,42 +6,43 @@
              xmlns:tk="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:mtk="clr-namespace:CommunityToolkit.Maui.Core.Views;assembly=CommunityToolkit.Maui.Core"
              x:Class="FluxoDeCaixa.Views.Pages.Starter.StarterPage"
-             BackgroundColor="{StaticResource White}">
+             BackgroundColor="#121214">
 
     <local:BasePages.BindingContext>
         <vm:StarterViewModel />
     </local:BasePages.BindingContext>
 
     <local:BasePages.Behaviors>
-        <tk:StatusBarBehavior StatusBarColor="White" StatusBarStyle="{OnPlatform Android=DarkContent}"/>
+        <tk:StatusBarBehavior StatusBarColor="#121214" StatusBarStyle="{OnPlatform Android=LightContent, iOS=DarkContent}"/>
     </local:BasePages.Behaviors>
     
     <Grid >
 
         <Grid RowDefinitions="Auto,*,Auto"  >
-            <StackLayout Padding="24">
-                <Image Source="img_logo.png" 
+            <HorizontalStackLayout Padding="24">
+                <Image Source="icon_ignite_simbol"
+                       HeightRequest="32"
                        Aspect="AspectFit" />
-            </StackLayout>
+            </HorizontalStackLayout>
 
-            <StackLayout IsVisible="{Binding IsInstanceDatabase, Converter={StaticResource ReverseBoolConverter}}" Grid.Row="1" Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="24">
+            <HorizontalStackLayout IsVisible="True" Grid.Row="1" Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="24">
                 <Image Source="icon_start.png"
                        Aspect="AspectFit" />
                 
                 <Label Text="Seja bem-vindo!"
                        FontSize="Title"
                        FontFamily="Quicksand-bold"
-                       TextColor="Black"
+                       TextColor="White"
                        HorizontalTextAlignment="Center"></Label>
                 
                 <Label Text="Gerencie suas finanças com facilidade. Mantenha o controle de seus gastos, visualize seus saldos e acompanhe seus cartões de gastos, tudo em um só lugar."
                        HorizontalTextAlignment="Center"
-                       TextColor="Black"
+                       TextColor="#DFDFDF"
                        FontSize="16"
                        ></Label>
-            </StackLayout>
+            </HorizontalStackLayout>
 
-            <StackLayout IsVisible="{Binding IsInstanceDatabase}" Grid.Row="1" Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="32">
+            <HorizontalStackLayout IsVisible="False" Grid.Row="1" Padding="24" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="32">
                 <Image Source="icon_loading.png" Aspect="AspectFit" />
 
                 <Label FontSize="24" 
@@ -52,20 +53,21 @@
 
                 <ActivityIndicator HeightRequest="64" 
                                    IsRunning="True" 
-                                   Color="{StaticResource Primary}" />
+                                   Color="#00875F" />
 
                 <Label FontSize="16" 
                        FontFamily="Quicksand-Regular"
                        Text="Preparando o seu fluxo de dados" 
                        HorizontalOptions="Center"
                        TextColor="#212121" />
-            </StackLayout>
+            </HorizontalStackLayout>
 
-            <StackLayout Grid.Row="2" Padding="24">
-                <Button Text="Começar" 
+            <HorizontalStackLayout Grid.Row="2" Padding="24">
+                <Button Text="Começar"
+                        BackgroundColor="#00875F"
                         Command="{Binding InitCommand}" 
                         IsVisible="{Binding IsInstanceDatabase, Converter={StaticResource ReverseBoolConverter}}"></Button>
-            </StackLayout>
+            </HorizontalStackLayout>
         </Grid>
         
     </Grid>

@@ -12,10 +12,19 @@
 
     <ScrollView>
         <Grid  RowDefinitions="Auto,*" HorizontalOptions="FillAndExpand">
-            <StackLayout HorizontalOptions="FillAndExpand" Padding="24" Spacing="24" BackgroundColor="#121214">
-                <Image Source="img_logo.png" 
-                       HorizontalOptions="StartAndExpand"
-                       Aspect="AspectFit" />
+            <VerticalStackLayout HorizontalOptions="FillAndExpand" Padding="24" Spacing="24" BackgroundColor="#000000">
+                <Grid ColumnDefinitions="*,Auto" Padding="0">
+                    <Image Source="img_logo.png" 
+                           HorizontalOptions="StartAndExpand"
+                           Aspect="AspectFit" />
+
+                    <Button Grid.Column="1" 
+                            Text="Nova Transação"
+                            BackgroundColor="#00875F"
+                            HorizontalOptions="End"
+                            HeightRequest="38"
+                            FontSize="14"/>
+                </Grid>
 
                 <Label Text="Seja bem-vindo(a) à sua jornada financeira!"
                        FontFamily="Quicksand-Bold"
@@ -23,7 +32,7 @@
                        TextColor="White"
                        HorizontalTextAlignment="Start"
                        HorizontalOptions="FillAndExpand"/>
-            </StackLayout>
+            </VerticalStackLayout>
 
 
         </Grid>

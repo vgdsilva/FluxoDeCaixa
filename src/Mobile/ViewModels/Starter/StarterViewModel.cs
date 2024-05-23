@@ -48,14 +48,11 @@ public partial class StarterViewModel : BaseViewModels
         {
             IsInstanceDatabase = true;
             await Task.Run(Core.Configuration.Factory.InitInstanceDatabase);
-            await Task.Delay(1000);
-
             App.Current.MainPage = new AppShell();
         }
         catch ( Exception ex )
         {
             ShowToast(ex.Message);
-            IsInstanceDatabase = false;
         }
     }
 }

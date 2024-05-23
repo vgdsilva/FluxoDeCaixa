@@ -12,7 +12,9 @@ public static class CreateOperationCategory
         {
             try
             {
-                database.SQL = "SELECT * FROM OPERATIONCATEGORY WHERE OPERATIONCATEGORYID = " + entity.OperationCategoryID;
+                database.SQL = "SELECT * FROM OPERATIONCATEGORY WHERE OPERATIONCATEGORYID = @OPERATIONCATEGORYID";
+                database.AddParameter("@OPERATIONCATEGORYID", entity.OperationCategoryID);
+
                 List<Domain.Entities.OperationCategory> itens = (database.QueryAsync<Domain.Entities.OperationCategory>()).Result;
                 if (itens.Count > 0)
                 {

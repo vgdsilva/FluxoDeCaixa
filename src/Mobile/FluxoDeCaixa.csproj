@@ -32,13 +32,16 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Images\icon_ignite_simbol.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -65,15 +68,15 @@
 	  </Reference>
 	</ItemGroup>
 
-	<ItemGroup>
+	<!--<ItemGroup>
 	  <MauiXaml Update="Views\Pages\Home\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\Starter\StarterPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
+	</ItemGroup>-->
 
-	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionFluxoDeCaixaHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+	<!--<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionFluxoDeCaixaHideInfoBar="True" /></VisualStudio></ProjectExtensions>-->
 
 </Project>
