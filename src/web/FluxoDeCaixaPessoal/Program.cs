@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Builder;
+
 namespace FluxoDeCaixaPessoal;
 
 public class Program
@@ -8,6 +10,9 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddControllersWithViews();
+        builder.Services.AddControllers();
+        builder.Services.AddSwaggerGen();
+        builder.Services.AddEndpointsApiExplorer();
 
         var app = builder.Build();
 
@@ -19,6 +24,7 @@ public class Program
             app.UseHsts();
         }
 
+
         app.UseHttpsRedirection();
         app.UseStaticFiles();
 
@@ -29,6 +35,8 @@ public class Program
         app.MapControllerRoute(
             name: "default",
             pattern: "{controller=Home}/{action=Index}/{id?}");
+
+        app.UseSwagger();
 
         app.Run();
     }

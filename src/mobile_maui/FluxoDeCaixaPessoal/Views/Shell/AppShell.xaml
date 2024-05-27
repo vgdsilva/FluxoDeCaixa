@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="FluxoDeCaixaPessoal.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:home="clr-namespace:FluxoDeCaixaPessoal.Views.Pages.Home"
+    xmlns:wallet="clr-namespace:FluxoDeCaixaPessoal.Views.Pages.Wallet"
+    xmlns:settings="clr-namespace:FluxoDeCaixaPessoal.Views.Pages.Settings"
+    xmlns:utils="clr-namespace:FluxoDeCaixaPessoal.Core.Utils"
+    Shell.FlyoutBehavior="Disabled"
+    Title="Fluxo de Caixa Pessoal">
+
+    <TabBar>
+        <ShellContent ContentTemplate="{DataTemplate home:HomePage}" 
+                      Icon="{FontImageSource Glyph={Static utils:FAIcons.House}, FontFamily='FA-Solid', Size='24'}" 
+                      Route="HomePage" />
+        
+        <ShellContent ContentTemplate="{DataTemplate wallet:WalletPage}" 
+                      Icon="{FontImageSource Glyph={Static utils:FAIcons.Wallet}, FontFamily='FA-Solid', Size='24'}" 
+                      Route="WalletPage" />
+        
+        <ShellContent ContentTemplate="{DataTemplate settings:SettingsPage}" 
+                      Icon="{FontImageSource Glyph={Static utils:FAIcons.Gear}, FontFamily='FA-Solid', Size='24'}" 
+                      Route="SettingsPage" />    
+    </TabBar>
+    
+    
+
+</Shell>
