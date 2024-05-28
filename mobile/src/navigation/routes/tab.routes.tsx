@@ -2,9 +2,9 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faGear, faHouse, faWallet } from '@fortawesome/free-solid-svg-icons';
 
-import Home  from '../screens/Home/HomePage';
-import Wallet  from '../screens/Wallet/WalletPage';
-import Settings  from '../screens/Settings/SettingsPage';
+import Home  from '../../screens/Home';
+import Wallet  from '../../screens/Wallet';
+import Settings  from '../../screens/Settings';
 
 const Tab = createBottomTabNavigator();
 

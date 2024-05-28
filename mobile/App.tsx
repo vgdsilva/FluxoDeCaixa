@@ -1,4 +1,4 @@
-import Routes from './src/routes';
+import Routes from './src/navigation/routes';
 
 export default function App() {
   return (
