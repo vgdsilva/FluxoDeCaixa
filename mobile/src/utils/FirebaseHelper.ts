@@ -2,13 +2,15 @@
 import { initializeApp } from "firebase/app"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBZ8CMUWgfIa_7DCGx7qYUc0jQQSnWmObk",
-    authDomain: "fluxo-de-caixa-pessoal.firebaseapp.com",
-    projectId: "fluxo-de-caixa-pessoal",
-    storageBucket: "fluxo-de-caixa-pessoal.appspot.com",
-    messagingSenderId: "163183400425",
-    appId: "1:163183400425:web:b84568b772c0da5fdba778",
-    measurementId: "G-WSR9G664DE"
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 }
 
 const app = initializeApp(firebaseConfig)
+
+export default app
