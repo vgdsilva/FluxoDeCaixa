@@ -1,10 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faGear, faHouse, faWallet } from '@fortawesome/free-solid-svg-icons';
+import MenuPrincipalScreen from '../../screens/MenuPrincipal';
 
-import Home  from '../../screens/Home';
-import Wallet  from '../../screens/Wallet';
-import Settings  from '../../screens/Settings';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -15,21 +14,21 @@ export default function TabRoutes() {
         }}>
             <Tab.Screen 
                 name='home'
-                component={Home}
+                component={MenuPrincipalScreen}
                 options={{ 
                     tabBarShowLabel: false,
                     tabBarIcon: ({ color, size }) => <FontAwesomeIcon icon={faHouse} color={color} size={size} />
                 }} />
             <Tab.Screen 
                 name='wallet'
-                component={Wallet}
+                component={MenuPrincipalScreen}
                 options={{ 
                     tabBarShowLabel: false,
                     tabBarIcon: ({ color, size }) => <FontAwesomeIcon icon={faWallet} color={color} size={size} />
                 }} />
             <Tab.Screen 
                 name='setting'
-                component={Settings}
+                component={MenuPrincipalScreen}
                 options={{ 
                     tabBarShowLabel: false,
                     tabBarIcon: ({ color, size }) => <FontAwesomeIcon icon={faGear} color={color} size={size} />
