@@ -1,10 +1,16 @@
-import Routes from './src/navigation/routes';
+import { NavigationContainer, StackRouter } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { HomeScreen } from './src/pages/Home';
 
-import 'react-native-gesture-handler';
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <Routes />
+    <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name='Home' component={HomeScreen}/>
+        </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
