@@ -1,24 +1,36 @@
-import React, { Children, Component, useEffect } from "react";
+import React, { Children, Component, useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
 export interface CollapseViewProps {
     title?: string,
     icon?: string,
+    content: () => JSX.Element,
+    isExpanded?: boolean
 }
 
-export const CollapseView = (props: CollapseViewProps & any) => {
+export const CollapseView: React.FC<CollapseViewProps> = ({title,
+  icon,
+  content,
+  isExpanded = false, // Set default to false
+}) => {
 
-    
+  const [isExpandedState, setIsExpandedState] = useState(isExpanded);
+
+  const toggleExpansion = () => {
+    setIsExpandedState(!isExpandedState);
+  };
 
     return(
             <View style={styles.container}>
                 <View style={styles.header}>
-                    <Text style={styles.title}>{props.title}</Text>
-                    <Ionicons name="caret-down-outline"
-                              size={24} 
-                              color="white"/>
+                    <Text style={styles.title}>{title}</Text>
+                    <Ionicons name={isExpanded ? 'caret-down-outline' : 'caret-up-outline'}
+                              size={24}
+                              color="white"
+                              onPress={toggleExpansion} />
                 </View>
+                {isExpandedState && <View style={styles.containerContent}>{content()}</View>}
             </View>
     );
 }
@@ -37,5 +49,8 @@ const styles = StyleSheet.create({
       flexDirection: 'row',
       justifyContent: 'space-between',
       padding: 24,
+    },
+    containerContent: {
+
     }
   });
