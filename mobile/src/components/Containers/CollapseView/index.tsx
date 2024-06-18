@@ -9,41 +9,42 @@ export interface CollapseViewProps {
     isExpanded?: boolean
 }
 
-export const CollapseView: React.FC<CollapseViewProps> = ({title,
-  icon,
-  content,
-  isExpanded = false, // Set default to false
-}) => {
+export const CollapseView: React.FC<CollapseViewProps> = ({title = "", content, isExpanded = false}) => {
 
   const [isExpandedState, setIsExpandedState] = useState(isExpanded);
 
-  const toggleExpansion = () => {
-    setIsExpandedState(!isExpandedState);
-  };
+  
+  const toggleExpansion = () => { setIsExpandedState(!isExpandedState); };
 
-    return(
-            <View style={styles.container}>
-                <View style={styles.header}>
-                    <Text style={styles.title}>{title}</Text>
+  return(
+          <View style={styles.container}>
+              <View style={styles.header}>
+                  <Text style={styles.title}>{title}</Text>
+                  <View style={styles.expandeButton}>
                     <Ionicons name={isExpanded ? 'caret-down-outline' : 'caret-up-outline'}
                               size={24}
                               color="white"
                               onPress={toggleExpansion} />
-                </View>
-                {isExpandedState && <View style={styles.containerContent}>{content()}</View>}
-            </View>
-    );
+                  </View>
+              </View>
+              {isExpandedState && <View style={styles.containerContent}>{content()}</View>}
+          </View>
+  );
 }
 
 const styles = StyleSheet.create({
     container: {
       backgroundColor: '#202024',
       flexDirection: 'column',
-      gap: 16
     },
     title: {
         color: 'white',
         fontSize: 16
+    },
+    expandeButton: {
+      borderRadius: 8,
+      backgroundColor: '#121212',
+      alignContent: 'center'
     },
     header: {
       flexDirection: 'row',
@@ -51,6 +52,6 @@ const styles = StyleSheet.create({
       padding: 24,
     },
     containerContent: {
-
+      padding: 24
     }
   });
