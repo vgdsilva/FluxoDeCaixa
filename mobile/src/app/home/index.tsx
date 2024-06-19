@@ -18,8 +18,10 @@ export default class HomeScreen extends BaseScreen {
                       size={24} 
                       color="white" />
           </View>
-          <View style={{ padding: 24, minHeight: 100, width: '100%'}}>
+          <View style={{ padding: 24, minHeight: 100, width: '100%', gap: 16 }}>
             <CollapseView title='Sua conta'></CollapseView>
+            <CollapseView title='Entradas'></CollapseView>
+            <CollapseView title='Saidas'></CollapseView>
           </View>
         </View>
       );

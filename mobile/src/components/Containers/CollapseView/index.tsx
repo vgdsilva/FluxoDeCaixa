@@ -5,7 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 export interface CollapseViewProps {
     title?: string,
     icon?: string,
-    content: () => JSX.Element,
+    content?: () => JSX.Element,
     isExpanded?: boolean
 }
 
@@ -27,7 +27,7 @@ export const CollapseView: React.FC<CollapseViewProps> = ({title = "", content, 
                               onPress={toggleExpansion} />
                   </View>
               </View>
-              {isExpandedState && <View style={styles.containerContent}>{content()}</View>}
+              {isExpandedState && content != undefined && <View style={styles.containerContent}>{content()}</View>}
           </View>
   );
 }
