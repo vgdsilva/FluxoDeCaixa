@@ -2,14 +2,14 @@ import React, { Children, Component, useEffect, useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Ionicons from '@expo/vector-icons/Ionicons';
 
-export interface CollapseViewProps {
+export interface CollapseViewProps{
+    children?: React.ReactNode;
     title?: string,
     icon?: string,
-    content?: () => JSX.Element,
     isExpanded?: boolean
 }
 
-export const CollapseView: React.FC<CollapseViewProps> = ({title = "", content, isExpanded = false}) => {
+export const CollapseView: React.FC<CollapseViewProps> = ({children, title = "", isExpanded = false}) => {
 
   const [isExpandedState, setIsExpandedState] = useState(isExpanded);
 
@@ -27,7 +27,7 @@ export const CollapseView: React.FC<CollapseViewProps> = ({title = "", content, 
                               onPress={toggleExpansion} />
                   </View>
               </View>
-              {isExpandedState && content != undefined && <View style={styles.containerContent}>{content()}</View>}
+              {isExpandedState && children}
           </View>
   );
 }
