@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FluxoDeCaixa.Mobile.Views.Pages.Home.HomePage"
+             Title="Fluxo de caixa"
+             x:Name="thisPage"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             Padding="0">
+
+    <ContentPage.Content>
+        <ScrollView Padding="20">
+            <Grid RowDefinitions="Auto,Auto"
+                  RowSpacing="16">
+                <Grid ColumnDefinitions="Auto,*">
+                    <Image Grid.Column="0"
+                           Grid.Row="0"
+                           HorizontalOptions="Start"
+                           Source="icon_clovercrm.png" />
+
+                    <HorizontalStackLayout Grid.Column="1"
+                                           HorizontalOptions="End"
+                                           Spacing="20">
+                        <ImageButton BackgroundColor="Transparent"
+                                     HorizontalOptions="End"
+                                     Source="icon_search.png">
+                        </ImageButton>
+
+                        <ImageButton BackgroundColor="Transparent"
+                                     HorizontalOptions="End"
+                                     Source="icon_notificacoes.png">
+                        </ImageButton>
+                    </HorizontalStackLayout>
+                </Grid>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
