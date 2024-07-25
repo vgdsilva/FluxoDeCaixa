@@ -7,7 +7,8 @@
              Shell.NavBarIsVisible="False"
              Shell.TabBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
-             Padding="0">
+             Padding="0"
+             BackgroundColor="#F0F1F5">
 
     <ContentPage.Content>
         <ScrollView Padding="20">
@@ -17,18 +18,22 @@
                     <Image Grid.Column="0"
                            Grid.Row="0"
                            HorizontalOptions="Start"
-                           Source="icon_clovercrm.png" />
+                           Source="icon_logo.png"  />
 
                     <HorizontalStackLayout Grid.Column="1"
                                            HorizontalOptions="End"
-                                           Spacing="20">
+                                           Spacing="16">
                         <ImageButton BackgroundColor="Transparent"
                                      HorizontalOptions="End"
-                                     Source="icon_search.png">
+                                     Source="icon_search.png"
+                                     MaximumHeightRequest="28"
+                                     MaximumWidthRequest="28">
                         </ImageButton>
 
                         <ImageButton BackgroundColor="Transparent"
                                      HorizontalOptions="End"
+                                     MaximumHeightRequest="28"
+                                     MaximumWidthRequest="28"
                                      Source="icon_notificacoes.png">
                         </ImageButton>
                     </HorizontalStackLayout>
