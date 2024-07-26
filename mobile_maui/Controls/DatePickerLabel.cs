@@ -1,4 +1,6 @@
 
+using System.Windows.Input;
+
 namespace FluxoDeCaixa.Mobile.Controls;
 
 public class DatePickerLabel : ContentView
@@ -34,6 +36,19 @@ public class DatePickerLabel : ContentView
 	{
 		get => (DateTime)GetValue(SelectedDateProperty);
 		set => SetValue(SelectedDateProperty, value); 
+	}
+
+    public static readonly BindableProperty SelectedDateCommandProperty =
+        BindableProperty.Create(
+            nameof(SelectedDateCommand),
+            typeof(ICommand),
+            typeof(DatePickerLabel));
+
+
+    public ICommand SelectedDateCommand
+	{
+		get => (ICommand)GetValue(SelectedDateCommandProperty);
+		set => SetValue(SelectedDateCommandProperty, value);
 	}
 
 
@@ -84,6 +99,10 @@ public class DatePickerLabel : ContentView
     void OnDatePickerDateSelected(object? sender, DateChangedEventArgs e)
 	{
 		SelectedDate = e.NewDate;
+
+		if (SelectedDateCommand?.CanExecute(e) ?? false)
+			SelectedDateCommand?.Execute(e);
+			
 	}
 
     void UpdateLabel()
