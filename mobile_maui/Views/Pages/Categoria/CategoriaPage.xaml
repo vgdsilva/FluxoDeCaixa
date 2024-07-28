@@ -22,7 +22,7 @@
 
             <VerticalStackLayout Grid.Row="1"
                                  Padding="24">
-                <Button Text="Salvar categoria"
+                <Button Text="Criar categoria"
                         Command="{Binding SaveCommand}"/>
             </VerticalStackLayout>
         </Grid>
