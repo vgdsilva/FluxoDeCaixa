@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using FluxoDeCaixa.Mobile.Views.Pages.Categoria;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,14 @@ namespace FluxoDeCaixa.Mobile.ViewModels.Home
         [RelayCommand]
         async Task ChangeCurrentDate()
         {
-            await App.Current.MainPage.DisplayAlert("Teste", CurrentDate.ToString(), "Ok");
+            
+        }
+
+
+        [RelayCommand]
+        async Task AddCategoria()
+        {
+            await GoToAsync(nameof(CategoriaPage));
         }
     }
 }
