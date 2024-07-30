@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FluxoDeCaixa.Mobile", "FluxoDeCaixa.Mobile.csproj", "{B42F3459-7C3C-4108-870F-A830BD11F3C4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "..\common\Domain\Domain.csproj", "{838391DE-5002-4452-A911-645EBB228B96}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{B42F3459-7C3C-4108-870F-A830BD11F3C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B42F3459-7C3C-4108-870F-A830BD11F3C4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B42F3459-7C3C-4108-870F-A830BD11F3C4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{838391DE-5002-4452-A911-645EBB228B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{838391DE-5002-4452-A911-645EBB228B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{838391DE-5002-4452-A911-645EBB228B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{838391DE-5002-4452-A911-645EBB228B96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
