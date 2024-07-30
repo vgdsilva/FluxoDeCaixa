@@ -17,9 +17,10 @@
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
-        <ScrollView Padding="20">
-            <Grid RowDefinitions="Auto,Auto,Auto,Auto"
-                  RowSpacing="16">
+        <ScrollView>
+            <Grid RowDefinitions="Auto,*"
+                  RowSpacing="0"
+                  Padding="16,0">
                 <Grid ColumnDefinitions="Auto,*">
                     <Image Grid.Column="0"
                            Grid.Row="0"
@@ -44,45 +45,50 @@
                         </ImageButton>
                     </HorizontalStackLayout>
                 </Grid>
-                <Border Grid.Row="1" 
-                        HeightRequest="150"
-                        StrokeShape="Rectangle 6">
+
+                <Grid Grid.Row="1"
+                      RowDefinitions="Auto,Auto,Auto">
                     
-                </Border>
-                <Grid Grid.Row="2"
-                      ColumnDefinitions="*,*"
-                      Padding="0,16">
-                    <Label Grid.Column="0"
-                           HorizontalOptions="Start"
-                           Text="Mês selecionado:"
-                           FontSize="16"/>
+                    <Grid Grid.Row="1"
+                          ColumnDefinitions="*,*"
+                          Padding="0,16">
+                        <Label Grid.Column="0"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               Text="Mês selecionado:"
+                               FontSize="16"/>
 
-                    <controls:DatePickerLabel Grid.Column="1"
-                                              HorizontalOptions="End"
-                                              DateFormat="MMMM - yyyy"
-                                              SelectedDate="{Binding CurrentDate, Mode=TwoWay}"
-                                              SelectedDateCommand="{Binding ChangeCurrentDateCommand}" />
-                </Grid>
-                <Grid Grid.Row="3"
-                      ColumnDefinitions="*,*"
-                      ColumnSpacing="16"
-                      Padding="0,16">
-                    <Button Grid.Column="0"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#00875F"
-                            TextColor="White"
-                            Text="Nova catetoria"
-                            FontSize="14"
-                            FontAttributes="Bold"
-                            Command="{Binding AddCategoriaCommand}"/>
+                        <Border Grid.Column="1"
+                                HorizontalOptions="End"
+                                Padding="24,12"
+                                StrokeShape="RoundRectangle 50">
+                            <controls:DatePickerLabel DateFormat="MMMM - yyyy"
+                                                      SelectedDate="{Binding CurrentDate, Mode=TwoWay}"
+                                                      SelectedDateCommand="{Binding ChangeCurrentDateCommand}" />
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Row="2"
+                          ColumnDefinitions="*,*"
+                          ColumnSpacing="16"
+                          Padding="0,16">
+                        <Button Grid.Column="0"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="#00875F"
+                                TextColor="White"
+                                Text="Nova catetoria"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                Command="{Binding AddCategoriaCommand}"/>
 
-                    <Button Grid.Column="1"
-                            HorizontalOptions="FillAndExpand"
-                            BackgroundColor="#00875F"
-                            TextColor="White"
-                            Text="Nova transação"
-                            FontSize="14"
-                            FontAttributes="Bold"/>
+                        <Button Grid.Column="1"
+                                HorizontalOptions="FillAndExpand"
+                                BackgroundColor="#00875F"
+                                TextColor="White"
+                                Text="Nova transação"
+                                FontSize="14"
+                                FontAttributes="Bold"
+                                Command="{Binding AddTransacionCommand}"/>
+                    </Grid>
                 </Grid>
             </Grid>
         </ScrollView>
