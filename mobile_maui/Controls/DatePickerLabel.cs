@@ -1,10 +1,12 @@
 
+using Microsoft.Maui.Controls.Shapes;
 using System.Windows.Input;
 
 namespace FluxoDeCaixa.Mobile.Controls;
 
 public class DatePickerLabel : ContentView
 {
+	private Border _border;
 	private Label _label;
 	private DatePicker _datePicker;
 
@@ -58,7 +60,9 @@ public class DatePickerLabel : ContentView
 		{
 			HorizontalOptions = LayoutOptions.Center,
 			VerticalOptions = LayoutOptions.Center,
-			GestureRecognizers = { new TapGestureRecognizer { Command = new Command(OnLabelTapped) } }
+			GestureRecognizers = { new TapGestureRecognizer { Command = new Command(OnLabelTapped) } },
+			FontSize = 16,
+			TextColor = Colors.White
 		};
 
 		_datePicker = new DatePicker
@@ -68,9 +72,23 @@ public class DatePickerLabel : ContentView
 
         _datePicker.DateSelected += OnDatePickerDateSelected;
 
-		Content = new StackLayout
+        _border = new Border
+        {
+            Padding = new Thickness(24, 12),
+            StrokeShape = new RoundRectangle()
+            {
+                CornerRadius = new CornerRadius(60)
+            },
+            BackgroundColor = Color.FromHex("#323238"),
+            Content = new StackLayout
+            {
+                Children = { _label, _datePicker }
+            }
+        };
+
+        Content = new StackLayout
 		{
-			Children = { _label, _datePicker }
+			Children = { _border }
 		};
 
 		UpdateLabel();
@@ -93,7 +111,6 @@ public class DatePickerLabel : ContentView
     void OnLabelTapped(object obj)
     {
 		_datePicker.Focus();
-        //_datePicker.IsVisible = !_datePicker.IsVisible;
     }
 
     void OnDatePickerDateSelected(object? sender, DateChangedEventArgs e)
@@ -107,6 +124,13 @@ public class DatePickerLabel : ContentView
 
     void UpdateLabel()
     {
-        _label.Text = SelectedDate.ToString(DateFormat);
+		var date = SelectedDate.ToString(DateFormat);
+		string text = date;
+		if (DateFormat.Equals("DDDD - yyyy"))
+		{
+			text = date.Replace("-", "de");
+		}
+
+		_label.Text = text;
     }
 }
