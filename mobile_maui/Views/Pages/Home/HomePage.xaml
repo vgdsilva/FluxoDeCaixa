@@ -11,7 +11,7 @@
              Shell.TabBarIsVisible="False"
              NavigationPage.HasNavigationBar="False"
              Padding="0"
-             BackgroundColor="#121214">
+             BackgroundColor="#F0F1F5">
 
     <ContentPage.BindingContext>
         <vm:HomeViewModel />
@@ -21,92 +21,67 @@
         <ScrollView>
             <Grid RowDefinitions="Auto,Auto"
                   RowSpacing="0"
-                  Padding="0"
-                  BackgroundColor="#202024">
+                  Padding="0">
+                
                 <Grid x:Name="Header" 
                       RowDefinitions="*,Auto"
-                      BackgroundColor="#121214">
+                      BackgroundColor="White">
                     <Grid ColumnDefinitions="Auto,*"
                           Padding="16">
                         <Image Grid.Column="0"
                                Grid.Row="0"
                                HorizontalOptions="Start"
-                               Source="icon_logo_dark.png"  />
+                               Source="icon_logo.png"  />
 
                         <HorizontalStackLayout Grid.Row="0"
                                                Grid.Column="1"
                                                HorizontalOptions="End"
                                                Spacing="16">
-                            <ImageButton BackgroundColor="Transparent"
-                                         HorizontalOptions="End"
-                                         Source="icon_search.png"
-                                         MaximumHeightRequest="24"
-                                         MaximumWidthRequest="24">
+                            <ImageButton Style="{StaticResource IconButton}"
+                                         Source="icon_search.png">
                                 <ImageButton.Behaviors>
-                                    <toolkit:IconTintColorBehavior TintColor="White"/>
+                                    <toolkit:IconTintColorBehavior TintColor="Black"/>
                                 </ImageButton.Behaviors>
                             </ImageButton>
 
-                            <ImageButton BackgroundColor="Transparent"
-                                         HorizontalOptions="End"
-                                         MaximumHeightRequest="28"
-                                         MaximumWidthRequest="28"
+                            <ImageButton Style="{StaticResource IconButton}"
                                          Source="icon_notificacoes.png">
                                 <ImageButton.Behaviors>
-                                    <toolkit:IconTintColorBehavior TintColor="White"/>
+                                    <toolkit:IconTintColorBehavior TintColor="Black"/>
                                 </ImageButton.Behaviors>
                             </ImageButton>
                         </HorizontalStackLayout>
                     </Grid>
-                    <BoxView Grid.Row="1"
-                             HeightRequest="1"
-                             Color="#323238"
-                             HorizontalOptions="FillAndExpand"/>
+                    <BoxView Grid.Row="1" Style="{StaticResource Separator}"/>
                 </Grid>
 
                 <Grid Grid.Row="1"
-                      RowDefinitions="Auto,Auto,Auto"
-                      BackgroundColor="#121214"
-                      Padding="16">
-                    
-                    <Grid Grid.Row="1"
-                          ColumnDefinitions="*,*"
-                          Padding="0,16">
-                        <Label Grid.Column="0"
-                               VerticalOptions="Center"
-                               Text="Mês selecionado:"
-                               TextColor="White"
-                               FontSize="16"/>
+                      ColumnDefinitions="*,Auto"
+                      Padding="16,16">
+                    <Label Grid.Column="0"
+                           VerticalOptions="Center"
+                           Text="Mês selecionado:"
+                           TextColor="White"
+                           FontSize="16"/>
 
-                        <controls:DatePickerLabel DateFormat="MMMM - yyyy"
-                                                    SelectedDate="{Binding CurrentDate, Mode=TwoWay}"
-                                                    SelectedDateCommand="{Binding ChangeCurrentDateCommand}"
-                                                    Grid.Column="1"
-                                                    HorizontalOptions="End"/>
-                        
-                    </Grid>
-                    <Grid Grid.Row="2"
-                          ColumnDefinitions="*,*"
-                          ColumnSpacing="16"
-                          Padding="0,16">
-                        <Button Grid.Column="0"
-                                HorizontalOptions="FillAndExpand"
-                                BackgroundColor="#00875F"
-                                TextColor="White"
-                                Text="Nova catetoria"
-                                FontSize="14"
-                                FontAttributes="Bold"
-                                Command="{Binding AddCategoriaCommand}"/>
+                    <controls:DatePickerLabel DateFormat="MMMM - yyyy"
+                                SelectedDate="{Binding CurrentDate, Mode=TwoWay}"
+                                SelectedDateCommand="{Binding ChangeCurrentDateCommand}"
+                                Grid.Column="1"
+                                HorizontalOptions="End"/>
 
-                        <Button Grid.Column="1"
-                                HorizontalOptions="FillAndExpand"
-                                BackgroundColor="#00875F"
-                                TextColor="White"
-                                Text="Nova transação"
-                                FontSize="14"
-                                FontAttributes="Bold"
-                                Command="{Binding AddTransacionCommand}"/>
-                    </Grid>
+                </Grid>
+                <Grid Grid.Row="2"
+                      ColumnDefinitions="*,*"
+                      ColumnSpacing="16"
+                      Padding="24,0">
+                    <Button Grid.Column="0"
+                            Text="Nova catetoria"
+                            Command="{Binding AddCategoriaCommand}"/>
+
+                    <Button Grid.Column="1"
+                            Text="Nova transação"
+                            Command="{Binding AddTransacionCommand}"/>
                 </Grid>
             </Grid>
         </ScrollView>
