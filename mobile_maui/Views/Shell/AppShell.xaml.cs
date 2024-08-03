@@ -1,6 +1,4 @@
-﻿using FluxoDeCaixa.Mobile.Views.Pages.Categoria;
-
-namespace FluxoDeCaixa.Mobile;
+﻿namespace FluxoDeCaixa.Mobile;
 
 public partial class AppShell : Shell
 {
@@ -8,6 +6,6 @@ public partial class AppShell : Shell
     {
         InitializeComponent();
 
-        Routing.RegisterRoute(nameof(CategoriaPage), typeof(CategoriaPage));
+        //Routing.RegisterRoute(nameof(CategoriaPage), typeof(CategoriaPage));
     }
 }

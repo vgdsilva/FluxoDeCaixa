@@ -10,7 +10,7 @@ namespace FluxoDeCaixa.Mobile.Core.Utils.Classes;
 public class HttpClientFactory
 {
 
-    static HttpClientFactory _instance;
+    static HttpClientFactory? _instance = null;
 
     public static HttpClientFactory HttpClient => _instance ?? (_instance = new HttpClientFactory());
 

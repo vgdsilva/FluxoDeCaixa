@@ -47,6 +47,7 @@
   </ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\arrow_back.svg" />
 	  <None Remove="Resources\Images\icon_logo_dark.svg" />
 	</ItemGroup>
 
@@ -63,18 +64,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\common\Domain\Domain.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Views\Pages\Categoria\CategoriaPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\Home\HomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\Transacao\TransacaoPopupPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

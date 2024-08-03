@@ -1,6 +1,8 @@
-﻿namespace FluxoDeCaixa.Mobile
+﻿using FluxoDeCaixa.Mobile.Views.Pages;
+
+namespace FluxoDeCaixa.Mobile
 {
-    public partial class MainPage : ContentPage
+    public partial class MainPage : BasePages
     {
         int count = 0;
 

@@ -1,12 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using FluxoDeCaixa.Mobile.Views.Pages.Categoria;
-using Microsoft.Maui.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FluxoDeCaixa.Mobile.ViewModels.Home
 {
@@ -32,14 +25,14 @@ namespace FluxoDeCaixa.Mobile.ViewModels.Home
         [RelayCommand]
         async Task AddCategoria()
         {
-            await GoToAsync(nameof(CategoriaPage));
+            //await GoToAsync(nameof(CategoriaPage));
         }
 
 
         [RelayCommand]
         async Task AddTransacion()
         {
-            await App.Current.MainPage.Navigation.PushModalAsync(new Views.Pages.Transacao.TransacaoPopupPage());
+            //await App.Current.MainPage.Navigation.PushModalAsync(new Views.Pages.Transacao.TransacaoPopupPage());
         }
     }
 }
