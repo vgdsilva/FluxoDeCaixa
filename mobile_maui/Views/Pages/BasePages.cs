@@ -1,3 +1,6 @@
+using FluxoDeCaixa.Mobile.Core.Utils.Extensions;
+using Microsoft.Maui.Controls.PlatformConfiguration;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -5,10 +8,32 @@ namespace FluxoDeCaixa.Mobile.Views.Pages;
 
 public class BasePages : ContentPage
 {
-    public static readonly BindableProperty BackButtonCommandProperty = BindableProperty.Create(nameof(BackButtonCommand), typeof(ICommand), typeof(BasePages), propertyChanged: OnBackButtonCommandPropertyChanged);
-    public new static readonly BindableProperty TitleProperty = BindableProperty.Create(nameof(Title), typeof(string), typeof(BasePages), defaultValue: "", propertyChanged: OnTitlePropertyChanged);
-
     private Label labelTitle;
+    private ImageButton backButton;
+
+    
+    public static readonly BindableProperty BackButtonCommandProperty = 
+        BindableProperty.Create(
+            nameof(BackButtonCommand), 
+            typeof(ICommand), 
+            typeof(BasePages), 
+            propertyChanged: OnBackButtonCommandPropertyChanged);
+
+    public new static readonly BindableProperty TitleProperty = 
+        BindableProperty.Create(
+            nameof(Title), 
+            typeof(string), 
+            typeof(BasePages), 
+            defaultValue: "", 
+            propertyChanged: OnTitlePropertyChanged);
+
+    public static readonly BindableProperty PageHasNavBarProperty =
+        BindableProperty.Create(
+            nameof(PageHasNavBar),
+            typeof(bool),
+            typeof(BasePages),
+            defaultValue: true,
+            defaultBindingMode: BindingMode.TwoWay);
 
     public ICommand BackButtonCommand
     {
@@ -20,6 +45,12 @@ public class BasePages : ContentPage
     {
         get => (string) GetValue(TitleProperty);
         set => SetValue(TitleProperty, value);
+    }
+
+    public bool PageHasNavBar 
+    { 
+        get => (bool) GetValue(PageHasNavBarProperty);
+        set => SetValue(PageHasNavBarProperty, value); 
     }
 
     private static void OnBackButtonCommandPropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -37,17 +68,15 @@ public class BasePages : ContentPage
 
         BasePages page = (BasePages) bindable;
         page.labelTitle.Text = title;
-        if ( string.IsNullOrEmpty(page.labelTitle.AutomationId) )
-        {
-            page.labelTitle.AutomationId = "AIDCBasePagesNavigationBarTitulo";
-        }
     }
 
 
     public BasePages()
 	{
-        ChildAdded += BasePages_ChildAdded;
+        ChildAdded += BasePages_ChildAdded;  
         
+        On<iOS>().SetUseSafeArea(true);
+        HideSoftInputOnTapped = true;
     }
 
     protected override void OnAppearing()
@@ -107,20 +136,7 @@ public class BasePages : ContentPage
             }
         };
 
-        ImageButton backButton = new ImageButton
-        {
-            Source = "arrow_back.png",
-            MaximumHeightRequest = 20,
-            MaximumWidthRequest = 20,
-        };
-        backButton.SetBinding(ImageButton.CommandProperty, new Binding("BackButtonCommand"));
-
-        HorizontalStackLayout toolbarStack = new HorizontalStackLayout
-        {
-            HorizontalOptions = LayoutOptions.End,
-            Spacing = 6,
-        };
-
+        backButton = CreateBackButton();
         Grid.SetColumn(backButton, 0);
         customNavigationBar.Children.Add(backButton);
 
@@ -128,18 +144,22 @@ public class BasePages : ContentPage
         Grid.SetColumn(labelTitle, 1);
         customNavigationBar.Children.Add(labelTitle);
 
-        Grid.SetColumn(toolbarStack, 2);
-        customNavigationBar.Children.Add(toolbarStack);
-
 
         return customNavigationBar;
+    }
+
+    ImageButton CreateBackButton()
+    {
+        var imageButton = new ImageButton();
+        imageButton.Style = (Style) ResourceUtils.GetResourceValue("CustomNavigationBarBackButton");
+        imageButton.SetBinding(ImageButton.CommandProperty, new Binding("BackButtonCommand"));
+
+        return imageButton;
     }
 
     Label CreateTitle()
     {
         Label title = new Label();
-        title.Text = Title;
-        title.FontSize = 18;
 
         return title;
     }

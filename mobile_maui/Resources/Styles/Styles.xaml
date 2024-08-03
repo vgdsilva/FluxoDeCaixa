@@ -19,9 +19,20 @@
         <Setter Property="HorizontalOptions" Value="End"></Setter>
     </Style>
 
+    <Style TargetType="Label" x:Key="CustomNavigationBarTitle">
+        <Setter Property="TextColor" Value="Black"></Setter>
+        <Setter Property="FontAttributes" Value="Bold"></Setter>
+        <Setter Property="FontSize" Value="20"></Setter>
 
+    </Style>
 
-
+    <Style TargetType="ImageButton" x:Key="CustomNavigationBarBackButton">
+        <Setter Property="MaximumHeightRequest" Value="24"></Setter>
+        <Setter Property="MaximumWidthRequest" Value="24"></Setter>
+        <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+        <Setter Property="Source" Value="arrow_back.png"></Setter>
+        
+    </Style>
 
 
     <Style TargetType="ActivityIndicator">
