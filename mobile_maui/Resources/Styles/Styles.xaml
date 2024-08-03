@@ -4,6 +4,26 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+
+    <Style TargetType="BoxView" x:Key="Separator">
+        <Setter Property="HeightRequest" Value="1"></Setter>
+        <Setter Property="Color" Value="#BCBEBF"></Setter>
+        <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
+    </Style>
+
+
+    <Style TargetType="ImageButton" x:Key="IconButton">
+        <Setter Property="HeightRequest" Value="24"></Setter>
+        <Setter Property="WidthRequest" Value="24"></Setter>
+        <Setter Property="BackgroundColor" Value="Transparent"></Setter>
+        <Setter Property="HorizontalOptions" Value="End"></Setter>
+    </Style>
+
+
+
+
+
+
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
     </Style>
@@ -24,8 +44,8 @@
     </Style>
 
     <Style TargetType="Button">
-        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />
-        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />
+        <Setter Property="TextColor" Value="White" />
+        <Setter Property="BackgroundColor" Value="#00875F" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="BorderWidth" Value="0"/>
