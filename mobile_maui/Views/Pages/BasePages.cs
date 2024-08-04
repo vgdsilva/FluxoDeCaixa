@@ -27,9 +27,9 @@ public class BasePages : ContentPage
             defaultValue: "", 
             propertyChanged: OnTitlePropertyChanged);
 
-    public static readonly BindableProperty PageHasNavBarProperty =
+    public static readonly BindableProperty HasNavigationBarProperty =
         BindableProperty.Create(
-            nameof(PageHasNavBar),
+            nameof(HasNavigationBar),
             typeof(bool),
             typeof(BasePages),
             defaultValue: true,
@@ -47,10 +47,10 @@ public class BasePages : ContentPage
         set => SetValue(TitleProperty, value);
     }
 
-    public bool PageHasNavBar 
+    public bool HasNavigationBar 
     { 
-        get => (bool) GetValue(PageHasNavBarProperty);
-        set => SetValue(PageHasNavBarProperty, value); 
+        get => (bool) GetValue(HasNavigationBarProperty);
+        set => SetValue(HasNavigationBarProperty, value); 
     }
 
     private static void OnBackButtonCommandPropertyChanged(BindableObject bindable, object oldValue, object newValue)
@@ -103,9 +103,12 @@ public class BasePages : ContentPage
             }
         };
 
-        var navbar = CreateCustomNavigationBar();
-        Grid.SetRow(navbar, 0);
-        mainGrid.Children.Add(navbar);
+        if ( HasNavigationBar )
+        {
+            var navbar = CreateCustomNavigationBar();
+            Grid.SetRow(navbar, 0);
+            mainGrid.Children.Add(navbar);
+        }
 
         int count = 0;
         Grid mainContent = new Grid();
@@ -160,14 +163,14 @@ public class BasePages : ContentPage
     Label CreateTitle()
     {
         Label title = new Label();
-
+        title.Text = Title;
+        title.Style = (Style) ResourceUtils.GetResourceValue("CustomNavigationBarTitle");
         return title;
     }
 
     void SetNavigationBar()
     {
         Shell.SetNavBarIsVisible(this, false);
-
-        NavigationPage.SetHasNavigationBar(this, false);
+        Microsoft.Maui.Controls.NavigationPage.SetHasNavigationBar(this, false);
     }
 }
