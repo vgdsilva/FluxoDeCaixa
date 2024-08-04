@@ -8,24 +8,28 @@ namespace FluxoDeCaixa.Mobile.Views.Pages;
 
 public class BasePages : ContentPage
 {
-    private Label labelTitle;
+    private Label _labelTitle;
     private ImageButton backButton;
-
+    private View _titleView;
     
     public static readonly BindableProperty BackButtonCommandProperty = 
         BindableProperty.Create(
             nameof(BackButtonCommand), 
             typeof(ICommand), 
-            typeof(BasePages), 
-            propertyChanged: OnBackButtonCommandPropertyChanged);
+            typeof(BasePages));
 
     public new static readonly BindableProperty TitleProperty = 
         BindableProperty.Create(
             nameof(Title), 
             typeof(string), 
             typeof(BasePages), 
-            defaultValue: "", 
-            propertyChanged: OnTitlePropertyChanged);
+            defaultValue: "";
+
+    public static readonly BindableProperty TitleViewProperty =
+        BindableProperty.Create(
+            nameof(TitleView),
+            typeof(View),
+            typeof(BasePages));
 
     public static readonly BindableProperty HasNavigationBarProperty =
         BindableProperty.Create(
@@ -47,33 +51,22 @@ public class BasePages : ContentPage
         set => SetValue(TitleProperty, value);
     }
 
+    public View TitleView
+    {
+        get => (View) GetValue(TitleViewProperty);
+        set => SetValue(TitleViewProperty, value);
+    }
+
     public bool HasNavigationBar 
     { 
         get => (bool) GetValue(HasNavigationBarProperty);
         set => SetValue(HasNavigationBarProperty, value); 
     }
 
-    private static void OnBackButtonCommandPropertyChanged(BindableObject bindable, object oldValue, object newValue)
-    {
-        //BasePages page = (BasePages) bindable;
-        //page.backButtonBehavior.Command = (ICommand) newValue;
-    }
-
-    private static void OnTitlePropertyChanged(BindableObject bindable, object oldValue, object newValue)
-    {
-        if ( newValue == oldValue )
-            return;
-
-        string title = (string) newValue ?? string.Empty;
-
-        BasePages page = (BasePages) bindable;
-        page.labelTitle.Text = title;
-    }
-
 
     public BasePages()
 	{
-        ChildAdded += BasePages_ChildAdded;  
+        ChildAdded += BasePages_CreatePage;  
         
         On<iOS>().SetUseSafeArea(true);
         HideSoftInputOnTapped = true;
@@ -86,7 +79,7 @@ public class BasePages : ContentPage
         SetNavigationBar();
     }
 
-    private void BasePages_ChildAdded(object? sender, ElementEventArgs e)
+    private void BasePages_CreatePage(object? sender, ElementEventArgs e)
     {
 
         Microsoft.Maui.Controls.Layout layout = (Microsoft.Maui.Controls.Layout) e.Element;
@@ -143,9 +136,18 @@ public class BasePages : ContentPage
         Grid.SetColumn(backButton, 0);
         customNavigationBar.Children.Add(backButton);
 
-        labelTitle = CreateTitle();
-        Grid.SetColumn(labelTitle, 1);
-        customNavigationBar.Children.Add(labelTitle);
+        if (TitleView is not null )
+        {
+            _titleView = TitleView;
+            Grid.SetColumn(_titleView, 1);
+            customNavigationBar.Children.Add(_titleView);
+        }
+        else
+        {
+            _labelTitle = CreateTitle();
+            Grid.SetColumn(_labelTitle, 1);
+            customNavigationBar.Children.Add(_labelTitle);
+        }
 
 
         return customNavigationBar;

@@ -12,7 +12,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>Fluxo de Caixa</ApplicationTitle>
+		<ApplicationTitle>Fluxo de caixa</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vgdsilva.fluxodecaixa</ApplicationId>
@@ -45,11 +45,6 @@
     <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
     <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="Resources\Images\arrow_back.svg" />
-	  <None Remove="Resources\Images\icon_logo_dark.svg" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="13.0.1" />
