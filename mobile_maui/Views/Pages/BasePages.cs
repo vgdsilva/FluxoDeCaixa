@@ -1,4 +1,5 @@
 using FluxoDeCaixa.Mobile.Core.Utils.Extensions;
+using FluxoDeCaixa.Mobile.ViewModels;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using System.Collections.ObjectModel;
@@ -23,7 +24,7 @@ public class BasePages : ContentPage
             nameof(Title), 
             typeof(string), 
             typeof(BasePages), 
-            defaultValue: "";
+            defaultValue: "");
 
     public static readonly BindableProperty TitleViewProperty =
         BindableProperty.Create(
@@ -75,6 +76,7 @@ public class BasePages : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
+        (BindingContext as BaseViewModel)?.Page_Load();
 
         SetNavigationBar();
     }
@@ -121,7 +123,7 @@ public class BasePages : ContentPage
     {
         Grid customNavigationBar = new Grid
         {
-            Padding = 16,
+            Padding = 24,
             BackgroundColor = Colors.White,
             ColumnSpacing = 10,
             ColumnDefinitions =
@@ -132,9 +134,12 @@ public class BasePages : ContentPage
             }
         };
 
-        backButton = CreateBackButton();
-        Grid.SetColumn(backButton, 0);
-        customNavigationBar.Children.Add(backButton);
+        if (App.Current.MainPage != this )
+        {
+            backButton = CreateBackButton();
+            Grid.SetColumn(backButton, 0);
+            customNavigationBar.Children.Add(backButton);
+        }
 
         if (TitleView is not null )
         {

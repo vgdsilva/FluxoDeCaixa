@@ -61,4 +61,9 @@
 	  <ProjectReference Include="..\common\Domain\Domain.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Views\Pages\Onboarding\" />
+	  <Folder Include="Views\UserControls\" />
+	</ItemGroup>
+
 </Project>

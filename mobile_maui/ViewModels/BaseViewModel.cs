@@ -8,7 +8,7 @@ namespace FluxoDeCaixa.Mobile.ViewModels
         [ObservableProperty]
         string title;
 
-
+        public virtual void Page_Load() { }
 
         protected async Task GoToAsync(ShellNavigationState state, bool animate = true)
         {
