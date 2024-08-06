@@ -1,4 +1,6 @@
-﻿namespace FluxoDeCaixa;
+﻿using FluxoDeCaixa.Views.Pages.Onboarding;
+
+namespace FluxoDeCaixa;
 
 public partial class App : Application
 {
@@ -6,6 +8,6 @@ public partial class App : Application
     {
         InitializeComponent();
 
-        MainPage = new MainPage();
+        MainPage = new OnboardingPage();
     }
 }
