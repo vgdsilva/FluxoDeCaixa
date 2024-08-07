@@ -70,7 +70,6 @@ public class DatePickerLabel : ContentView
 			IsVisible = false,
 		};
 
-        _datePicker.DateSelected += OnDatePickerDateSelected;
 
         _border = new Border
         {
