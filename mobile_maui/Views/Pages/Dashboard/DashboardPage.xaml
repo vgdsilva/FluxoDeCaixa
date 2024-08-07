@@ -2,10 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:classes="clr-namespace:FluxoDeCaixa.Mobile.Core.Utils.Classes"
+             xmlns:controls="clr-namespace:FluxoDeCaixa.Mobile.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="FluxoDeCaixa.Mobile.Views.Pages.Dashboard.DashboardPage"
              BackgroundColor="White">
-    
-    
+
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="White" StatusBarStyle="DarkContent" />
+    </ContentPage.Behaviors>
+   
     <ScrollView>
         <Grid RowDefinitions="Auto,Auto">
             
@@ -25,9 +30,12 @@
                     
                         <Button BackgroundColor="Transparent"
                                 HorizontalOptions="End"
-                                ImageSource="{FontImageSource Glyph={Static classes:FAIcons.FASearch}, Color=Black, Size=16, FontFamily=FontAwesomeSolid}"
-                                HeightRequest="28"
-                                WidthRequest="28"
+                                Text="{Static classes:FAIcons.FASearch}"
+                                TextColor="Black"
+                                FontSize="16"
+                                FontFamily="FontAwesomeSolid"
+                                HeightRequest="38"
+                                WidthRequest="38"
                                 BorderColor="#E7E7E7"
                                 BorderWidth="1"
                                 Padding="0"
@@ -35,9 +43,12 @@
                         </Button>
                         <Button HorizontalOptions="End"
                                 BackgroundColor="Transparent"
-                                WidthRequest="28"
-                                HeightRequest="28"
-                                ImageSource="{FontImageSource Glyph={Static classes:FAIcons.FABell}, Color=Black, Size=16, FontFamily=FontAwesomeSolid}"
+                                WidthRequest="38"
+                                HeightRequest="38"
+                                Text="{Static classes:FAIcons.FABell}"
+                                TextColor="Black"
+                                FontSize="16"
+                                FontFamily="FontAwesomeSolid"
                                 BorderColor="#E7E7E7"
                                 BorderWidth="1"
                                 Padding="0"
@@ -54,7 +65,9 @@
 
             <Grid Grid.Row="1"
                   RowDefinitions="Auto,Auto"
-                  Padding="16">
+                  Padding="16"
+                  RowSpacing="16">
+
                 <Grid ColumnDefinitions="*,*">
                     <Label Grid.Column="0"
                            HorizontalOptions="Start"
@@ -70,29 +83,6 @@
                            FontFamily="Quicksand700Font"
                            TextColor="#8F8F8F"/>
                 </Grid>
-
-                <Border Stroke="#BCBEBF"
-                        StrokeShape="RoundRectangle 8,8,8,8"
-                        Padding="10,8"
-                        Margin="0"
-                        HorizontalOptions="End"
-                        Grid.Row="1">
-                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
-                        <Label Text="Agosto de 2023" 
-                               TextColor="Black"
-                               FontSize="14"
-                               FontFamily="Quicksand700Font"
-                               />
-                        <Button HorizontalOptions="End"
-                                BackgroundColor="Transparent"
-                                WidthRequest="10"
-                                HeightRequest="10"
-                                ImageSource="{FontImageSource Glyph={Static classes:FAIcons.FAArrowDown}, Color=Black, Size=8, FontFamily=FontAwesomeSolid}"
-                                Padding="0"
-                                Margin="0">
-                        </Button>
-                    </HorizontalStackLayout>
-                </Border>
             </Grid>
         </Grid>
     </ScrollView>
