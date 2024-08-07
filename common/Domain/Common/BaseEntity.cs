@@ -9,4 +9,8 @@ public class BaseEntity
     public DateTimeOffset LastModified { get; set; }
 
     public string? LastModifiedBy { get; set; }
+
+    public static string EmpytID() => Guid.Empty.ToString();
+
+    public static string NewID() => Guid.NewGuid().ToString();
 }
