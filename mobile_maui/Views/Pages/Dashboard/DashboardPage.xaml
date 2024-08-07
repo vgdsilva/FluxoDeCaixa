@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:classes="clr-namespace:FluxoDeCaixa.Mobile.Core.Utils.Classes"
+             x:Class="FluxoDeCaixa.Mobile.Views.Pages.Dashboard.DashboardPage"
+             BackgroundColor="White">
+    
+    
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto">
+            
+            <Grid x:Name="Header"
+                  RowDefinitions="Auto,Auto">
+                <Grid ColumnDefinitions="*,Auto"
+                      Padding="16">
+                    <Label Text="Dashboard"
+                           FontSize="20"
+                           TextColor="Black"
+                           FontFamily="Quicksand700Font"
+                           VerticalOptions="Center"/>
+
+                    <HorizontalStackLayout Grid.Column="1"
+                                           Spacing="16"
+                                           HorizontalOptions="End">
+                    
+                        <Button BackgroundColor="Transparent"
+                                HorizontalOptions="End"
+                                ImageSource="{FontImageSource Glyph={Static classes:FAIcons.FASearch}, Color=Black, Size=16, FontFamily=FontAwesomeSolid}"
+                                HeightRequest="28"
+                                WidthRequest="28"
+                                BorderColor="#E7E7E7"
+                                BorderWidth="1"
+                                Padding="0"
+                                Margin="0">
+                        </Button>
+                        <Button HorizontalOptions="End"
+                                BackgroundColor="Transparent"
+                                WidthRequest="28"
+                                HeightRequest="28"
+                                ImageSource="{FontImageSource Glyph={Static classes:FAIcons.FABell}, Color=Black, Size=16, FontFamily=FontAwesomeSolid}"
+                                BorderColor="#E7E7E7"
+                                BorderWidth="1"
+                                Padding="0"
+                                Margin="0">
+                        </Button>
+
+                    </HorizontalStackLayout>
+                </Grid>
+                <BoxView Grid.Row="1"
+                        HeightRequest="1"
+                        Color="#BCBEBF"
+                        HorizontalOptions="FillAndExpand"/>
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  RowDefinitions="Auto,Auto"
+                  Padding="16">
+                <Grid ColumnDefinitions="*,*">
+                    <Label Grid.Column="0"
+                           HorizontalOptions="Start"
+                           Text="Page analytics"
+                           FontSize="16"
+                           FontFamily="Quicksand700Font"
+                           TextColor="Black" />
+
+                    <Label Grid.Column="1"
+                           HorizontalOptions="End"
+                           Text="See details"
+                           FontSize="14"
+                           FontFamily="Quicksand700Font"
+                           TextColor="#8F8F8F"/>
+                </Grid>
+
+                <Border Stroke="#BCBEBF"
+                        StrokeShape="RoundRectangle 8,8,8,8"
+                        Padding="10,8"
+                        Margin="0"
+                        HorizontalOptions="End"
+                        Grid.Row="1">
+                    <HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+                        <Label Text="Agosto de 2023" 
+                               TextColor="Black"
+                               FontSize="14"
+                               FontFamily="Quicksand700Font"
+                               />
+                        <Button HorizontalOptions="End"
+                                BackgroundColor="Transparent"
+                                WidthRequest="10"
+                                HeightRequest="10"
+                                ImageSource="{FontImageSource Glyph={Static classes:FAIcons.FAArrowDown}, Color=Black, Size=8, FontFamily=FontAwesomeSolid}"
+                                Padding="0"
+                                Margin="0">
+                        </Button>
+                    </HorizontalStackLayout>
+                </Border>
+            </Grid>
+        </Grid>
+    </ScrollView>
+    
+</ContentPage>

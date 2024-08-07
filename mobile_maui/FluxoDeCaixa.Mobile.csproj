@@ -31,7 +31,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-    <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#FFFFFF " Resize="true" />
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#FFFFFF" />
     
     <!-- Splash Screen -->
     <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
@@ -45,6 +45,15 @@
     <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
     <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
+
+	<ItemGroup>
+	  <AndroidResource Remove="Views\UserControls\**" />
+	  <Compile Remove="Views\UserControls\**" />
+	  <EmbeddedResource Remove="Views\UserControls\**" />
+	  <MauiCss Remove="Views\UserControls\**" />
+	  <MauiXaml Remove="Views\UserControls\**" />
+	  <None Remove="Views\UserControls\**" />
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="AutoMapper" Version="13.0.1" />
@@ -63,7 +72,12 @@
 
 	<ItemGroup>
 	  <Folder Include="Views\Pages\Onboarding\" />
-	  <Folder Include="Views\UserControls\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\Pages\Dashboard\DashboardPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
