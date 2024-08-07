@@ -71,14 +71,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Views\Pages\Onboarding\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Controls\DatePicker.xaml">
+	  <MauiXaml Update="Views\Pages\Dashboard\DashboardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Pages\Dashboard\DashboardPage.xaml">
+	  <MauiXaml Update="Views\Pages\Onboarding\OnboardingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
