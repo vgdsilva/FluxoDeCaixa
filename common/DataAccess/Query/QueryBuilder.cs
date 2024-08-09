@@ -1,4 +1,4 @@
-﻿namespace DataAccess.Query;
+﻿namespace DataAccess;
 
 public class QueryBuilder
 {
