@@ -6,7 +6,7 @@ using System.Transactions;
 namespace DataAccess;
 
 
-public partial class SQLQuery : IDisposable
+internal partial class SQLQuery : IDisposable
 {
     /// <summary>Resultado da consulta SQL quando o SQLQuery for uma instrução SELECT</summary>
     public IList IListDadosConsulta { get; set; }

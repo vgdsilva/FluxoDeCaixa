@@ -1,7 +1,13 @@
-﻿namespace Domain.Entities;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
+namespace Domain.Entities;
+
+[Table("fluxodecaixa")]
 public class Fluxodecaixa : BaseEntity
 {
+    [Key]
+    [Column("idfluxodecaixa", TypeName = "text")]
     public string IDFluxodecaixa { get; set; } = EmpytID();
     public string Descricao { get; set; } = string.Empty;
     public string IDMoeda { get; set; } = EmpytID();
