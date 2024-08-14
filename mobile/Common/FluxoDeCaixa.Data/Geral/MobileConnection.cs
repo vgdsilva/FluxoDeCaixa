@@ -1,8 +1,9 @@
-﻿using SQLite;
+﻿using FluxoDeCaixa.Data.contexto;
+using SQLite;
 
 namespace FluxoDeCaixa.Data.Geral;
 
-public class MobileConnection
+public class MobileConnection : IDisposable
 {
     public static SQLiteConnectionWithLock _connection;
 
@@ -73,9 +74,14 @@ public class MobileConnection
 
     private static SQLiteAsyncConnection CriaNovaConexaoAsync()
     {
-        //if ( MobileContext.Instance?.databasePath == null )
-        //    return null;
+        if ( MobileContext.Instance?.databasePath == null )
+            return null;
 
-        return new SQLiteAsyncConnection(/*MobileContext.Instance.databasePath*/"", SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.FullMutex, false);
+        return new SQLiteAsyncConnection(MobileContext.Instance.databasePath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.FullMutex, false);
+    }
+
+    public void Dispose()
+    {
+        
     }
 }
