@@ -76,4 +76,6 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ProjectExtensions><VisualStudio><UserProperties XamarinHotReloadDebuggerTimeoutExceptionFluxoDeCaixaMobileHideInfoBar="True" /></VisualStudio></ProjectExtensions>
+
 </Project>
