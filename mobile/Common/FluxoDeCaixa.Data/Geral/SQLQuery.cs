@@ -25,7 +25,7 @@ public partial class SQLQuery : IDisposable
         }
     }
     
-    public T QueryFirstOrDefault<T>(string sql, object[] parameters) where T : new()
+    public T QueryFirstOrDefault<T>(string sql, object[] parameters = null) where T : new()
     {
         using (SQLiteConnection conn = new SQLiteConnection(ConnectionString))
         {

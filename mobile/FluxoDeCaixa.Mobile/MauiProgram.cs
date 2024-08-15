@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Maui;
 using DevExpress.Maui;
 using Microsoft.Extensions.Logging;
+using RGPopup.Maui.Extensions;
 
 namespace FluxoDeCaixa.Mobile
 {
@@ -30,7 +31,8 @@ namespace FluxoDeCaixa.Mobile
                 .UseDevExpress()
                 .UseDevExpressCollectionView()
                 .UseDevExpressControls()
-                .UseDevExpressEditors();
+                .UseDevExpressEditors()
+                .UseMauiRGPopup();
 
 #if DEBUG
     		builder.Logging.AddDebug();

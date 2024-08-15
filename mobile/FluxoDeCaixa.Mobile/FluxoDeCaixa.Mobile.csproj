@@ -60,6 +60,7 @@
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.70" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="RGPopup.Maui" Version="1.1.2" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -68,6 +69,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Controls\ToastPopup.Usage.cs">
+	    <DependentUpon>%(Filename)</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Controls\ToastPopup.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\Dashboard\DashboardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

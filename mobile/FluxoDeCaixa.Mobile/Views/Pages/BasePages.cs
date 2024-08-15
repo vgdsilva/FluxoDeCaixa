@@ -1,9 +1,6 @@
-using FluxoDeCaixa.Mobile.Core.Utils.Extensions;
 using FluxoDeCaixa.Mobile.ViewModels;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace FluxoDeCaixa.Mobile.Views.Pages;
 
@@ -24,7 +21,7 @@ public partial class BasePages : ContentPage
         (BindingContext as BaseViewModel)?.SetInstancePage(this);
         (BindingContext as BaseViewModel)?.Page_Load();
 
-        SetNavigationBar();
+        //SetNavigationBar();
     }
 
 

@@ -1,4 +1,7 @@
-﻿using FluxoDeCaixa.Mobile.Core.Data;
+﻿using FluxoDeCaixa.Data.Repository;
+using FluxoDeCaixa.Mobile.Controls;
+using FluxoDeCaixa.Mobile.Core.Data;
+using FluxoDeCaixa.Mobile.Views.Pages.Dashboard;
 
 namespace FluxoDeCaixa.Mobile.ViewModels.Onboarding;
 
@@ -17,16 +20,16 @@ public partial class OnboardingViewModel : BaseViewModel
 
             await MobileContextUtil.Instance.InitInstanceDB();
             
-            if (MobileContextUtil.Instance.IsContextValid())
+            if (FluxodecaixaRepository.Instance.ExistsFluxoDeCaixa())
             {
-                App.Current!.MainPage = new MainPage();
+                App.Current!.MainPage = new DashboardPage();
                 return;
             }
 
         }
         catch ( Exception ex )
         {
-
+            await ToastPopup.ShowError(ex.Message, 4);
         }
         finally
         {

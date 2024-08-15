@@ -10,8 +10,4 @@
     <Folder Include="Enums\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\FluxoDeCaixa.Data\FluxoDeCaixa.Data.csproj" />
-  </ItemGroup>
-
 </Project>

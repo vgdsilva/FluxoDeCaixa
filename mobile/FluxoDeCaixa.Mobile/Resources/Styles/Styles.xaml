@@ -11,6 +11,22 @@
         <Setter Property="HorizontalOptions" Value="FillAndExpand"></Setter>
     </Style>
 
+    <Style x:Key="ToastContainerStyle"
+           TargetType="Border">
+        <Setter Property="StrokeShape" Value="RoundRectangle 8" />
+        <Setter Property="Margin" Value="16,48,16,0" />
+        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+        <Setter Property="Padding" Value="16" />
+        <Setter Property="BackgroundColor" Value="#1F2937" />
+    </Style>
+
+    <Style x:Key="ToastMessageStyle"
+           TargetType="Label">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontFamily" Value="Quicksand500Font" />
+        <Setter Property="TextColor" Value="White" />
+    </Style>
+
 
     <Style TargetType="ImageButton" x:Key="IconButton">
         <Setter Property="HeightRequest" Value="24"></Setter>
