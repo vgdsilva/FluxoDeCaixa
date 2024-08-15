@@ -1,13 +1,3 @@
-using FluxoDeCaixa.Data.contexto;
-using FluxoDeCaixa.Mobile.Core.Utils.Extensions;
-using FluxoDeCaixa.Mobile.ViewModels;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.Reflection;
-using System.Windows.Input;
-
 namespace FluxoDeCaixa.Mobile.Views.Pages;
 
 public partial class BasePages : ContentPage

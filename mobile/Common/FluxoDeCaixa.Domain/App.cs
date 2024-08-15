@@ -1,13 +1,4 @@
-﻿using FluxoDeCaixa.Data.contexto;
-using FluxoDeCaixa.Domain.Utils;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FluxoDeCaixa.Domain;
+﻿namespace FluxoDeCaixa.Domain;
 public class App
 {
 }

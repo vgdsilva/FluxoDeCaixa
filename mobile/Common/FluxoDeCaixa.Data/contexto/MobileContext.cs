@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FluxoDeCaixa.Data.Geral;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FluxoDeCaixa.Data.contexto;
+namespace FluxoDeCaixa.Data.Contexto;
+
 public class MobileContext
 {
     public static MobileContext Instance { get; private set; }
@@ -21,4 +18,7 @@ public class MobileContext
             Culture = culture
         };
     }
+
+    public SQLQuery AssignNewInstanceSQLQuery() =>
+        new SQLQuery(ConnectionString);
 }

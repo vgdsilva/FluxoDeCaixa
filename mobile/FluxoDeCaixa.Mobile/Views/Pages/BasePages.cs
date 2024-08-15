@@ -12,7 +12,7 @@ public partial class BasePages : ContentPage
     
     public BasePages()
 	{
-        ChildAdded += BasePages_CreatePage;  
+        //ChildAdded += BasePages_CreatePage;  
         
         On<iOS>().SetUseSafeArea(true);
         HideSoftInputOnTapped = true;

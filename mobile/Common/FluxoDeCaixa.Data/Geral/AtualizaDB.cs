@@ -1,4 +1,5 @@
-﻿using SQLite;
+﻿using FluxoDeCaixa.Data.Contexto;
+using SQLite;
 
 namespace FluxoDeCaixa.Data.Geral;
 
@@ -11,7 +12,7 @@ public class AtualizaDB
     {
         int versaoInicial = 0;
 
-        var resultado = MobileConnection.Connection.ExecuteScalar<string>("SELECT NAME AS RESULTADO FROM SQLITE_MASTER WHERE TYPE = LOWER('TABLE') AND LOWER(NAME) = LOWER('VERSAO_BANCO')");
+        var resultado = ExecuteScalar<string>("SELECT NAME AS RESULTADO FROM SQLITE_MASTER WHERE TYPE = LOWER('TABLE') AND LOWER(NAME) = LOWER('VERSAO_BANCO')");
         if ( resultado == null ) //se a tabela ainda não existe, cria e insere o registro
         {
             Executa("CREATE TABLE VERSAO_BANCO (VERSAO INTEGER)");
@@ -20,7 +21,7 @@ public class AtualizaDB
         else
         {   
             //se já existe registro, pega o valor do campo
-            resultado = MobileConnection.Connection.ExecuteScalar<string>("SELECT CAST(VERSAO AS VARCHAR) AS RESULTADO FROM VERSAO_BANCO", new object[] { });
+            resultado = ExecuteScalar<string>("SELECT CAST(VERSAO AS VARCHAR) AS RESULTADO FROM VERSAO_BANCO", new object[] { });
             if ( resultado == null )
             {
                 //cria registro com a versão inicial
@@ -28,14 +29,14 @@ public class AtualizaDB
             }
             else
             {
-                if ( !int.TryParse(resultado, out versaoInicial) )
+                if (!int.TryParse(resultado, out versaoInicial))
                     versaoInicial = versaoAtual;
             }
         }
 
         versaoAtual = Math.Max(versaoInicial, 1445);
 
-        while ( versaoAtual < ultimaVersaoDisponivel )
+        while (versaoAtual < ultimaVersaoDisponivel)
         {
             ExecutaScriptsBanco();
         }
@@ -64,32 +65,28 @@ public class AtualizaDB
         }
     }
 
+    static T ExecuteScalar<T>(string sql, object[] objects = null) where T : class
+    {
+        using (SQLQuery query = new SQLQuery(MobileContext.Instance.ConnectionString))
+        {
+            return query.ExecuteScalar<T>(sql, objects);
+        }
+    }
+
     static void Executa(string sql, object[] objects = null)
     {
-		try
-		{
-            if ( !MobileConnection.Connection.IsInTransaction )
-                MobileConnection.Connection.BeginTransaction();
-
+        using (SQLQuery query = new SQLQuery(MobileContext.Instance.ConnectionString))
+        {
             string[] comandos = sql.Split(";");
 
-            foreach ( string comando in comandos )
+            foreach (string comando in comandos)
             {
                 string comandoAux = comando.Trim();
-                if ( string.IsNullOrEmpty(comandoAux) )
+                if (string.IsNullOrEmpty(comandoAux))
                     continue;
 
-                SQLiteCommand command = MobileConnection.Connection.CreateCommand(comandoAux, objects ??  new object[0]);
-                command.CommandText = comandoAux;
-                command.ExecuteNonQuery();
+                query.ExecuteNonQuery(comandoAux);
             }
-
-            MobileConnection.Connection.Commit();
-
         }
-		catch ( Exception ex )
-		{
-			MobileConnection.Connection.Rollback();
-		}
     }
 }
