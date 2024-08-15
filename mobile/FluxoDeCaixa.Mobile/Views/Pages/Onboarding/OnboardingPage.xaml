@@ -13,7 +13,6 @@
     <Grid BackgroundColor="White">
 
         <ActivityIndicator Color="Black"
-                           BackgroundColor="Black"
                            IsRunning="True"
                            HeightRequest="64"
                            WidthRequest="64"
