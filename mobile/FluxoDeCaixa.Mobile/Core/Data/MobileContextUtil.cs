@@ -22,9 +22,14 @@ public class MobileContextUtil
                 FileUtils.CopyFromResourceIfNotExists(typeof(MobileContext), Path.GetFileName(databasePath), databasePath);
             }
 
-            FluxoDeCaixa.Data.Geral.AtualizaDB.AtualizarBancoDeDados();
-
             MobileContext.AssignNewInstance(databasePath, CultureInfo.CurrentCulture);
+
+            FluxoDeCaixa.Data.Geral.AtualizaDB.AtualizarBancoDeDados();
         });
+    }
+
+    public bool IsContextValid()
+    {
+        return false;
     }
 }

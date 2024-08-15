@@ -15,7 +15,8 @@ public class MobileConnection : IDisposable
             {
                 if (_connection == null || _connection.DatabasePath != "" || _connection.Handle == null)
                 {
-                    _connection.Close();
+                    _connection?.Close();
+                    _connection = CriarNovaConexao();
                 }
 
                 return _connection;

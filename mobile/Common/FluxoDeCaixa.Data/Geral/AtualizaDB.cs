@@ -18,7 +18,7 @@ public class AtualizaDB
             Executa($"INSERT INTO VERSAO_BANCO (VERSAO) VALUES ({versaoInicial})");
         }
         else
-        {
+        {   
             //se já existe registro, pega o valor do campo
             resultado = MobileConnection.Connection.ExecuteScalar<string>("SELECT CAST(VERSAO AS VARCHAR) AS RESULTADO FROM VERSAO_BANCO", new object[] { });
             if ( resultado == null )

@@ -1,9 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using DevExpress.Maui;
-using FluxoDeCaixa.Mobile.Core.Context;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using System;
 
 namespace FluxoDeCaixa.Mobile
 {

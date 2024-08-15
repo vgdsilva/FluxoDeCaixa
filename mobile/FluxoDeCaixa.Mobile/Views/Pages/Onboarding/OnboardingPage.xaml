@@ -1,17 +1,25 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewModels="clr-namespace:FluxoDeCaixa.Mobile.ViewModels.Onboarding"
-             x:Class="FluxoDeCaixa.Mobile.Views.Pages.Onboarding.OnboardingPage">
+<pages:BasePages xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:pages="clr-namespace:FluxoDeCaixa.Mobile.Views.Pages"
+                 xmlns:viewModels="clr-namespace:FluxoDeCaixa.Mobile.ViewModels.Onboarding"
+                 x:Class="FluxoDeCaixa.Mobile.Views.Pages.Onboarding.OnboardingPage"
+                 HasNavigationBar="False">
 
-    <ContentPage.BindingContext>
+    <pages:BasePages.BindingContext>
         <viewModels:OnboardingViewModel />
-    </ContentPage.BindingContext>
+    </pages:BasePages.BindingContext>
+
+    <Grid BackgroundColor="White">
+
+        <ActivityIndicator Color="DarkGray"
+                           IsRunning="True"
+                           HeightRequest="64"
+                           WidthRequest="64"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           IsVisible="{Binding IsBusy}" />
+
+    </Grid>
     
-    <VerticalStackLayout>
-        <Label 
-            Text="Onboarding Page"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
-</ContentPage>
+</pages:BasePages>

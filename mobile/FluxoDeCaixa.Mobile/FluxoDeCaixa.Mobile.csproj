@@ -63,6 +63,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\Common\FluxoDeCaixa.Data\FluxoDeCaixa.Data.csproj" />
+	  <ProjectReference Include="..\Common\FluxoDeCaixa.Domain\FluxoDeCaixa.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\Pages\Dashboard\DashboardPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

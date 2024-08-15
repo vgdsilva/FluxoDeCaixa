@@ -4,12 +4,9 @@ namespace FluxoDeCaixa.Mobile.ViewModels.Onboarding;
 
 public partial class OnboardingViewModel : BaseViewModel
 {
-    
-
-
     public OnboardingViewModel()
     {
-         
+        IsBusy = true;    
     }
 
     public override async void Page_Load()
@@ -19,6 +16,13 @@ public partial class OnboardingViewModel : BaseViewModel
             IsBusy = true;
 
             await MobileContextUtil.Instance.InitInstanceDB();
+            
+            if (MobileContextUtil.Instance.IsContextValid())
+            {
+                App.Current!.MainPage = new MainPage();
+                return;
+            }
+
         }
         catch ( Exception ex )
         {
