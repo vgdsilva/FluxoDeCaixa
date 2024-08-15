@@ -74,10 +74,10 @@ public class MobileConnection : IDisposable
 
     private static SQLiteAsyncConnection CriaNovaConexaoAsync()
     {
-        if ( MobileContext.Instance?.databasePath == null )
+        if ( MobileContext.Instance?.ConnectionString == null )
             return null;
 
-        return new SQLiteAsyncConnection(MobileContext.Instance.databasePath, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.FullMutex, false);
+        return new SQLiteAsyncConnection(MobileContext.Instance.ConnectionString, SQLiteOpenFlags.ReadWrite | SQLiteOpenFlags.FullMutex, false);
     }
 
     public void Dispose()

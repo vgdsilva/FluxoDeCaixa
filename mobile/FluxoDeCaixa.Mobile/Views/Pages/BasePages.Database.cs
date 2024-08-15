@@ -4,6 +4,7 @@ using FluxoDeCaixa.Mobile.ViewModels;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Reflection;
 using System.Windows.Input;
 
@@ -12,7 +13,7 @@ namespace FluxoDeCaixa.Mobile.Views.Pages;
 public partial class BasePages : ContentPage
 {
     
-    public void InicializaContextDatabaseApp()
+    public void InicializaContextDatabaseApp(CultureInfo cultureInfo = null)
     {
         string path = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
         string pathDatabase = Path.Combine(path, "database.db");
@@ -20,7 +21,7 @@ public partial class BasePages : ContentPage
         SetupBancoDeDados(typeof(App), "databaseSample.db", pathDatabase);
 
         //Iniciar Contexto
-        new MobileContext(pathDatabase);
+        new MobileContext(pathDatabase, cultureInfo?.Name ?? "pt-BR");
     }
 
     public void SetupBancoDeDados(Type type, string resourceName, string destinationPath)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,28 +8,17 @@ using System.Threading.Tasks;
 namespace FluxoDeCaixa.Data.contexto;
 public class MobileContext
 {
-    private static MobileContext _Instance;
-    public static MobileContext Instance
+    public static MobileContext Instance { get; private set; }
+    public string ConnectionString { get; set; }
+    public CultureInfo Culture { get; set; }  
+
+
+    public static void AssignNewInstance(string connectionString, CultureInfo culture)
     {
-        get
+        Instance = new MobileContext()
         {
-            if ( _Instance == null )
-                _Instance = new MobileContext();
-            return _Instance;
-        }
-    }
-
-    public string databasePath { get; set; }
-
-    public MobileContext()
-    {
-        
-    }
-
-    public MobileContext(string path, string Culture = "pt-BR")
-    {
-        databasePath = path;
-
-        _Instance = this;
+            ConnectionString = connectionString,
+            Culture = culture
+        };
     }
 }
