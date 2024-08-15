@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection.Metadata.Ecma335;
+using System.Text;
 
 namespace FluxoDeCaixa.Data.Geral;
 
@@ -13,6 +14,9 @@ public abstract class QueryBuilder
 
     public static SQLInsertBuilder InsertInto(string tableName) =>
         new SQLInsertBuilder(tableName);
+
+    public static SQLUpdateBuilder Update(string tableName) =>
+        new SQLUpdateBuilder(tableName);
     
 
     public abstract string GenerateSQL();
@@ -79,7 +83,7 @@ public class SQLTableBuilder : QueryBuilder
         StringBuilder builder = new StringBuilder();
 
         builder.AppendLine($@"CREATE TABLE {tableName}");
-        builder.AppendLine(  "{");
+        builder.AppendLine(  "(");
 
         foreach (var column in columns)
             builder.AppendLine($@"  {column},");
@@ -101,7 +105,7 @@ public class SQLTableBuilder : QueryBuilder
             }
         }
 
-        builder.AppendLine(  "};");
+        builder.AppendLine(  ");");
 
         return builder.ToString();
     }
@@ -143,6 +147,60 @@ public class SQLInsertBuilder : QueryBuilder
 
         builder.AppendLine($@"INSERT INTO {TableName} ({string.Join(",", columns)})");
         builder.AppendLine($@"                 VALUES ({string.Join(",", values)})");
+
+        return builder.ToString();
+    }
+}
+
+public class SQLUpdateBuilder : QueryBuilder
+{
+    string TableName { get; set; }
+
+    Dictionary<string, object> FieldsToSet { get; set; }
+    Dictionary<string, object> Wheres { get; set; }
+
+
+    public SQLUpdateBuilder(string tableName)
+    {
+        TableName = tableName;
+
+        FieldsToSet = new Dictionary<string, object>();
+        Wheres = new Dictionary<string, object>();
+    }
+
+    public SQLUpdateBuilder SetField(string columnName, object columnValue)
+    {
+        FieldsToSet.Add(columnName, columnValue);
+        return this;
+    }
+
+    public SQLUpdateBuilder Where(string columnName, object columnValue)
+    {
+        Wheres.Add(columnName, columnValue);
+        return this;
+    }
+
+    public override string GenerateSQL()
+    {
+        StringBuilder builder = new StringBuilder();
+
+        builder.AppendLine($@"UPDATE {TableName} SET {string.Join(", ", FieldsToSet.Select(x => string.Format("{0} = {1}", x.Key, x.Value)) )} ");
+
+        //if (Wheres.Count == 0)
+        //    throw new Exception("Update without WHERE clause");
+
+        if (Wheres.Count > 0)
+        {
+            builder.AppendLine("WHERE");
+
+            int countWheres = 0;
+            foreach (var where in Wheres)
+            {
+                countWheres++;
+                builder.AppendLine($@"  {(countWheres > 1 ? "AND " : string.Empty)}{where.Key} = {where.Value}");
+            }
+        }
+
 
         return builder.ToString();
     }

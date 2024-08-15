@@ -1,4 +1,6 @@
-﻿namespace FluxoDeCaixa.Data.Geral;
+﻿using SQLite;
+
+namespace FluxoDeCaixa.Data.Geral;
 
 public class AtualizaDB
 {
@@ -7,36 +9,7 @@ public class AtualizaDB
 
     public static void AtualizarBancoDeDados()
     {
-        int versaoInicial = 0;
-
-        var resultado = ExecuteScalar<string>("SELECT NAME AS RESULTADO FROM SQLITE_MASTER WHERE TYPE = LOWER('TABLE') AND LOWER(NAME) = LOWER('VERSAO_BANCO')");
-        if ( resultado == null ) //se a tabela ainda não existe, cria e insere o registro
-        {
-            Executa(QueryBuilder.CreateTable("VERSAO_BANCO")
-                                .AddPrimaryKey("VERSAO", "INTEGER")
-                                .GenerateSQL());
-
-            Executa(QueryBuilder.InsertInto("VERSAO_BANCO")
-                                .AddField("VERSAO", versaoInicial)
-                                .GenerateSQL());
-        }
-        else
-        {   
-            //se já existe registro, pega o valor do campo
-            resultado = ExecuteScalar<string>("SELECT CAST(VERSAO AS VARCHAR) AS RESULTADO FROM VERSAO_BANCO");
-            if ( resultado == null )
-            {
-                //cria registro com a versão inicial
-                Executa(QueryBuilder.InsertInto("VERSAO_BANCO")
-                                    .AddField("VERSAO", versaoInicial)
-                                    .GenerateSQL());
-            }
-            else
-            {
-                if (!int.TryParse(resultado, out versaoInicial))
-                    versaoInicial = versaoAtual;
-            }
-        }
+        int versaoInicial = ObterVersaoInicial();
 
         versaoAtual = Math.Max(versaoInicial, 1445);
 
@@ -46,26 +19,55 @@ public class AtualizaDB
         }
     }
 
+    private static int ObterVersaoInicial()
+    {
+        string resultado = ExecuteScalar<string>("SELECT NAME AS RESULTADO FROM SQLITE_MASTER WHERE TYPE = 'table' AND NAME = 'VERSAO_BANCO'");
+
+        if (resultado == null)
+        {
+            Executa(QueryBuilder.CreateTable("VERSAO_BANCO")
+                                .AddPrimaryKey("VERSAO", "INTEGER")
+                                .GenerateSQL());
+            return 0;
+        }
+
+        resultado = ExecuteScalar<string>("SELECT CAST(VERSAO AS VARCHAR) AS RESULTADO FROM VERSAO_BANCO");
+        if (resultado == null)
+        {
+            Executa(QueryBuilder.InsertInto("VERSAO_BANCO")
+                                .AddField("VERSAO", 0)
+                                .GenerateSQL());
+            return 0;
+        }
+
+        return int.TryParse(resultado, out int versaoInicial) ? versaoInicial : versaoAtual;
+    }
+
     private static void ExecutaScriptsBanco()
     {
         try
         {
             versaoAtual++;
-            switch ( versaoAtual )
+
+            switch (versaoAtual)
             {
                 default:
                     versaoAtual--;
                     ultimaVersaoDisponivel = versaoAtual;
+
+                    Executa(QueryBuilder.Update("VERSAO_BANCO")
+                                        .SetField("VERSAO", versaoAtual)
+                                        .GenerateSQL());
                     break;
 
                 case 1446:
-
+                    // Insira aqui o código para executar os scripts da versão 1446
                     break;
             }
         }
-        catch ( Exception ex )
+        catch (Exception ex)
         {
-
+            // Tratamento de exceções, se necessário
         }
     }
 
@@ -79,18 +81,30 @@ public class AtualizaDB
 
     static void Executa(string sql, object[] objects = null)
     {
-        using (SQLQuery query = new SQLQuery(MobileContext.Instance.ConnectionString))
+        using (SQLiteConnection connection = new SQLiteConnection(MobileContext.Instance.ConnectionString))
         {
             string[] comandos = sql.Split(";");
 
-            foreach (string comando in comandos)
+            try
             {
-                string comandoAux = comando.Trim();
-                if (string.IsNullOrEmpty(comandoAux))
-                    continue;
+                connection.BeginTransaction();  
 
-                query.ExecuteNonQuery(comandoAux);
+                foreach (string comando in comandos)
+                {
+                    string comandoAux = comando.Trim();
+                    if (string.IsNullOrEmpty(comandoAux))
+                        continue;
+
+                    connection.Execute(comandoAux);
+                }
+
+                connection.Commit();
             }
+            catch (Exception ex)
+            {
+                connection.Rollback();
+                throw ex;
+            }           
         }
     }
 }

@@ -7,6 +7,9 @@ public partial class SQLQuery : IDisposable
 {
     public string ConnectionString { get; private set; }
 
+    private readonly SQLiteConnection _connection;
+
+
     public SQLQuery(string ConnectionString)
     {
         this.ConnectionString = ConnectionString;
