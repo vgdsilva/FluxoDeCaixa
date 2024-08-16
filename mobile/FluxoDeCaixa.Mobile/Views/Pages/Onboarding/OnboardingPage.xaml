@@ -18,18 +18,19 @@
 
     <Grid BackgroundColor="White">
 
-        <!--<ActivityIndicator Color="Black"
+        <ActivityIndicator Color="Black"
                            IsRunning="True"
                            HeightRequest="64"
                            WidthRequest="64"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
-                           IsVisible="{Binding IsBusy}" />-->
+                           IsVisible="{Binding IsBusy}" />
 
         <Grid VerticalOptions="Center"
               RowDefinitions="Auto,Auto,Auto,Auto"
               Padding="24"
-              RowSpacing="26">
+              RowSpacing="26"
+              IsVisible="{Binding IsBusy, Converter={StaticResource ReverserBoolConverter}}">
             
             <Image Source="undraw_finance.png"
                    Aspect="AspectFill" />
