@@ -51,6 +51,9 @@ public class SQLTableBuilder : QueryBuilder
         columns.Add(CreateSQLColumn(primaryKeyName, primaryKeyType));
         PK = primaryKeyName;
 
+        if ( string.IsNullOrEmpty(PK) )
+            throw new ArgumentNullException("PK is null");
+
         return this;
     }
 
