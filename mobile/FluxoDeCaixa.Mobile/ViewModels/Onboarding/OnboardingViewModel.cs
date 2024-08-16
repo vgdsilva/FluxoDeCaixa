@@ -19,8 +19,8 @@ public partial class OnboardingViewModel : BaseViewModel
             IsBusy = true;
 
             await MobileContextUtil.Instance.InitInstanceDB();
-            
-            if (FluxodecaixaRepository.Instance.ExistsFluxoDeCaixa())
+
+            if (new FluxodecaixaRepository().ExistsFluxoDeCaixa())
             {
                 App.Current!.MainPage = new DashboardPage();
                 return;

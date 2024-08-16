@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <pages:BasePages xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                  xmlns:pages="clr-namespace:FluxoDeCaixa.Mobile.Views.Pages"
                  xmlns:viewModels="clr-namespace:FluxoDeCaixa.Mobile.ViewModels.Onboarding"
                  x:Class="FluxoDeCaixa.Mobile.Views.Pages.Onboarding.OnboardingPage"
@@ -10,15 +11,53 @@
         <viewModels:OnboardingViewModel />
     </pages:BasePages.BindingContext>
 
+    <pages:BasePages.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="White"
+                                   StatusBarStyle="DarkContent"/>
+    </pages:BasePages.Behaviors>
+
     <Grid BackgroundColor="White">
 
-        <ActivityIndicator Color="Black"
+        <!--<ActivityIndicator Color="Black"
                            IsRunning="True"
                            HeightRequest="64"
                            WidthRequest="64"
                            VerticalOptions="Center"
                            HorizontalOptions="Center"
-                           IsVisible="{Binding IsBusy}" />
+                           IsVisible="{Binding IsBusy}" />-->
+
+        <Grid VerticalOptions="Center"
+              RowDefinitions="Auto,Auto,Auto,Auto"
+              Padding="24"
+              RowSpacing="26">
+            
+            <Image Source="undraw_finance.png"
+                   Aspect="AspectFill" />
+
+            <Label Grid.Row="1"
+                   Text="Bem vindo ao FinFlow"
+                   TextColor="Black"
+                   FontSize="24"
+                   FontFamily="Quicksand600Font"
+                   HorizontalTextAlignment="Center" />
+
+            <Label Grid.Row="2"
+                   Text="FinFlow - um aplicativo para contabilidade de receitas e despesas"
+                   TextColor="#393939"
+                   FontSize="16"
+                   FontFamily="Quicksand600Font"
+                   HorizontalTextAlignment="Center"/>
+            
+            <Button Grid.Row="3"
+                    BackgroundColor="#5BAF00"
+                    Text="Iniciar"
+                    TextColor="White"
+                    FontSize="16"
+                    FontFamily="Quicksand600Font"
+                    HeightRequest="52"
+                    HorizontalOptions="FillAndExpand"/> 
+
+        </Grid>
 
     </Grid>
     

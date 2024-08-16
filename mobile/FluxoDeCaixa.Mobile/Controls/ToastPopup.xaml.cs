@@ -57,6 +57,9 @@ public partial class ToastPopup : PopupPage
     {
         if (Closed)
             return;
-        await PopupNavigation.Instance.RemovePageAsync(this);
+
+        /*await MainThread.InvokeOnMainThreadAsync(async () => */
+        await PopupNavigation.Instance.RemovePageAsync(this)
+        /*)*/;
     }
 }

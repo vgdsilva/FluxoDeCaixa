@@ -14,8 +14,8 @@
     <Style x:Key="ToastContainerStyle"
            TargetType="Border">
         <Setter Property="StrokeShape" Value="RoundRectangle 8" />
-        <Setter Property="Margin" Value="16,48,16,0" />
-        <Setter Property="VerticalOptions" Value="StartAndExpand" />
+        <Setter Property="Margin" Value="16,48,16,48" />
+        <Setter Property="VerticalOptions" Value="EndAndExpand" />
         <Setter Property="Padding" Value="16" />
         <Setter Property="BackgroundColor" Value="#1F2937" />
     </Style>
