@@ -1,10 +1,12 @@
 ﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FluxoDeCaixa.Domain.ValueObjects
 {
     public abstract class EntityControl
     {
+        [Key]
         [Column("id")]
         public string Id { get; set; } = string.Empty;
 

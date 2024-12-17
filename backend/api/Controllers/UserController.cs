@@ -16,13 +16,13 @@ public class UserController : ControllerBase
     }
 
     [HttpGet(Name = "GetUserById")]
-    public IActionResult GetUserById(string id)
+    public ActionResult<Usuario> GetUserById(string id)
     {
         return Ok();
     }
 
     [HttpPost(Name = "CreateUser")]
-    public IActionResult CreateUser()
+    public ActionResult<string> CreateUser()
     {
         return Created();
     }
