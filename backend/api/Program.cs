@@ -1,3 +1,6 @@
+using FluxoDeCaixa.Infrastructure.Persistence.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace FluxoDeCaixa.API;
 
 public class Program
@@ -9,9 +12,12 @@ public class Program
         // Add services to the container.
 
         builder.Services.AddControllers();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+
+        builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
+
+        builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("PostgreSQL"));
 
         var app = builder.Build();
 
@@ -22,13 +28,19 @@ public class Program
             app.UseSwaggerUI();
         }
 
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+            db.Database.Migrate();
+        }
+
         app.UseHttpsRedirection();
 
         app.UseAuthorization();
-
-
         app.MapControllers();
 
         app.Run();
+
+        
     }
 }
