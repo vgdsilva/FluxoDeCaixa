@@ -1,4 +1,5 @@
 using FluxoDeCaixa.Infrastructure.Persistence.Data;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
 
 namespace FluxoDeCaixa.API;
@@ -30,8 +31,13 @@ public class Program
 
         using (var scope = app.Services.CreateScope())
         {
-            var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            db.Database.Migrate();
+            ApplicationDbContext? db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+            db.Database.EnsureCreated();
+
+            IEnumerable<string> pendingMigrations = db.Database.GetPendingMigrations();
+            if (pendingMigrations.Any()) 
+                db.Database.Migrate();
         }
 
         app.UseHttpsRedirection();

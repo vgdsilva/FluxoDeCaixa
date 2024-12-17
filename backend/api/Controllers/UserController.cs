@@ -1,3 +1,4 @@
+using FluxoDeCaixa.Domain.Entities;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FluxoDeCaixa.API.Controllers;
@@ -13,6 +14,16 @@ public class UserController : ControllerBase
     {
         _logger = logger;
     }
-    
-    
+
+    [HttpGet(Name = "GetUserById")]
+    public IActionResult GetUserById(string id)
+    {
+        return Ok();
+    }
+
+    [HttpPost(Name = "CreateUser")]
+    public IActionResult CreateUser()
+    {
+        return Created();
+    }
 }
