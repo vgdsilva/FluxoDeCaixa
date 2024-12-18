@@ -1,5 +1,4 @@
 ﻿using FluxoDeCaixa.Infrastructure.Context;
-using FluxoDeCaixa.Infrastructure.Persistence.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,7 +12,7 @@ namespace FluxoDeCaixa
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseNpgsql(configuration.GetConnectionString("PostgreSQL")));
 
-            ApplicationContext.AssignNewInstance(configuration.GetConnectionString("PostgreSQL"));
+            Contexto.AssignNewInstance(configuration.GetConnectionString("PostgreSQL"));
         }
     }
 }

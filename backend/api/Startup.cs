@@ -1,4 +1,4 @@
-﻿using FluxoDeCaixa.Infrastructure.Persistence.Data;
+﻿using FluxoDeCaixa.Infrastructure.Context;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -109,7 +109,7 @@ public class Startup
             c.DefaultModelRendering(Swashbuckle.AspNetCore.SwaggerUI.ModelRendering.Example);
             c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
 
-            c.RoutePrefix = "swagger"; // Define o prefixo explícito para acessar o Swagger
+            c.RoutePrefix = "swagger-api"; // Define o prefixo explícito para acessar o Swagger
 
             //c.InjectStylesheet("/swagger/themes/3.x/theme-material.css");
             //c.InjectStylesheet("/swagger/themes/custom.css");
@@ -141,8 +141,8 @@ public class Startup
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllers();
             endpoints.MapRazorPages();
+            endpoints.MapControllers();
 
             // Redireciona a raiz para a página Razor "/Index"
             endpoints.MapGet("/", context =>
