@@ -8,45 +8,13 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        var builder = WebApplication.CreateBuilder(args);
-
-        // Add services to the container.
-
-        builder.Services.AddControllers();
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-
-        builder.Services.AddDbContext<ApplicationDbContext>(option => option.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQL")));
-
-        builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("PostgreSQL"));
-
-        var app = builder.Build();
-
-        // Configure the HTTP request pipeline.
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
-
-        using (var scope = app.Services.CreateScope())
-        {
-            ApplicationDbContext? db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-
-            db.Database.EnsureCreated();
-
-            IEnumerable<string> pendingMigrations = db.Database.GetPendingMigrations();
-            if (pendingMigrations.Any()) 
-                db.Database.Migrate();
-        }
-
-        app.UseHttpsRedirection();
-
-        app.UseAuthorization();
-        app.MapControllers();
-
-        app.Run();
-
-        
+        CreateHostBuilder(args).Build().Run();
     }
+
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
 }
