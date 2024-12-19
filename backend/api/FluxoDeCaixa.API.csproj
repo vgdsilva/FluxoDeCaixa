@@ -8,6 +8,7 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.0" />
+        <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.2" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     </ItemGroup>
@@ -15,6 +16,14 @@
     <ItemGroup>
       <ProjectReference Include="..\domain\FluxoDeCaixa.Domain.csproj" />
       <ProjectReference Include="..\infrastructure\FluxoDeCaixa.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Data\" />
+      <Folder Include="Models\" />
+      <Folder Include="wwwroot\css\" />
+      <Folder Include="wwwroot\images\" />
+      <Folder Include="wwwroot\js\" />
     </ItemGroup>
 
 </Project>

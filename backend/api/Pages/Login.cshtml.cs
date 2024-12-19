@@ -8,5 +8,10 @@ namespace FluxoDeCaixa.API.Pages
         public void OnGet()
         {
         }
+
+        public async Task<IActionResult> OnPostLogin(string username, string password)
+        {
+            return RedirectToPage("/");
+        }
     }
 }

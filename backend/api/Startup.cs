@@ -34,13 +34,10 @@ public class Startup
                 .AddAuthentication(Microsoft.AspNetCore.Authentication.Cookies.CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
                 {
-#if DEBUG
-                    options.ExpireTimeSpan = TimeSpan.FromDays(5);
-#else
-                    options.ExpireTimeSpan = TimeSpan.FromDays(1);
-#endif
-                    options.SlidingExpiration = true;
-                    options.LoginPath = "/Login";
+                    options.LoginPath = "/Login"; // Caminho da página de login
+                    options.AccessDeniedPath = "/AccessDenied"; // Opcional: página de acesso negado
+                    options.ExpireTimeSpan = TimeSpan.FromDays(1); // Configura o tempo de expiração do cookie
+                    options.SlidingExpiration = true; // Renova o cookie antes de expirar
                 });
 
         services
