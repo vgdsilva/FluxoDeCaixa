@@ -143,13 +143,6 @@ public class Startup
         {
             endpoints.MapRazorPages();
             endpoints.MapControllers();
-
-            // Redireciona a raiz para a página Razor "/Index"
-            endpoints.MapGet("/", context =>
-            {
-                context.Response.Redirect("/Index");
-                return Task.CompletedTask;
-            });
         });
     }
 }

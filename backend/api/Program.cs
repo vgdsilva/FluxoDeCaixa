@@ -1,7 +1,3 @@
-using FluxoDeCaixa.Infrastructure.Persistence.Data;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.EntityFrameworkCore;
-
 namespace FluxoDeCaixa.API;
 
 public class Program

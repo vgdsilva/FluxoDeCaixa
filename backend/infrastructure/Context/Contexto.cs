@@ -17,5 +17,5 @@ public class Contexto
     }
 
 
-    public SQLQuery SQLQueryNewInstance() => new SQLQuery();
+    public SQLQuery SQLQueryNewInstance() => new SQLQuery(ConnectionString);
 }
