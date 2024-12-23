@@ -9,9 +9,9 @@ namespace FluxoDeCaixa.API.Pages
         {
         }
 
-        public async Task<IActionResult> OnPostLogin(string username, string password)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-            return RedirectToPage("/");
+            return Page();
         }
     }
 }

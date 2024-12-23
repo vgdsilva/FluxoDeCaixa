@@ -35,7 +35,7 @@ public class Startup
                 .AddCookie(options =>
                 {
                     options.LoginPath = "/Login"; // Caminho da página de login
-                    options.AccessDeniedPath = "/AccessDenied"; // Opcional: página de acesso negado
+                    //Soptions.AccessDeniedPath = "/AccessDenied"; // Opcional: página de acesso negado
                     options.ExpireTimeSpan = TimeSpan.FromDays(1); // Configura o tempo de expiração do cookie
                     options.SlidingExpiration = true; // Renova o cookie antes de expirar
                 });
@@ -114,6 +114,7 @@ public class Startup
 
         using (var scope = app.ApplicationServices.CreateScope())
         {
+            /*
             var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
             db.Database.EnsureCreated();
@@ -121,6 +122,7 @@ public class Startup
             var pendingMigrations = db.Database.GetPendingMigrations();
             if (pendingMigrations.Any())
                 db.Database.Migrate();
+            */
         }
         app.UseHttpsRedirection();
 
@@ -134,7 +136,7 @@ public class Startup
         app.UseAuthentication();
         app.UseAuthorization();
 
-        app.UseStatusCodePagesWithRedirects("~/{0}.html");
+        //app.UseStatusCodePagesWithRedirects("~/{0}.html");
 
         app.UseEndpoints(endpoints =>
         {
