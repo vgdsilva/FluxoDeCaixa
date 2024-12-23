@@ -1,4 +1,5 @@
 using FluxoDeCaixa.API.Identity;
+using FluxoDeCaixa.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
@@ -32,13 +33,12 @@ namespace FluxoDeCaixa.API.Pages
 
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
-
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            ApplicationUser user = AuthenticateUser(Input.Email, Input.Password);
+            ApplicationUser user = await AuthenticateUser(Input.Email, Input.Password);
             if (user == null)
             {
                 return Page();
@@ -46,9 +46,7 @@ namespace FluxoDeCaixa.API.Pages
 
 
             List<Claim> claims = new List<Claim>()
-            {
-                new Claim(ClaimTypes.Email, Input.Email)
-            };
+            { new Claim(ClaimTypes.Email, Input.Email) };
 
 
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
@@ -59,7 +57,7 @@ namespace FluxoDeCaixa.API.Pages
             return LocalRedirect(Url.GetLocalUrl(returnUrl));
         }
 
-        static ApplicationUser AuthenticateUser(string email, string password)
+        static async Task<ApplicationUser> AuthenticateUser(string email, string password)
         {
             if (email.Equals("root"))
             {
@@ -77,7 +75,18 @@ namespace FluxoDeCaixa.API.Pages
 
             // TODO: VALIDAR NO BANCO DE DADOS SE EXISTE
 
-            return new ApplicationUser { Email = email };
+            var db_user = await new UsuarioRepository().VerificaSeUsuarioExisteAsync(email);
+            if (db_user == null)
+            {
+                return null;
+            }
+
+            if (!db_user.Senha.Equals(password))
+            {
+                return null;
+            }
+
+            return new ApplicationUser { UserName = db_user.Nome, Email = email };
         }
     }
 }
