@@ -38,23 +38,23 @@ namespace FluxoDeCaixa.API.Pages
                 return Page();
             }
 
-            var user = AuthenticateUser(Input.Email, Input.Password);
+            ApplicationUser user = AuthenticateUser(Input.Email, Input.Password);
             if (user == null)
             {
                 return Page();
             }
 
 
-            var claims = new List<Claim>()
+            List<Claim> claims = new List<Claim>()
             {
                 new Claim(ClaimTypes.Email, Input.Email)
             };
 
 
-            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+            ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
             await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), new AuthenticationProperties { /* IsPersistent = true */ });
 
-            Response.Cookies.Append("Role", "User");
+            Response.Cookies.Append("Role", user.Email.Equals("root") ? "Administrador" : "User");
 
             return LocalRedirect(Url.GetLocalUrl(returnUrl));
         }
@@ -63,7 +63,7 @@ namespace FluxoDeCaixa.API.Pages
         {
             if (email.Equals("root"))
             {
-                return new ApplicationUser { Email = "root" };
+                return new ApplicationUser { Email = email };
             }
 
             if (string.IsNullOrWhiteSpace(email))
