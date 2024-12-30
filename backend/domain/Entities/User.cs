@@ -6,30 +6,30 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace FluxoDeCaixa.Domain.Entities;
 
 
-[Table("usuario")]
-public class Usuario : EntityControl
+[Table("user")]
+public class User : EntityControl
 {
     [Required]
     [Column("name")]
-    public string Nome { get; set; } = string.Empty;
+    public string Name { get; set; } = string.Empty;
 
     [Column("email")]
     [StringLength(80)]
     public string Email { get; set; } = string.Empty;
 
     [Required]
-    [Column("senha")]
+    [Column("password")]
     [StringLength(30)]
-    public string Senha { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
 
     [Column("root", TypeName = "numeric(5,0)")]
     [DefaultValue(0)]
     public int Root { get; set; }
 
-    [Column("imagem", TypeName = "bytea")]
-    public byte[] Imagem { get; set; }
+    [Column("image", TypeName = "bytea")]
+    public byte[] Image { get; set; }
 
-    [Column("ativo", TypeName = "numeric(5,0)")]
+    [Column("active", TypeName = "numeric(5,0)")]
     [DefaultValue("1")]
-    public int Ativo { get; set; } = 1;
+    public int Active { get; set; } = 1;
 }

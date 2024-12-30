@@ -1,5 +1,5 @@
-﻿using FluxoDeCaixa.Infrastructure.Context;
-using Microsoft.EntityFrameworkCore;
+﻿using FluxoDeCaixa.Infrastructure.Configuraction;
+using FluxoDeCaixa.Infrastructure.Controller;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -9,10 +9,22 @@ namespace FluxoDeCaixa
     {
         public static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("PostgreSQL")));
+            DataRow rootUser = new(Guid.Empty.ToString());
 
-            Contexto.AssignNewInstance(configuration.GetConnectionString("PostgreSQL"));
+            rootUser["name"] = "root";
+            rootUser["email"] = "root";
+            rootUser["password"] = "123";
+
+
+            DatabaseConfig config = new DatabaseConfig()
+                .AddTableWithInitialData("Users", rootUser);
+
+            using (Database db = ConnectionFactory.GetDatabase())
+            {
+                db.InitializeDatabase(config);
+
+                db.SaveChanges();
+            }
         }
     }
 }

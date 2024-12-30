@@ -16,7 +16,7 @@ public class UserController : ControllerBase
     }
 
     [HttpGet(Name = "GetUserById")]
-    public ActionResult<Usuario> GetUserById(string id)
+    public ActionResult<User> GetUserById(string id)
     {
         return Ok();
     }

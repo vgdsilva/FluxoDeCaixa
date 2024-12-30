@@ -1,9 +1,6 @@
-﻿using FluxoDeCaixa.Infrastructure.Context;
-using Microsoft.AspNetCore.Mvc.Controllers;
+﻿using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using System.Reflection;
 
 namespace FluxoDeCaixa.API;
 
@@ -106,24 +103,12 @@ public class Startup
             c.DefaultModelRendering(Swashbuckle.AspNetCore.SwaggerUI.ModelRendering.Example);
             c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
 
-            c.RoutePrefix = "swagger-api"; // Define o prefixo explícito para acessar o Swagger
+            c.RoutePrefix = "swagger"; // Define o prefixo explícito para acessar o Swagger
 
             //c.InjectStylesheet("/swagger/themes/3.x/theme-material.css");
             //c.InjectStylesheet("/swagger/themes/custom.css");
         });
 
-        using (var scope = app.ApplicationServices.CreateScope())
-        {
-            /*
-            var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-
-            db.Database.EnsureCreated();
-
-            var pendingMigrations = db.Database.GetPendingMigrations();
-            if (pendingMigrations.Any())
-                db.Database.Migrate();
-            */
-        }
         app.UseHttpsRedirection();
 
         app.UseRouting();
@@ -136,7 +121,7 @@ public class Startup
         app.UseAuthentication();
         app.UseAuthorization();
 
-        //app.UseStatusCodePagesWithRedirects("~/{0}.html");
+        app.UseStatusCodePagesWithRedirects("~/{0}.html");
 
         app.UseEndpoints(endpoints =>
         {

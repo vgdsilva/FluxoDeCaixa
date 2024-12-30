@@ -1,20 +1,17 @@
 ﻿using FluxoDeCaixa.Domain.Entities;
-using FluxoDeCaixa.Domain.Interfaces;
-using FluxoDeCaixa.Infrastructure.Context;
+using FluxoDeCaixa.Infrastructure.Configuraction;
 using FluxoDeCaixa.Infrastructure.Controller;
 
 namespace FluxoDeCaixa.Infrastructure.Repositories;
 
 public class UsuarioRepository
 {
-    public async Task<Usuario> VerificaSeUsuarioExisteAsync(string email)
+    public DataRow? VerificaSeUsuarioExiste(string email, string password)
     {
-        using (SQLQuery query = Contexto.Instance.SQLQueryNewInstance())
+        using (Database db = ConnectionFactory.GetDatabase())
         {
-            query.SQL = "";
-
-
-            return new Usuario();
+            DataRow? item = db.Tables["Users"].FirstOrDefault(item => item["Email"].Equals(email) && item["Password"].Equals(password));
+            return item;
         }
     }
 }

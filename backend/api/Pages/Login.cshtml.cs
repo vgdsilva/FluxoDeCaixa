@@ -35,12 +35,14 @@ namespace FluxoDeCaixa.API.Pages
         {
             if (!ModelState.IsValid)
             {
+                Input = new UsuarioModel();
                 return Page();
             }
 
             ApplicationUser user = await AuthenticateUser(Input.Email, Input.Password);
             if (user == null)
             {
+                Input = new UsuarioModel();
                 return Page();
             }
 
@@ -59,34 +61,28 @@ namespace FluxoDeCaixa.API.Pages
 
         static async Task<ApplicationUser> AuthenticateUser(string email, string password)
         {
-            if (email.Equals("root"))
-            {
-                return new ApplicationUser { Email = email };
-            }
+            //if (email.Equals("root"))
+            //{
+            //    return new ApplicationUser { Email = email };
+            //}
 
             if (string.IsNullOrWhiteSpace(email))
                 return null;
 
             string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
-            if (!Regex.IsMatch(email, emailPattern, RegexOptions.IgnoreCase))
+            if (!email.Equals("root") && !Regex.IsMatch(email, emailPattern, RegexOptions.IgnoreCase))
             {
                 return null;
             }
 
             // TODO: VALIDAR NO BANCO DE DADOS SE EXISTE
-
-            var db_user = await new UsuarioRepository().VerificaSeUsuarioExisteAsync(email);
+            var db_user = new UsuarioRepository().VerificaSeUsuarioExiste(email, password);
             if (db_user == null)
             {
                 return null;
             }
 
-            if (!db_user.Senha.Equals(password))
-            {
-                return null;
-            }
-
-            return new ApplicationUser { UserName = db_user.Nome, Email = email };
+            return new ApplicationUser { UserName = db_user["Name"].ToString(), Email = email };
         }
     }
 }
