@@ -73,14 +73,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Views\" />
+	  <ProjectReference Include="..\common\domain\FluxoDeCaixa.Domain.csproj" />
+	  <ProjectReference Include="..\common\infrastructure.SQLite\FluxoDeCaixa.Infrastructure.SQLite.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\common\domain\FluxoDeCaixa.Domain.csproj" />
-	  <ProjectReference Include="..\common\infrastructure.SQLite\FluxoDeCaixa.Infrastructure.SQLite.csproj" />
-	  <ProjectReference Include="..\FluxoDeCaixa\common\domain\FluxoDeCaixa.Domain.csproj" />
-	  <ProjectReference Include="..\FluxoDeCaixa\common\FluxoDeCaixa.Infrastructure.SQLite\FluxoDeCaixa.Infrastructure.SQLite.csproj" />
+	  <MauiXaml Update="Controls\ButtonForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\Login\OnboardingPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

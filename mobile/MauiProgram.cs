@@ -21,7 +21,7 @@ namespace FluxoDeCaixa.MAUI
 
             builder
                 .Services
-                .AddInfrastructure("");
+                .AddInfrastructure($"Data Source={Path.Combine(FileSystem.AppDataDirectory, "database.db")}");
 #if DEBUG
             builder.Logging.AddDebug();
 #endif

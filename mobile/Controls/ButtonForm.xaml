@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Border
+    x:Class="FluxoDeCaixa.MAUI.Controls.ButtonForm"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:FluxoDeCaixa.MAUI.Controls"
+    xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    x:Name="this"
+    x:DataType="controls:ButtonForm"
+    BackgroundColor="{Binding BackgroundColorCharger, Source={x:Reference this}}">
+
+    <Border.GestureRecognizers>
+        <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" />
+    </Border.GestureRecognizers>
+
+    <Border.Triggers>
+        <Trigger TargetType="controls:ButtonForm" Property="IsEnabled" Value="False">
+            <Setter Property="BackgroundColor" Value="{Binding DisabledBackgroundColor, Source={x:Reference this}}" />
+            <Setter Property="Stroke" Value="{Binding DisabledBorderColor, Source={x:Reference this}}" />
+            <Setter Property="TextColor" Value="{Binding DisabledTextColor, Source={x:Reference this}}" />
+        </Trigger>
+    </Border.Triggers>
+
+    <HorizontalStackLayout
+        Margin="0"
+        Padding="12"
+        HorizontalOptions="Center"
+        MinimumHeightRequest="48"
+        Spacing="10"
+        VerticalOptions="Center">
+        <Image
+            HeightRequest="20"
+            IsVisible="{Binding IsIconVisible, Source={x:Reference this}}"
+            Source="{Binding Icon, Source={x:Reference this}}"
+            VerticalOptions="Center"
+            WidthRequest="20">
+            <Image.Behaviors>
+                <toolkit:IconTintColorBehavior TintColor="{Binding IconColor, Source={x:Reference this}}" />
+            </Image.Behaviors>
+        </Image>
+        <Label
+            FontSize="16"
+            HorizontalOptions="Center"
+            LineBreakMode="TailTruncation"
+            Text="{Binding Text, Source={x:Reference this}}"
+            TextColor="{Binding TextColor, Source={x:Reference this}}"
+            VerticalOptions="Center"
+            VerticalTextAlignment="Center" />
+    </HorizontalStackLayout>
+</Border>

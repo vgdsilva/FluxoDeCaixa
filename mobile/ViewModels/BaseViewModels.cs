@@ -1,6 +1,6 @@
 ﻿namespace FluxoDeCaixa.MAUI.ViewModels;
 
-public partial class BaseViewModels : ObservableObject
+public abstract partial class BaseViewModels : ObservableObject
 {
 
     public BaseViewModels()
@@ -9,7 +9,7 @@ public partial class BaseViewModels : ObservableObject
     }
 
 
-    public virtual void Init() { }
+    public abstract void Init();
 
     public void OnAppearing()
     {
@@ -27,7 +27,7 @@ public partial class BaseViewModels : ObservableObject
 		}
     }
 
-    public virtual void End() { }
+    public abstract void End();
 
 	public void OnDisappearing()
 	{
