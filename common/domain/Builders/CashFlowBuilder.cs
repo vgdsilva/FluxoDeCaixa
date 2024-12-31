@@ -31,6 +31,9 @@ public class CashFlowBuilder : IBuilder<CashFlow>
 
     public CashFlowBuilder SetEndDate(DateTime endDate)
     {
+        if (endDate < _entity.StartDate)
+            throw new InvalidOperationException("endDate must be grather than startDate");
+
         _entity.EndDate = endDate;
 
         return this;
