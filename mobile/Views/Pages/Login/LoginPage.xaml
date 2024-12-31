@@ -6,9 +6,14 @@
     xmlns:controls="clr-namespace:FluxoDeCaixa.MAUI.Controls"
     xmlns:pages="clr-namespace:FluxoDeCaixa.MAUI.Views.Pages"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:viewModels="clr-namespace:FluxoDeCaixa.MAUI.ViewModels.Login"
     Padding="0"
     BackgroundColor="Black"
     NavigationPage.HasNavigationBar="False">
+
+    <pages:BasePages.BindingContext>
+        <viewModels:LoginViewModel />
+    </pages:BasePages.BindingContext>
 
     <pages:BasePages.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="Black" StatusBarStyle="LightContent" />
@@ -22,7 +27,7 @@
                 RowDefinitions="208, *">
                 <Image
                     Grid.Row="0"
-                    Aspect="AspectFil"
+                    Aspect="AspectFill"
                     HeightRequest="208"
                     Source="bg_login.png" />
 
@@ -70,7 +75,10 @@
                                     TextColor="Black" />
                             </Grid>
 
-                            <controls:ButtonForm Grid.Row="1" Text="Começar" />
+                            <controls:ButtonForm
+                                Grid.Row="1"
+                                Command="{Binding StartCommand}"
+                                Text="Começar" />
                         </Grid>
                     </Grid>
                 </Border>

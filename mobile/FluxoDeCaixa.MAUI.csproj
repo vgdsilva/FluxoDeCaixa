@@ -92,4 +92,8 @@
 	  </MauiXaml>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Views\Pages\Login\_Controls\" />
+	</ItemGroup>
+
 </Project>
