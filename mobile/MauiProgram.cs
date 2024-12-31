@@ -9,15 +9,16 @@ namespace FluxoDeCaixa.MAUI
     {
         public static MauiApp CreateMauiApp()
         {
-            var builder = MauiApp.CreateBuilder();
-            builder
+            var builder = MauiApp
+                .CreateBuilder()
                 .UseMauiApp<App>()
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
-                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-                    fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                })
-                .UseMauiCommunityToolkit();
+                    fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular")
+                        .AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold")
+                        .AddFont("Mulish-Bold.ttf", "MulishBold");
+                });
 
             builder
                 .Services

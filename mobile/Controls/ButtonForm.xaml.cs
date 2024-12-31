@@ -83,14 +83,14 @@ public partial class ButtonForm : Border
         set => SetValue(IsIconVisibleProperty, value);
     }
 
-    public static readonly BindableProperty BackgroundColorChargerProperty = BindableProperty.Create(nameof(BackgroundColorCharger), typeof(Color), typeof(ButtonForm), Color.FromArgb("#00875F"));
+    public static readonly BindableProperty BackgroundColorChargerProperty = BindableProperty.Create(nameof(BackgroundColorCharger), typeof(Color), typeof(ButtonForm), Color.FromArgb("#5BAF00"));
     public Color BackgroundColorCharger
     {
         get => (Color)GetValue(BackgroundColorChargerProperty);
         set => SetValue(BackgroundColorChargerProperty, value);
     }
 
-    public static readonly BindableProperty PressedBackgroundColorProperty = BindableProperty.Create(nameof(PressedBackgroundColor), typeof(Color), typeof(ButtonForm), Color.FromArgb("#00B37E"));
+    public static readonly BindableProperty PressedBackgroundColorProperty = BindableProperty.Create(nameof(PressedBackgroundColor), typeof(Color), typeof(ButtonForm), Color.FromArgb("#498B00"));
     public Color PressedBackgroundColor
     {
         get => (Color)GetValue(PressedBackgroundColorProperty);
