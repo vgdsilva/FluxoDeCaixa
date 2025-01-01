@@ -1,6 +1,6 @@
 ﻿namespace FluxoDeCaixa.MAUI.Core.Data;
 
-public class Context
+public class AppContext
 {
     public static IServiceProvider Services { get; private set; }
 

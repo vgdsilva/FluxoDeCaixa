@@ -81,7 +81,10 @@
 	  <MauiXaml Update="Controls\AplicationLogo.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Controls\ButtonForm.xaml">
+	  <MauiXaml Update="Componentes\ButtonForm.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Login\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Pages\Login\LoginPage.xaml">

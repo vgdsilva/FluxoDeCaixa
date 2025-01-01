@@ -28,7 +28,7 @@ namespace FluxoDeCaixa.MAUI
 #endif
             var app = builder.Build();
 
-            Context.Initialize(app.Services);
+            Core.Data.AppContext.Initialize(app.Services);
 
             return app;
         }

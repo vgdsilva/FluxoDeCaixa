@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Border
-    x:Class="FluxoDeCaixa.MAUI.Controls.ButtonForm"
+    x:Class="FluxoDeCaixa.MAUI.Componentes.ButtonForm"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:FluxoDeCaixa.MAUI.Controls"
+    xmlns:controls="clr-namespace:FluxoDeCaixa.MAUI.Componentes"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     x:Name="this"
     x:DataType="controls:ButtonForm"

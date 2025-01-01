@@ -2,7 +2,7 @@ using FluxoDeCaixa.MAUI.Core.Utils.ResoucesExtencions;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
-namespace FluxoDeCaixa.MAUI.Controls;
+namespace FluxoDeCaixa.MAUI.Componentes;
 
 public partial class ButtonForm : Border
 {

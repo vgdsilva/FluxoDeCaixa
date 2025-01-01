@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<pages:BasePages
-    x:Class="FluxoDeCaixa.MAUI.Views.Pages.Login.LoginPage"
+<ContentPage
+    x:Class="FluxoDeCaixa.MAUI.Pages.Login.LoginPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:FluxoDeCaixa.MAUI.Controls"
-    xmlns:pages="clr-namespace:FluxoDeCaixa.MAUI.Views.Pages"
+    xmlns:componentes="clr-namespace:FluxoDeCaixa.MAUI.Componentes"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-    xmlns:viewModels="clr-namespace:FluxoDeCaixa.MAUI.ViewModels.Login"
     Padding="0"
     BackgroundColor="Black"
     NavigationPage.HasNavigationBar="False">
 
-    <pages:BasePages.BindingContext>
-        <viewModels:LoginViewModel />
-    </pages:BasePages.BindingContext>
-
-    <pages:BasePages.Behaviors>
+    <ContentPage.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="Black" StatusBarStyle="LightContent" />
-    </pages:BasePages.Behaviors>
+    </ContentPage.Behaviors>
 
     <ContentPage.Content>
         <ScrollView IsClippedToBounds="True">
@@ -47,7 +41,7 @@
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
 
-                        <controls:AplicationLogo Grid.Row="0" />
+                        <componentes:AplicationLogo Grid.Row="0" />
 
                         <Grid Grid.Row="1" RowSpacing="32">
                             <Grid.RowDefinitions>
@@ -75,7 +69,7 @@
                                     TextColor="Black" />
                             </Grid>
 
-                            <controls:ButtonForm
+                            <componentes:ButtonForm
                                 Grid.Row="1"
                                 Command="{Binding StartCommand}"
                                 Text="Começar" />
@@ -85,4 +79,4 @@
             </Grid>
         </ScrollView>
     </ContentPage.Content>
-</pages:BasePages>
+</ContentPage>
