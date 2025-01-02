@@ -15,7 +15,7 @@ public class CashFlowBuilder : IBuilder<CashFlow>
     public CashFlowBuilder SetDescription(string description)
     {
         if (string.IsNullOrEmpty(description))
-            throw new ArgumentNullException("cash flow description is null");
+            throw new Exception("cash flow description is null");
 
         _entity.Description = description;
 
@@ -32,7 +32,7 @@ public class CashFlowBuilder : IBuilder<CashFlow>
     public CashFlowBuilder SetEndDate(DateTime endDate)
     {
         if (endDate < _entity.StartDate)
-            throw new InvalidOperationException("endDate must be grather than startDate");
+            throw new Exception("endDate must be grather than startDate");
 
         _entity.EndDate = endDate;
 
@@ -42,7 +42,7 @@ public class CashFlowBuilder : IBuilder<CashFlow>
     public CashFlowBuilder SetUser(string userId, User userEntity = null)
     {
         if (string.IsNullOrEmpty(userId)) 
-            throw new ArgumentNullException("cash flow UserId is null");
+            throw new Exception("cash flow UserId is null");
 
         _entity.UserID = userId;
 
