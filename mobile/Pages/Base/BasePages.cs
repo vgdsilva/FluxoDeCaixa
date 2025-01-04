@@ -1,20 +1,20 @@
-﻿namespace FluxoDeCaixa.MAUI.Pages.Base;
+﻿using FluxoDeCaixa.MAUI.Componentes;
 
-public partial class BasePages : ContentPage
+namespace FluxoDeCaixa.MAUI.Pages.Base;
+
+public abstract class BasePages<TViewModel> : PageView where TViewModel : BaseViewModels, new()
 {
+    public TViewModel? ViewModel => BindingContext as TViewModel;
 
-    protected override void OnAppearing()
+    public BasePages()
     {
-        base.OnAppearing();
-
-        (BindingContext as BaseViewModels)?.Page_Load(this);
+        BindingContext = new TViewModel();
     }
+
 }
 
-public abstract partial class BaseViewModels : ObservableObject
+public partial class BaseViewModels : ObservableObject
 {
     public BaseViewModels() { }
-
-    public abstract void Page_Load(object sender);
 }
 

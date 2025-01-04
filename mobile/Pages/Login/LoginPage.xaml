@@ -6,7 +6,7 @@
     xmlns:componentes="clr-namespace:FluxoDeCaixa.MAUI.Componentes"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
     Padding="0"
-    BackgroundColor="Black"
+    BackgroundColor="White"
     NavigationPage.HasNavigationBar="False">
 
     <ContentPage.Behaviors>
@@ -15,67 +15,110 @@
 
     <ContentPage.Content>
         <ScrollView IsClippedToBounds="True">
-            <Grid
-                Margin="0"
-                Padding="0"
-                RowDefinitions="208, *">
-                <Image
-                    Grid.Row="0"
-                    Aspect="AspectFill"
-                    HeightRequest="208"
-                    Source="bg_login.png" />
-
-                <Border
-                    Grid.Row="1"
+            <Grid>
+                <Grid
+                    Margin="0"
                     Padding="0"
-                    BackgroundColor="White"
-                    StrokeShape="RoundRectangle 24 24 0 0"
-                    StrokeThickness="0"
-                    VerticalOptions="Fill">
-                    <Grid
-                        Margin="0"
-                        Padding="32"
-                        RowSpacing="32">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
+                    IsVisible="{Binding CurrentFlow, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=0}"
+                    RowDefinitions="208, *">
+                    <Image
+                        Grid.Row="0"
+                        Aspect="AspectFill"
+                        HeightRequest="208"
+                        Source="bg_login.png" />
 
-                        <componentes:AplicationLogo Grid.Row="0" />
-
-                        <Grid Grid.Row="1" RowSpacing="32">
+                    <Border
+                        Grid.Row="1"
+                        Padding="0"
+                        BackgroundColor="White"
+                        StrokeShape="RoundRectangle 24 24 0 0"
+                        StrokeThickness="0"
+                        VerticalOptions="Fill">
+                        <Grid
+                            Margin="0"
+                            Padding="32"
+                            RowSpacing="32">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
                             </Grid.RowDefinitions>
 
-                            <Grid Grid.Row="0" RowSpacing="16">
+                            <componentes:AplicationLogo Grid.Row="0" />
+
+                            <Grid Grid.Row="1" RowSpacing="32">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
-                                <Label
-                                    Grid.Row="0"
-                                    FontFamily="MulishBold"
-                                    FontSize="24"
-                                    Text="Bem-vindo(a)"
-                                    TextColor="Black" />
+                                <Grid Grid.Row="0" RowSpacing="16">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
 
-                                <Label
+                                    <Label
+                                        Grid.Row="0"
+                                        FontFamily="MulishBold"
+                                        FontSize="24"
+                                        Text="{Binding HeadlineTile}"
+                                        TextColor="Black" />
+
+                                    <Label
+                                        Grid.Row="1"
+                                        FontSize="16"
+                                        Text="{Binding HeadlineSubTitle}"
+                                        TextColor="Black" />
+                                </Grid>
+
+                                <componentes:ButtonForm
                                     Grid.Row="1"
-                                    FontSize="16"
-                                    Text="O Fluxo de caixa é um aplicativo de gestão financeira que utiliza IA para monitorar suas movimentações, e oferecer insights personalizados, facilitando o controle do seu orçamento."
-                                    TextColor="Black" />
+                                    Command="{Binding StartCommand}"
+                                    Text="Começar" />
                             </Grid>
-
-                            <componentes:ButtonForm
-                                Grid.Row="1"
-                                Command="{Binding StartCommand}"
-                                Text="Começar" />
                         </Grid>
+                    </Border>
+                </Grid>
+
+                <Grid
+                    Padding="24"
+                    HorizontalOptions="CenterAndExpand"
+                    IsVisible="{Binding CurrentFlow, Converter={StaticResource EnumToBooleanConverter}, ConverterParameter=1}"
+                    RowDefinitions="Auto, *"
+                    RowSpacing="24">
+
+                    <componentes:AplicationLogo Grid.Row="0" />
+
+                    <Grid Grid.Row="1" RowSpacing="32">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid Grid.Row="0" RowSpacing="16">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label
+                                Grid.Row="0"
+                                FontFamily="MulishBold"
+                                FontSize="24"
+                                Text="{Binding HeadlineTile}"
+                                TextColor="Black" />
+
+                            <Label
+                                Grid.Row="1"
+                                FontSize="16"
+                                Text="{Binding HeadlineSubTitle}"
+                                TextColor="Black" />
+                        </Grid>
+
+                        <componentes:ButtonForm Grid.Row="1" Text="Continuar" />
                     </Grid>
-                </Border>
+
+                </Grid>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

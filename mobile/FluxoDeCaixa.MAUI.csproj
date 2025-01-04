@@ -75,6 +75,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\common\domain\FluxoDeCaixa.Domain.csproj" />
 	  <ProjectReference Include="..\common\infrastructure.SQLite\FluxoDeCaixa.Infrastructure.SQLite.csproj" />
+	  <ProjectReference Include="..\MauiLib.UI\MauiLib.UI.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -85,6 +86,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Login\LoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\Login\UserRegistrationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

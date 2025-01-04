@@ -72,8 +72,7 @@ namespace FluxoDeCaixa.MAUI.Utils.Classes
                     BackgroundColor = _backgroundColor,
                     TextColor = _textColor,
                     ActionButtonTextColor = _actionButtonTextColor,
-                    CornerRadius = new CornerRadius(16),
-                    Font = ""
+                    CornerRadius = new CornerRadius(16)
                 });
         }
 
