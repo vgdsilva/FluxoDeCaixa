@@ -21,7 +21,7 @@
             return view;
         }
 
-        public static View row(this View view, int row)
+        public static View GridRow(this View view, int row)
         {
             Grid.SetRow(view, row);
             return view;
@@ -66,7 +66,7 @@
             return layout;
         }
 
-        public static Layout padding(this Layout layout, int uniformSize = 0)
+        public static Layout Padding(this Layout layout, int uniformSize = 0)
         {
             layout.Padding = new Thickness(uniformSize);
             return layout;
@@ -75,12 +75,23 @@
 
     public static class GridExtensions
     {
-        public static Grid rowDefinition(this Grid grid, GridLength height)
+        public static Grid RowDefinition(this Grid grid, GridLength height)
         {
             if (grid.RowDefinitions == null)
                 grid.RowDefinitions = new RowDefinitionCollection();
 
             grid.RowDefinitions.Add(new RowDefinition(height));
+
+            return grid;
+        }
+        
+        public static Grid RowDefinition(this Grid grid, params GridLength[] heights)
+        {
+            if (grid.RowDefinitions == null)
+                grid.RowDefinitions = new RowDefinitionCollection();
+
+            foreach (var height in heights)
+                grid.RowDefinitions.Add(new RowDefinition(height));
 
             return grid;
         }
@@ -95,7 +106,7 @@
             return grid;
         }
 
-        public static Layout backgroundColor(this Layout grid, Color backgroundColor)
+        public static Layout BackgroundColor(this Layout grid, Color backgroundColor)
         {
             grid.BackgroundColor = backgroundColor;
             return grid;
@@ -144,19 +155,19 @@
 
     public static class LabelExtencions
     {
-        public static Label text(this Label label, string text)
+        public static Label Text(this Label label, string text)
         {
             label.Text = text;
             return label;
         }
 
-        public static Label textColor(this Label label, Color color)
+        public static Label TextColor(this Label label, Color color)
         {
             label.TextColor = color;
             return label;
         }
 
-        public static Label textAlignment(this Label label, TextAlignment alignment, StackOrientation orientation)
+        public static Label TextAlignment(this Label label, TextAlignment alignment, StackOrientation orientation)
         {
             switch (orientation)
             {
@@ -188,7 +199,7 @@
             return label;
         }
 
-        public static Label fontSize(this Label label, int fontSize)
+        public static Label FontSize(this Label label, int fontSize)
         {
             label.FontSize = fontSize;
             return label;

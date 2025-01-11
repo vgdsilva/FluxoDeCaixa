@@ -74,7 +74,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\common\domain\FluxoDeCaixa.Domain.csproj" />
-	  <ProjectReference Include="..\common\infrastructure.SQLite\FluxoDeCaixa.Infrastructure.SQLite.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
