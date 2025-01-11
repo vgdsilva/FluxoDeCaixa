@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:BasePages  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:base="clr-namespace:FluxoDeCaixa.MAUI.Pages.Base"
+                xmlns:viewModel="clr-namespace:FluxoDeCaixa.MAUI.Pages.Onboarding"
+                x:Class="FluxoDeCaixa.MAUI.Pages.Onboarding.OnboardingPage"
+                x:TypeArguments="viewModel:OnboardingViewModel">
+    
+    <base:BasePages.Content>
+        <Grid RowDefinitions="*,Auto">
+            <Grid Padding="32" RowSpacing="32" RowDefinitions="Auto, Auto">
+                <Grid RowSpacing="24" Grid.Row="0">
+                    
+                </Grid>
+                
+                <Button Text="Começar" Grid.Row="1" />
+            </Grid>
+        </Grid>
+    </base:BasePages.Content>
+</base:BasePages>

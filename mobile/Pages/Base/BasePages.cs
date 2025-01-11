@@ -2,7 +2,7 @@
 
 namespace FluxoDeCaixa.MAUI.Pages.Base;
 
-public abstract class BasePages<TViewModel> : PageView where TViewModel : BaseViewModels, new()
+public abstract class BasePages<TViewModel> : ContentPage where TViewModel : BaseViewModels, new()
 {
     public TViewModel? ViewModel => BindingContext as TViewModel;
 

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using RGPopup.Maui.Extensions;
+﻿using RGPopup.Maui.Extensions;
 using RGPopup.Maui.Pages;
 
 namespace FluxoDeCaixa.MAUI.Utils.Classes
