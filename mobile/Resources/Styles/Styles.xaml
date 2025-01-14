@@ -8,28 +8,28 @@
 
     <!--  Start Botoes  -->
 
-    <Style ApplyToDerivedTypes="True" TargetType="controls:ButtonForm">
-        <Setter Property="BackgroundColor" Value="#5BAF00" />
-        <Setter Property="TextColor" Value="#FFFFFF" />
-
-        <Setter Property="PressedBackgroundColor" Value="#498B00" />
-    </Style>
-
-    <Style x:Key="SecundaryButton" TargetType="controls:ButtonForm">
-        <Setter Property="BackgroundColor" Value="#FFFFFF" />
-        <Setter Property="Stroke" Value="#5BAF00" />
-        <Setter Property="TextColor" Value="#5BAF00" />
-
-        <Setter Property="PressedBackgroundColor" Value="#F0F4EA" />
-    </Style>
-
-    <Style x:Key="TerciaryButton" TargetType="controls:ButtonForm">
-        <Setter Property="BackgroundColor" Value="#FFFFFF" />
-        <Setter Property="Stroke" Value="#6B7280" />
-        <Setter Property="TextColor" Value="#6B7280" />
-
-        <Setter Property="PressedBackgroundColor" Value="#F9FAFB" />
-    </Style>
+    <!-- <Style ApplyToDerivedTypes="True" TargetType="controls:ButtonForm"> -->
+    <!--     <Setter Property="BackgroundColor" Value="#5BAF00" /> -->
+    <!--     <Setter Property="TextColor" Value="#FFFFFF" /> -->
+    <!-- -->
+    <!--     <Setter Property="PressedBackgroundColor" Value="#498B00" /> -->
+    <!-- </Style> -->
+    <!-- -->
+    <!-- <Style x:Key="SecundaryButton" TargetType="controls:ButtonForm"> -->
+    <!--     <Setter Property="BackgroundColor" Value="#FFFFFF" /> -->
+    <!--     <Setter Property="Stroke" Value="#5BAF00" /> -->
+    <!--     <Setter Property="TextColor" Value="#5BAF00" /> -->
+    <!-- -->
+    <!--     <Setter Property="PressedBackgroundColor" Value="#F0F4EA" /> -->
+    <!-- </Style> -->
+    <!-- -->
+    <!-- <Style x:Key="TerciaryButton" TargetType="controls:ButtonForm"> -->
+    <!--     <Setter Property="BackgroundColor" Value="#FFFFFF" /> -->
+    <!--     <Setter Property="Stroke" Value="#6B7280" /> -->
+    <!--     <Setter Property="TextColor" Value="#6B7280" /> -->
+    <!-- -->
+    <!--     <Setter Property="PressedBackgroundColor" Value="#F9FAFB" /> -->
+    <!-- </Style> -->
 
     <!--  End Botoes  -->
 

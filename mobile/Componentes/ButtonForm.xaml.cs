@@ -115,6 +115,7 @@ public partial class ButtonForm : Border
 	{
 		InitializeComponent();
         StyleCharger = Style;
+        BackgroundColorCharger = BackgroundColor;
     }
 
     private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -147,5 +148,6 @@ public partial class ButtonForm : Border
 
         if (string.Equals(propertyName, nameof(StyleProperty.PropertyName)))
             StyleCharger = Style;
+        
     }
 }
