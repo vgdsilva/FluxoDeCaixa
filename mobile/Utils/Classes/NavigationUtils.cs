@@ -29,6 +29,19 @@ namespace FluxoDeCaixa.MAUI.Utils.Classes
             await Application.Current!.MainPage.Navigation.PopPopupAsync(animated);
         }
 
+        
+        /* SHELL FUNCTION */
+        
+        public static async Task GoToAsync(ShellNavigationState state, bool animate = true)
+        {
+            await Shell.Current.GoToAsync(state, animate);
+        }
+        
+        public static async Task GoBackAsync(bool animate = true)
+        {
+            await Shell.Current.GoToAsync("..", animate);
+        }
+
 
         public static void SetMainPage(Page page)
         {
