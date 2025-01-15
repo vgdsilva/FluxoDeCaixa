@@ -63,7 +63,9 @@
                                             PressedBackgroundColor="#3DFFFFFF"
                                             TextColor="White"
                                             Stroke="#14FFFFFF"
-                                            Icon="img_microsoft_icon.png"/>
+                                            Icon="img_microsoft_icon.png"
+                                            Command="{Binding SignInWithMicrosoftCommand}"
+                                            />
                 </VerticalStackLayout>
             </Grid>
         </Grid>
