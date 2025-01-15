@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell x:Class="FluxoDeCaixa.MAUI.Pages.Shell.AppShell"
+       xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+       xmlns:home="clr-namespace:FluxoDeCaixa.MAUI.Pages.Home.Tabs"
+       Shell.NavBarIsVisible="True"
+       Shell.NavBarHasShadow="True"
+       NavigationPage.HasNavigationBar="True"
+       Shell.TabBarIsVisible="True">
+
+    <!-- <Shell.Behaviors> -->
+    <!--     <toolkit:StatusBarBehavior  /> -->
+    <!-- </Shell.Behaviors> -->
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <!-- <Setter Property="Shell.BackgroundColor" Value="{StaticResource ColorWhite}" /> -->
+                <!-- <Setter Property="Shell.ForegroundColor" Value="{StaticResource Primary500}" /> -->
+                <!-- <Setter Property="Shell.TitleColor" Value="{StaticResource ColorBlack}" /> -->
+                <!-- <Setter Property="Shell.DisabledColor" Value="{StaticResource Primary500}" /> -->
+                <!-- <Setter Property="Shell.UnselectedColor" Value="{StaticResource Primary500}" /> -->
+                <Setter Property="Shell.NavBarHasShadow" Value="False" />
+                
+                <Setter Property="Shell.TabBarBackgroundColor" Value="Black" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="White" /> 
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource Primary}" />
+                <!-- <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource Primary500}" /> -->
+                
+            </Style>
+            
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar>
+        <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate home:DashboardTabPage}" />
+        <ShellContent Title="Transações" ContentTemplate="{DataTemplate home:TransactionsTabPage}" />
+    </TabBar>
+
+</Shell>
