@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FluxoDeCaixa.MAUI.Pages.Home.Tabs;
+namespace FluxoDeCaixa.MAUI.Pages.Home.Components;
 
-public partial class DashboardTabPage : ContentPage
+public partial class TitleBar : ContentView
 {
-    public DashboardTabPage()
+    public TitleBar()
     {
         InitializeComponent();
     }
