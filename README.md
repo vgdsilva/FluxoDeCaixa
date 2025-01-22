@@ -4,6 +4,32 @@
 Aplicativo para controle de finanças baseado em uma planilha de fluxo de caixa para visão de gastos do dia a dia e gastos futuros
 
 
+# Funcionalidades
+- Adicionar Categorias (Tipo Despesa OU Renda)
+- Adicionar Rendas 
+- Adicionar Despesas
+
+- Relatorio de saldo mensal
+- - Mostrar um relatorio do que foi gasto no mês e o quanto ira sobrar.
+
+
+
+# Entidades
+- Categoria
+    - Descrição
+    - Tipo de Categoria (Renda ou Despesa ou Poupança)
+    - Icone
+    - Cor
+
+- Transação
+    - Descrição
+    - Data de Transação
+    - Observação
+    - Tipo de transação (Renda ou Despesa ou Poupança)
+    - Valor da Transação
+
+
+
 ``` text
 Projeto principal
 |— Resources/ -- Armazena arquivos estáticos como imagens, fontes e outros recursos usados em todo o aplicativo.
