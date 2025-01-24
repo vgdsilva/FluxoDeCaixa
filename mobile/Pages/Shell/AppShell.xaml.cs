@@ -18,7 +18,7 @@ namespace FluxoDeCaixa.MAUI.Pages.Shell;
         {
             
             //registra automaticamente sem a necessidade da forma manual
-            IEnumerable<Type> listTypePages = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsSubclassOf(typeof(BasePages<>)));
+            IEnumerable<Type> listTypePages = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsSubclassOf(typeof(BasePages)));
             foreach (Type typePage in listTypePages)
                 if (!Routes.ContainsKey(typePage.Name))
                     Routes.Add(typePage.Name, typePage);

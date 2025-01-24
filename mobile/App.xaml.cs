@@ -6,7 +6,9 @@
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new Pages.Login.LoginPage());
+            Application.Current!.UserAppTheme = AppTheme.Light;
+            
+            MainPage = new NavigationPage(new Pages.Onboarding.OnboardingPage());
         }
     }
 }

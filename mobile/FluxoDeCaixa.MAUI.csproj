@@ -80,22 +80,9 @@
 	  <MauiXaml Update="Componentes\ButtonForm.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Login\LoginPage.xaml">
+	  <MauiXaml Update="Pages\Onboarding\OnboardingPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Login\UserRegistrationPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\Home\Tabs\Dashboard\DashboardTabPage.xaml">
-	    <SubType>Designer</SubType>
-	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Pages\Home\Tabs\Dashboard\DashboardTabPage.xaml.cs">
-	    <DependentUpon>DashboardTabPage.xaml</DependentUpon>
-	    <SubType>Code</SubType>
-	  </Compile>
 	</ItemGroup>
 
 </Project>
