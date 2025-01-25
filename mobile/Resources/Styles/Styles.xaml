@@ -42,6 +42,14 @@
     </Style>
 
 
+    <Style TargetType="BoxView"
+           x:Key="SeparatorBoxView">
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="Color" Value="{StaticResource ColorGray200}" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+    </Style>
+
+
 
 
 

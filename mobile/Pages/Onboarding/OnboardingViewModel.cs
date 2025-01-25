@@ -1,4 +1,5 @@
 ﻿using FluxoDeCaixa.MAUI.Pages.Base;
+using FluxoDeCaixa.MAUI.Utils.Classes;
 
 namespace FluxoDeCaixa.MAUI.Pages.Onboarding;
 
@@ -15,6 +16,11 @@ public partial class OnboardingViewModel : BaseViewModels
 
     public override void Init()
     {
+        if (Configurations.Get(ConfigurationsEnum.HasInitialized, false))
+        {
+            NavigationUtils.SetMainPage(new NavigationPage(new Home.HomePage()));
+            return;
+        } 
 
         Onboardings = new[]
         {
@@ -25,5 +31,12 @@ public partial class OnboardingViewModel : BaseViewModels
                 Subtitle = "Take control of your finances with easy and confidence"
             },
         };
+    }
+
+    [RelayCommand]
+    async Task StartApp()
+    {
+        Configurations.Save(ConfigurationsEnum.HasInitialized, true);
+        NavigationUtils.SetMainPage(new Home.HomePage());
     }
 }

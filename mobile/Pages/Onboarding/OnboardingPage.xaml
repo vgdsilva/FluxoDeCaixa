@@ -55,7 +55,8 @@
                 BackgroundColor="#5BAF00"
                 TextColor="White"
                 HeightRequest="52"
-                Grid.Row="1"/>
+                Grid.Row="1"
+                Command="{Binding StartAppCommand}" />
     </Grid>
     
 </base:BasePages>

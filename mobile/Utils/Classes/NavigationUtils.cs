@@ -11,7 +11,39 @@ namespace FluxoDeCaixa.MAUI.Utils.Classes
         {
             await Application.Current!.MainPage.Navigation.PushAsync(page, animated);
         }
+
+
+        // Exemplo:
+        // Ao invés de: await Application.Current!.MainPage!.Navigation.PushPopupAsync(new ConsultaPedidoDeVendaFiltroPopUpPage(ConsultaPedidoDeVendaModel))
+        // Faça: await NavigationUtils.PushPopupAsync<ConsultaPedidoDeVendaFiltroPopUpPage>(ConsultaPedidoDeVendaModel)
+        public static async Task PushAsync<T>(params object?[]? parameter)
+        {
+            try
+            {
+                var pageType = typeof(T);
+                var page = (ContentPage)Activator.CreateInstance(pageType, parameter);
+                await Application.Current!.MainPage.Navigation.PushAsync(page, true);
+            }
+            finally
+            {
+                
+            }
+        }
         
+        public static async Task PushModalAsync<T>(params object?[]? parameter)
+        {
+            try
+            {
+                var pageType = typeof(T);
+                var page = (ContentPage)Activator.CreateInstance(pageType, parameter);
+                await Application.Current!.MainPage.Navigation.PushModalAsync(page, true);
+            }
+            finally
+            {
+                
+            }
+        }
+
         public static async Task PopAsync(bool animated = true)
         {
             await Application.Current!.MainPage.Navigation.PopAsync(animated);

@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DevExpress.Maui;
+using Microsoft.Extensions.Logging;
 
 namespace FluxoDeCaixa.MAUI
 {
@@ -10,6 +11,9 @@ namespace FluxoDeCaixa.MAUI
                 .CreateBuilder()
                 .UseMauiApp<App>()
                 .UseMauiCommunityToolkit()
+                .UseDevExpress(useLocalization: false)
+                .UseDevExpressControls()
+                .UseDevExpressCollectionView()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("Mulish-Bold.ttf", "MulishBold");
@@ -19,11 +23,11 @@ namespace FluxoDeCaixa.MAUI
                     fonts.AddFont("FontAwesome6Solid.otf", "FontAwesomeSolid");
                 });
 
+            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
-            AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
             return builder.Build();
         }

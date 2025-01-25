@@ -12,8 +12,18 @@ namespace FluxoDeCaixa.MAUI.Utils.Classes
         {
             return Preferences.Get(nameof(config), valueIfNotExists);
         }
+        
+        public static string Get(ConfigurationsEnum config, string? defaultValue = "")
+        {
+            return Preferences.Get(nameof(config), defaultValue);
+        }
 
         public static void Save(ConfigurationsEnum config, string value)
+        {
+            Preferences.Set(nameof(config), value);
+        }
+        
+        public static void Save(ConfigurationsEnum config, bool value)
         {
             Preferences.Set(nameof(config), value);
         }
@@ -21,6 +31,7 @@ namespace FluxoDeCaixa.MAUI.Utils.Classes
 
     public enum ConfigurationsEnum
     {
-        DarkMode
+        DarkMode,
+        HasInitialized
     }
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePages xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:base="clr-namespace:FluxoDeCaixa.MAUI.Pages.Base"
+                xmlns:local="clr-namespace:FluxoDeCaixa.MAUI.Pages.Home"
+                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                x:Class="FluxoDeCaixa.MAUI.Pages.Home.HomePage"
+                NavigationPage.HasNavigationBar="False"
+                Shell.NavBarIsVisible="False"
+                BackgroundColor="{StaticResource White}">
+
+    <base:BasePages.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#5BAF00" StatusBarStyle="LightContent" />
+    </base:BasePages.Behaviors>
+
+    <base:BasePages.BindingContext>
+        <local:HomeViewModel />
+    </base:BasePages.BindingContext>
+
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,*">
+            <Grid x:Name="Header" 
+                  ColumnDefinitions="*,Auto" 
+                  BackgroundColor="#5BAF00" 
+                  Padding="16">
+                <Label Text="Fluxo de caixa"
+                       TextColor="White"
+                       FontAttributes="Bold"
+                       FontSize="Title"
+                       HorizontalOptions="Start"
+                       HorizontalTextAlignment="Start"
+                       FontFamily="MulishBold"/>
+            </Grid>
+            <BoxView Grid.Row="1" Style="{StaticResource SeparatorBoxView}"/>
+            <VerticalStackLayout Grid.Row="2" Spacing="16" Padding="24">
+                <Button Text="Adicionar Renda"
+                        HeightRequest="52"
+                        Command="{Binding AdicionarRendaCommand}"/>
+
+                <Button Text="Adicionar Despesa"
+                        HeightRequest="52"
+                        Command="{Binding AdicionarDespesaCommand}"/>
+            </VerticalStackLayout>
+        </Grid>
+    </ScrollView>
+</base:BasePages>

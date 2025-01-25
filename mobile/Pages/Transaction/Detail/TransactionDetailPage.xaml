@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePages xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:base="clr-namespace:FluxoDeCaixa.MAUI.Pages.Base"
+                xmlns:local="clr-namespace:FluxoDeCaixa.MAUI.Pages.Transaction.Detail"
+                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                xmlns:componentes="clr-namespace:FluxoDeCaixa.MAUI.Componentes"
+                x:Class="FluxoDeCaixa.MAUI.Pages.Transaction.Detail.TransactionDetailPage"
+                Title=" "
+                BackgroundColor="White">
+
+    <base:BasePages.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource White}" StatusBarStyle="DarkContent" />
+    </base:BasePages.Behaviors>
+
+    <base:BasePages.BindingContext>
+        <local:TransactionDetailViewModel />
+    </base:BasePages.BindingContext>
+
+    <Grid RowDefinitions="*,Auto,Auto">
+        <ScrollView>
+            <componentes:DataFormGrid DataObject="{Binding Model}"
+                                      IsEditorLabelVisible="True"
+                                      BackgroundColor="White"/>
+        </ScrollView>
+        <BoxView Grid.Row="1" Style="{StaticResource SeparatorBoxView}"/>
+        <Grid Grid.Row="2" BackgroundColor="White" Padding="24">
+            <Button Text="Salvar" HeightRequest="52" />
+        </Grid>
+    </Grid>
+</base:BasePages>
