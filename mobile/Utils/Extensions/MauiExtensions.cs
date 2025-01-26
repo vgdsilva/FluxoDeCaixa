@@ -1,10 +1,100 @@
-﻿namespace FluxoDeCaixa.MAUI
+﻿using System.Linq;
+using System.Reflection;
+
+namespace FluxoDeCaixa.MAUI
 {
     public static class MauiExtensions
     {
+        public static bool IsNullOrEmpty(this string String)
+        {
+            return String == null || string.IsNullOrEmpty(String.Trim());
+        }
 
-        
+        /// <summary>
+        /// Obtém o valor de determinada propriedade do objeto recebido.
+        /// </summary>
+        /// <param name="entity">Entidade da qual será obtido o valor</param>
+        /// <param name="propertyInfoObject">Campo da entidade</param>
+        /// <returns>Valor de retorno</returns>
+        public static object GetPropertyValue(this object entity,
+                                              string propertyName, bool withFullPath = false)
+        {
+            if (propertyName.IsNullOrEmpty()) return null;
 
+
+            if (propertyName.Contains("."))
+            {
+                if (withFullPath)
+                    return GetValueByPath(entity, propertyName);
+
+                var propriedades = propertyName.Split('.').Where(x => x != propertyName.Split('.').First()).ToList();
+                object valor = entity;
+                foreach (var item in propriedades)
+                {
+                    PropertyInfo p = valor.GetType().GetProperty(item);
+                    valor = p.GetValue(valor);
+                }
+                return valor;
+            }
+
+            PropertyInfo propertyinfo = entity.GetType().GetProperty(propertyName);
+
+            return propertyinfo?.GetValue(entity);
+        }
+
+        private static object GetValueByPath(object obj, string path)
+        {
+            var parts = path.Split('.');
+            foreach (var part in parts)
+            {
+                if (obj == null)
+                    return null;
+
+                //if (parts.IndexOf(part) == 0)
+                //    continue;
+
+                if (part.Contains("["))
+                {
+                    // Se a parte contém [ e ], trata-se de uma lista
+                    var propName = part.Substring(0, part.IndexOf("["));
+                    var index = int.Parse(part
+                        .Substring(part.IndexOf("[") + 1, part.IndexOf("]") - part.IndexOf("[") - 1));
+
+                    var prop = obj.GetType().GetProperty(propName);
+                    if (prop == null)
+                        return null;
+
+                    obj = prop.GetValue(obj);
+
+                    if (obj is IEnumerable<object> enumerable)
+                    {
+                        obj = enumerable.ElementAtOrDefault(index);
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+                else
+                {
+                    // Caso contrário, trata-se de uma propriedade simples
+                    var prop = obj.GetType().GetProperty(part);
+                    if (prop == null)
+                        return null;
+
+                    obj = prop.GetValue(obj);
+                }
+            }
+
+            return obj;
+        }
+
+
+        public static bool HasProperty(this object objectToCheck, string methodName)
+        {
+            var type = objectToCheck.GetType();
+            return type.GetProperty(methodName) != null;
+        }
     }
 
     public static class ViewsExtencions

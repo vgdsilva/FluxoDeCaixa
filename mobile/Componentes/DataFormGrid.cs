@@ -2,6 +2,6 @@
 
 namespace FluxoDeCaixa.MAUI.Componentes;
 
-public class DataFormGrid : DataFormView
+public class DataFormGrid : Grid
 {
 }

@@ -11,6 +11,7 @@ public partial class BasePages : ContentPage
     {
         base.OnAppearing();
 
+        (BindingContext as BaseViewModels)?.SetInstancePage(this);
         (BindingContext as BaseViewModels)?.OnAppearing();
     }
 
