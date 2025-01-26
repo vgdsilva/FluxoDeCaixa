@@ -4,7 +4,7 @@ public abstract class EntityControl
 {
     [Key]
     [Column("id")]
-    public string Id { get; set; } = Guid.Empty.ToString();
+    public Guid Id { get; set; } = Guid.Empty;
 
     [Column("createdat", TypeName = "timestamp with time zone")]
     [DefaultValue("now()")]

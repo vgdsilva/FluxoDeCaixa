@@ -1,4 +1,5 @@
 ﻿using FluxoDeCaixa.MAUI.Pages.Base;
+using FluxoDeCaixa.MAUI.Pages.Shell;
 using FluxoDeCaixa.MAUI.Utils.Classes;
 
 namespace FluxoDeCaixa.MAUI.Pages.Onboarding;
@@ -18,7 +19,8 @@ public partial class OnboardingViewModel : BaseViewModels
     {
         if (Configurations.Get(ConfigurationsEnum.HasInitialized, false))
         {
-            NavigationUtils.SetMainPage(new NavigationPage(new Home.HomePage()));
+            //NavigationUtils.SetMainPage(new NavigationPage(new Home.HomePage()));
+            NavigationUtils.SetMainPage(new AppShell());
             return;
         } 
 

@@ -1,4 +1,5 @@
 ﻿using DevExpress.Maui;
+using FluxoDeCaixa.Data;
 using Microsoft.Extensions.Logging;
 
 namespace FluxoDeCaixa.MAUI
@@ -18,6 +19,12 @@ namespace FluxoDeCaixa.MAUI
                 {
                     fonts.AddFont("Mulish-Bold.ttf", "MulishBold");
 
+                    fonts.AddFont("Quicksand-Light.ttf", "Quicksand300Font");
+                    fonts.AddFont("Quicksand-Regular.ttf", "Quicksand400Font");
+                    fonts.AddFont("Quicksand-Medium.ttf", "Quicksand500Font");
+                    fonts.AddFont("Quicksand-SemiBold.ttf", "Quicksand600Font");
+                    fonts.AddFont("Quicksand-Bold.ttf", "Quicksand700Font");
+
                     fonts.AddFont("FontAwesome6Brands.otf", "FontAwesomeBrands");
                     fonts.AddFont("FontAwesome6Regular.otf", "FontAwesomeRegular");
                     fonts.AddFont("FontAwesome6Solid.otf", "FontAwesomeSolid");
@@ -28,6 +35,13 @@ namespace FluxoDeCaixa.MAUI
 #if DEBUG
             builder.Logging.AddDebug();
 #endif
+
+            var sqliteDatabaseConfiguration = new SQLiteDatabaseConfiguration
+            {
+                AppDirectoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DeviceInfo.Current.Platform == DevicePlatform.Android ? ".local/share" : string.Empty)
+            };
+
+            builder.Services.RegisterInfrastructureServices(sqliteDatabaseConfiguration);
 
             return builder.Build();
         }

@@ -1,41 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <?xaml-comp compile="true" ?>
-<ResourceDictionary
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:FluxoDeCaixa.MAUI.Componentes">
-
-
-    <!--  Start Botoes  -->
-
-    <!-- <Style ApplyToDerivedTypes="True" TargetType="controls:ButtonForm"> -->
-    <!--     <Setter Property="BackgroundColor" Value="#5BAF00" /> -->
-    <!--     <Setter Property="TextColor" Value="#FFFFFF" /> -->
-    <!--    -->
-    <!--     <Setter Property="PressedBackgroundColor" Value="#498B00" /> -->
-    <!-- </Style> -->
-    <!--    -->
-    <!-- <Style x:Key="SecundaryButton" TargetType="controls:ButtonForm"> -->
-    <!--     <Setter Property="BackgroundColor" Value="#FFFFFF" /> -->
-    <!--     <Setter Property="Stroke" Value="#5BAF00" /> -->
-    <!--     <Setter Property="TextColor" Value="#5BAF00" /> -->
-    <!--    -->
-    <!--     <Setter Property="PressedBackgroundColor" Value="#F0F4EA" /> -->
-    <!-- </Style> -->
-    <!--    -->
-    <!-- <Style x:Key="TerciaryButton" TargetType="controls:ButtonForm"> -->
-    <!--     <Setter Property="BackgroundColor" Value="#FFFFFF" /> -->
-    <!--     <Setter Property="Stroke" Value="#6B7280" /> -->
-    <!--     <Setter Property="TextColor" Value="#6B7280" /> -->
-    <!--    -->
-    <!--     <Setter Property="PressedBackgroundColor" Value="#F9FAFB" /> -->
-    <!-- </Style> -->
-
-    <!--  End Botoes  -->
-
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    xmlns:controls="clr-namespace:FluxoDeCaixa.MAUI.Componentes"
+                    xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+                    xmlns:dxeControls="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+                    xmlns:componentes="clr-namespace:FluxoDeCaixa.MAUI.Componentes">
 
     <Style TargetType="NavigationPage">
-        <Setter Property="BarBackgroundColor" Value="White" />
+        <Setter Property="BarBackgroundColor" Value="#E6F7E5" />
 
         <Setter Property="BarTextColor" Value="Black" />
         <Setter Property="IconColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource White}}" />
@@ -49,13 +22,68 @@
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
     </Style>
 
+    <Style x:Key="DefaultViewStyle"
+           TargetType="View">
+        <Setter Property="HorizontalOptions" Value="Fill" />
+        <Setter Property="VerticalOptions" Value="Fill" />
+    </Style>
 
 
+    <Style x:Key="DefaultFormStyle"
+           BasedOn="{StaticResource DefaultViewStyle}"
+           TargetType="dxe:EditBase">
+        <Setter Property="TextFontFamily" Value="Quicksand400Font" />
+        <Setter Property="TextFontSize" Value="16" />
+        <Setter Property="ClearIconVisibility" Value="Never" />
+        <Setter Property="FocusedLabelColor" Value="{StaticResource Primary500}" />
+        <Setter Property="FocusedBorderColor" Value="{StaticResource Primary500}" />
+        <Setter Property="CursorColor" Value="{StaticResource Primary500}" />
+        <Setter Property="LabelFontSize" Value="12" />
+        <Setter Property="TextColor" Value="{StaticResource ColorBlack}" />
+        <Setter Property="TextFontSize" Value="16" />
+        <Setter Property="PlaceholderColor" Value="{StaticResource ColorGray100}" />
+        <Setter Property="LabelColor" Value="{StaticResource ColorGray400}" />
+        <Setter Property="BorderColor" Value="{StaticResource ColorGray400}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="BoxHeight" Value="48" />
+        <Setter Property="BoxPadding" Value="15" />
+        <Setter Property="DisabledBackgroundColor" Value="{StaticResource ColorGray100}" />
+        <Setter Property="DisabledBorderColor" Value="{StaticResource ColorGray300}" />
+        <Setter Property="DisabledTextColor" Value="{StaticResource ColorGray500}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
+        <Setter Property="BottomTextFontFamily" Value="Quicksand400Font" />
+        <Setter Property="BottomTextFontSize" Value="12" />
+        <Setter Property="ErrorColor" Value="{StaticResource ColorRed500}" />
+        <Setter Property="ClearIcon" Value="icon_close_input" />
+        <Setter Property="TextVerticalAlignment" Value="Center" />
+        <Setter Property="IconVerticalAlignment" Value="Center" />
+        <Setter Property="CornerRadius" Value="4" />
+    </Style>
 
 
+    <Style TargetType="componentes:TabView">
+        <Setter Property="SelectedItemIndicatorColor" Value="{StaticResource Primary500}" />
+        <Setter Property="BackgroundColor" Value="{StaticResource ColorWhite}" />
+        <Setter Property="HeaderPanelBackgroundColor" Value="{StaticResource ColorWhite}" />
+        <Setter Property="SelectedItemHeaderBackgroundColor" Value="{StaticResource ColorWhite}" />
+        <Setter Property="ItemHeaderWidth" Value="*" />
+    </Style>
 
-
-
+    <Style TargetType="componentes:TabViewItem">
+        <Setter Property="HeaderFontSize" Value="16" />
+        <Setter Property="HeaderFontFamily" Value="Quicksand600Font" />
+        <Setter Property="HeaderTextColor" Value="{StaticResource ColorGray700}" />
+        <Setter Property="HeaderIconColor" Value="{StaticResource ColorGray700}" />
+        <Setter Property="HeaderIconPosition" Value="Top" />
+        <Setter Property="HeaderIconSpacing" Value="4" />
+        <Setter Property="HeaderWidth" Value="*" />
+        <Setter Property="HeaderMinWidth" Value="90" />
+        <Setter Property="HeaderMaxWidth" Value="360" />
+        <Setter Property="HeaderPadding" Value="16,0,16,0" />
+        <Setter Property="HeaderVisibleElements" Value="Text" />
+        <Setter Property="SelectedHeaderTextColor" Value="{StaticResource Primary600}" />
+        <Setter Property="SelectedHeaderBackgroundColor" Value="{StaticResource ColorWhite}" />
+    </Style>
 
 
 

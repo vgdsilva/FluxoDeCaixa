@@ -6,11 +6,11 @@
                 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
                 xmlns:componentes="clr-namespace:FluxoDeCaixa.MAUI.Componentes"
                 x:Class="FluxoDeCaixa.MAUI.Pages.Transaction.Detail.TransactionDetailPage"
-                Title=" "
-                BackgroundColor="White">
+                Title="Transação"
+                Shell.TabBarIsVisible="False">
 
     <base:BasePages.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="{StaticResource White}" StatusBarStyle="DarkContent" />
+        <toolkit:StatusBarBehavior StatusBarColor="#E6F7E5" StatusBarStyle="DarkContent" />
     </base:BasePages.Behaviors>
 
     <base:BasePages.BindingContext>
@@ -19,13 +19,22 @@
 
     <Grid RowDefinitions="*,Auto,Auto">
         <ScrollView>
-            <componentes:DataFormGrid DataObject="{Binding Model}"
-                                      IsEditorLabelVisible="True"
-                                      BackgroundColor="White"/>
+            <componentes:DataFormGrid x:Name="FormGrid" RowDefinitions="Auto,Auto"
+                                      Padding="24">
+                <componentes:DateFormEdit Grid.Row="0"
+                                          LabelText="Data" />
+                
+                <componentes:NumericFormEdit Grid.Row="1"
+                                             CasasDecimais="2"
+                                             IsRequired="True"
+                                             MinValue="0"
+                                             NeedBiggerThanZero="True"
+                                             LabelText="Valor" />
+            </componentes:DataFormGrid>
         </ScrollView>
         <BoxView Grid.Row="1" Style="{StaticResource SeparatorBoxView}"/>
         <Grid Grid.Row="2" BackgroundColor="White" Padding="24">
-            <Button Text="Salvar" HeightRequest="52" />
+            <componentes:ButtonForm Text="Salvar"/>
         </Grid>
     </Grid>
 </base:BasePages>

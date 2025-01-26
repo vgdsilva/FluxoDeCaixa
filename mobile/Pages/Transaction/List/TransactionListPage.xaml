@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<base:BasePages xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:local="clr-namespace:FluxoDeCaixa.MAUI.Pages.Transaction.List"
+                xmlns:base="clr-namespace:FluxoDeCaixa.MAUI.Pages.Base"
+                xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                x:Class="FluxoDeCaixa.MAUI.Pages.Transaction.List.TransactionListPage"
+                Title="Transações">
+
+    <base:BasePages.BindingContext>
+        <local:TransactionListViewModel />
+    </base:BasePages.BindingContext>
+
+    <base:BasePages.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#E6F7E5" StatusBarStyle="DarkContent" />
+    </base:BasePages.Behaviors>
+
+    <base:BasePages.ToolbarItems>
+        <ToolbarItem Text="Adicionar"
+                     Command="{Binding AddTransactionCommand}"/>
+    </base:BasePages.ToolbarItems>
+
+    <base:BasePages.Content>
+        <Grid>
+            
+        </Grid>
+    </base:BasePages.Content>
+    
+</base:BasePages>

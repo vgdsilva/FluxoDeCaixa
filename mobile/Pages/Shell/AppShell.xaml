@@ -4,29 +4,32 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+    xmlns:home="clr-namespace:FluxoDeCaixa.MAUI.Pages.Home"
+    xmlns:transactionsList="clr-namespace:FluxoDeCaixa.MAUI.Pages.Transaction.List"
+    xmlns:settings="clr-namespace:FluxoDeCaixa.MAUI.Pages.Settings"
     NavigationPage.HasNavigationBar="True"
     Shell.NavBarHasShadow="True"
     Shell.NavBarIsVisible="True"
     Shell.TabBarIsVisible="True">
 
-    <!-- <Shell.Behaviors> -->
-    <!--     <toolkit:StatusBarBehavior  /> -->
-    <!-- </Shell.Behaviors> -->
+    <Shell.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor="#E6F7E5" StatusBarStyle="DarkContent" />
+    </Shell.Behaviors> 
 
     <Shell.Resources>
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
-                <!-- <Setter Property="Shell.BackgroundColor" Value="{StaticResource ColorWhite}" /> -->
-                <!-- <Setter Property="Shell.ForegroundColor" Value="{StaticResource Primary500}" /> -->
-                <!-- <Setter Property="Shell.TitleColor" Value="{StaticResource ColorBlack}" /> -->
+                <Setter Property="Shell.BackgroundColor" Value="#E6F7E5" />
+                <!--<Setter Property="Shell.ForegroundColor" Value="{StaticResource Primary500}" />-->
+                <Setter Property="Shell.TitleColor" Value="{StaticResource ColorBlack}" />
                 <!-- <Setter Property="Shell.DisabledColor" Value="{StaticResource Primary500}" /> -->
                 <!-- <Setter Property="Shell.UnselectedColor" Value="{StaticResource Primary500}" /> -->
                 <Setter Property="Shell.NavBarHasShadow" Value="False" />
 
-                <Setter Property="Shell.TabBarBackgroundColor" Value="Black" />
-                <Setter Property="Shell.TabBarUnselectedColor" Value="White" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="#80FFFFFF" />
-                <!-- <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource Primary500}" /> -->
+                <Setter Property="Shell.TabBarBackgroundColor" Value="#E6F7E5" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="Black" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource Primary500}" />
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource Primary500}" />
 
             </Style>
 
@@ -36,8 +39,9 @@
     </Shell.Resources>
 
     <TabBar>
-        <!--<ShellContent Title="Dashboard" ContentTemplate="{DataTemplate home:DashboardTabPage}" />
-        <ShellContent Title="Transações" ContentTemplate="{DataTemplate home:TransactionsTabPage}" />-->
+        <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate home:HomePage}" />
+        <ShellContent Title="Transações" ContentTemplate="{DataTemplate transactionsList:TransactionListPage}" />
+        <ShellContent Title="Configurações" ContentTemplate="{DataTemplate settings:SettingsPage}" />
     </TabBar>
 
 </Shell>

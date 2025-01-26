@@ -1,5 +1,6 @@
 ﻿
 using FluxoDeCaixa.MAUI.Core.Utils.Classes;
+using FluxoDeCaixa.MAUI.Utils.Classes;
 using FluxoDeCaixa.MAUI.Utils.Validators;
 
 namespace FluxoDeCaixa.MAUI.Pages.Base;
@@ -37,7 +38,7 @@ public partial class BaseViewModels : ObservableObject
 
     public void SetInstancePage(Page page) => this.Page = page;
 
-    protected bool ValidateForm(string dataFormGridName)
+    protected bool ValidateForm(string dataFormGridName, bool showRequiredFieldsMessageError = false)
     {
         bool isFormValid = true;
 
@@ -46,8 +47,8 @@ public partial class BaseViewModels : ObservableObject
 
         isFormValid = FormValidators.ValidateForm(Page, dataFormGridName);
 
-        //if (!isFormValid && showRequiredFieldsMessageError)
-        //    MainThread.BeginInvokeOnMainThread(async () => DCToast.ShowInfo(TZ.MSG_PREENCHA_CAMPOS_OBRIGATORIOS(), 4));
+        if (!isFormValid && showRequiredFieldsMessageError)
+            MainThread.BeginInvokeOnMainThread(async () => await SnackBar.ShowError("Preencha os campos obrigatorios."));
 
         return isFormValid;
     }

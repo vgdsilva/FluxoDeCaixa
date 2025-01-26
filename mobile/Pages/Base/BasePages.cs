@@ -6,6 +6,7 @@ public partial class BasePages : ContentPage
 {
     public BasePages()
     {
+        HideSoftInputOnTapped = true;
     }
     protected override void OnAppearing()
     {
