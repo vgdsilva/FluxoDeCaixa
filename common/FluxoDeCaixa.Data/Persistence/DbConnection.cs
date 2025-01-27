@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualBasic;
+﻿using FluxoDeCaixa.Domain.Entities;
+using Microsoft.VisualBasic;
 using SQLite;
 
 namespace FluxoDeCaixa.Data;
@@ -44,10 +45,8 @@ public class DbConnection
             throw new NullReferenceException("Local DB connection is not initialized");
         }
 
-        //_ = await _database.CreateTableAsync<TransactionModel>();
-        //_ = await _database.CreateTableAsync<CategoryModel>();
-        //_ = await _database.CreateTableAsync<ProfileModel>();
-        //_ = await _database.CreateTableAsync<SettingsModel>();
+        _ = await _database.CreateTableAsync<Categoria>();
+        _ = await _database.CreateTableAsync<Transacao>();
     }
 
     private string GetDatabasePath(string filename)

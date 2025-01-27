@@ -4,6 +4,7 @@
                 xmlns:local="clr-namespace:FluxoDeCaixa.MAUI.Pages.Transaction.List"
                 xmlns:base="clr-namespace:FluxoDeCaixa.MAUI.Pages.Base"
                 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                xmlns:componentes="clr-namespace:FluxoDeCaixa.MAUI.Componentes"
                 x:Class="FluxoDeCaixa.MAUI.Pages.Transaction.List.TransactionListPage"
                 Title="Transações">
 
@@ -22,7 +23,7 @@
 
     <base:BasePages.Content>
         <Grid>
-            
+
         </Grid>
     </base:BasePages.Content>
     

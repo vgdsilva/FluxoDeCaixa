@@ -10,7 +10,7 @@
     NavigationPage.HasNavigationBar="True"
     Shell.NavBarHasShadow="True"
     Shell.NavBarIsVisible="True"
-    Shell.TabBarIsVisible="True">
+    Shell.TabBarIsVisible="False">
 
     <Shell.Behaviors>
         <toolkit:StatusBarBehavior StatusBarColor="#E6F7E5" StatusBarStyle="DarkContent" />
@@ -40,8 +40,8 @@
 
     <TabBar>
         <ShellContent Title="Dashboard" ContentTemplate="{DataTemplate home:HomePage}" />
-        <ShellContent Title="Transações" ContentTemplate="{DataTemplate transactionsList:TransactionListPage}" />
-        <ShellContent Title="Configurações" ContentTemplate="{DataTemplate settings:SettingsPage}" />
+        <!--<ShellContent Title="Transações" ContentTemplate="{DataTemplate transactionsList:TransactionListPage}" />
+        <ShellContent Title="Configurações" ContentTemplate="{DataTemplate settings:SettingsPage}" />-->
     </TabBar>
 
 </Shell>

@@ -1,4 +1,5 @@
 ﻿using FluxoDeCaixa.MAUI.Pages.Base;
+using FluxoDeCaixa.MAUI.Pages.Settings;
 using FluxoDeCaixa.MAUI.Pages.Transaction.Detail;
 using FluxoDeCaixa.MAUI.Utils.Classes;
 
@@ -6,23 +7,25 @@ namespace FluxoDeCaixa.MAUI.Pages.Home;
 
 public partial class HomeViewModel : BaseViewModels
 {
+    [ObservableProperty]
+    HomeModel model;
+
 
     public HomeViewModel()
     {
-
+        Model = new ();
     }
 
 
     [RelayCommand]
-    async Task AdicionarRenda()
+    async void OpenSettingsPage()
     {
-        await NavigationUtils.PushAsync<TransactionDetailPage>();
+        await NavigationUtils.GoToAsync(nameof(SettingsPage));
     }
 
-
     [RelayCommand]
-    async Task AdicionarDespesa()
+    async void AddNewTransaction()
     {
-        await NavigationUtils.PushModalAsync<TransactionDetailPage>();
+        await NavigationUtils.GoToAsync(nameof(TransactionDetailPage));
     }
 }

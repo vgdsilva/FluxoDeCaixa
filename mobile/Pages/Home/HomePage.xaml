@@ -4,6 +4,7 @@
                 xmlns:base="clr-namespace:FluxoDeCaixa.MAUI.Pages.Base"
                 xmlns:local="clr-namespace:FluxoDeCaixa.MAUI.Pages.Home"
                 xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+                xmlns:componentes="clr-namespace:FluxoDeCaixa.MAUI.Componentes"
                 x:Class="FluxoDeCaixa.MAUI.Pages.Home.HomePage"
                 Title="Fluxo de caixa"
                 BackgroundColor="{StaticResource White}">
@@ -16,25 +17,177 @@
         <local:HomeViewModel />
     </base:BasePages.BindingContext>
 
-    <Grid RowDefinitions="Auto,*">
-        <!--<Grid x:Name="Header" 
-              ColumnDefinitions="Auto,*,Auto" 
-              BackgroundColor="#E6F7E5" 
-              Padding="16">
-            <Label Text="Fluxo de caixa"
-                   TextColor="Black"
-                   FontAttributes="Bold"
-                   FontSize="Title"
-                   HorizontalOptions="Center"
-                   HorizontalTextAlignment="Center"
-                   FontFamily="MulishBold"
-                   Grid.Column="1"/>        
-        </Grid>-->
-        <ScrollView Grid.Row="1" BackgroundColor="White">
-            <Grid BackgroundColor="White">
+    <base:BasePages.ToolbarItems>
+        <ToolbarItem IconImageSource="{FileImageSource File='icon_settings.svg'}"
+                     Command="{Binding OpenSettingsPageCommand}"/>
+    </base:BasePages.ToolbarItems>
+
+    <base:BasePages.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Button" x:Key="TabButton">
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="CornerRadius" Value="0"/>
+            </Style>
+            <Style TargetType="Button" x:Key="UnselectedTabButton" BasedOn="{StaticResource TabButton}">
+                <Setter Property="BorderColor" Value="#F0F0F0"/>
+                <Setter Property="TextColor" Value="#D7D7D7"/>
+                <Setter Property="BackgroundColor" Value="#FDFDFD"/>
+            </Style>
+            <Style TargetType="Button" x:Key="SelectedTabButton" BasedOn="{StaticResource TabButton}">
+                <Setter Property="BorderColor" Value="#F0F0F0"/>
+                <Setter Property="TextColor" Value="#27B32E"/>
+                <Setter Property="BackgroundColor" Value="#E6F7E5"/>
+            </Style>
+        </ResourceDictionary>
+    </base:BasePages.Resources>
+
+    <ScrollView >
+        <Grid Padding="16" RowDefinitions="Auto, Auto,Auto,Auto, *" RowSpacing="24">
+
+            <Grid ColumnDefinitions="*, Auto" >
+                <Label Text="Total balance" 
+                       VerticalOptions="Center"
+                       FontSize="Large" 
+                       FontFamily="Quicksand700Font" />
                 
+                <componentes:DateFormEdit Grid.Column="1"
+                                          Date="{Binding Model.Date}"
+                                          DisplayFormat="MMMM, yyyy"
+                                          BorderColor="Transparent"
+                                          FocusedBorderColor="Transparent"
+                                          HorizontalOptions="EndAndExpand"
+                                          TextFontSize="15" />
             </Grid>
-        </ScrollView>
-    </Grid>
+
+            <Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto,Auto" Margin="0,-16,0,0" RowSpacing="6">
+                <Grid>
+                    <Label Text="Entradas: " 
+                           VerticalOptions="Center"
+                           HorizontalOptions="StartAndExpand"
+                           FontFamily="Quicksand700Font"
+                           TextColor="{StaticResource ColorGray500}" />
+                    
+                    <Label Text="R$ 7.944,11" 
+                           VerticalOptions="Center"
+                           HorizontalOptions="EndAndExpand"
+                           FontFamily="Quicksand700Font"
+                           TextColor="{StaticResource ColorGray500}" />
+                </Grid>
+                
+                <Grid Grid.Row="1">
+                    <Label Text="Saidas: " 
+                           VerticalOptions="Center"
+                           HorizontalOptions="StartAndExpand"
+                           FontFamily="Quicksand700Font"
+                           TextColor="{StaticResource ColorGray500}" />
+                    
+                    <Label Text="R$ 5.120,00" 
+                           VerticalOptions="Center"
+                           HorizontalOptions="EndAndExpand"
+                           
+                           FontFamily="Quicksand700Font"
+                           TextColor="{StaticResource ColorGray500}" />
+                </Grid>
+
+                <Grid Grid.Row="2">
+                    <Label Text="Saldo Mês: " 
+                           VerticalOptions="Center"
+                           HorizontalOptions="StartAndExpand"
+                           FontFamily="Quicksand700Font"
+                           TextColor="{StaticResource ColorGray500}" />
+
+                    <Label Text="R$ 2.824,11" 
+                           VerticalOptions="Center"
+                           HorizontalOptions="EndAndExpand"
+                           FontFamily="Quicksand700Font"
+                           TextColor="{StaticResource ColorGray500}" />
+                </Grid>
+            </Grid>
+
+            <Button Grid.Row="2"
+                    Text="Adicionar Nova Transação"
+                    Command="{Binding AddNewTransactionCommand}"
+                    BackgroundColor="#00AA01"
+                    CornerRadius="0"
+                    Margin="0,16,0,0"/>
+
+            <Grid x:Name="TabButtonsGrid"
+                  Grid.Row="3"
+                  ColumnDefinitions="*,*,*"
+                  ColumnSpacing="0"
+                  Margin="0,24,0,0">
+
+                <Button Grid.Column="0" 
+                        Text="Despesa" 
+                        Command="{Binding Model.SetTipoTransacaoCommand}" 
+                        CommandParameter="Despesa">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding Model.IsDespesa}"
+                                     Value="True">
+                            <Setter Property="Style" Value="{StaticResource SelectedTabButton}"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding Model.IsDespesa}"
+                                     Value="False">
+                            <Setter Property="Style" Value="{StaticResource UnselectedTabButton}"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button Grid.Column="1" 
+                        Text="Renda"
+                        Command="{Binding Model.SetTipoTransacaoCommand}" 
+                        CommandParameter="Renda">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding Model.IsRenda}"
+                                     Value="True">
+                            <Setter Property="Style" Value="{StaticResource SelectedTabButton}"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding Model.IsRenda}"
+                                     Value="False">
+                            <Setter Property="Style" Value="{StaticResource UnselectedTabButton}"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button Grid.Column="2" 
+                        Text="Poupança"
+                        Command="{Binding Model.SetTipoTransacaoCommand}" 
+                        CommandParameter="Poupança">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding Model.IsPoupanca}"
+                                     Value="True">
+                            <Setter Property="Style" Value="{StaticResource SelectedTabButton}"/>
+                        </DataTrigger>
+
+                        <DataTrigger TargetType="Button"
+                                     Binding="{Binding Model.IsPoupanca}"
+                                     Value="False">
+                            <Setter Property="Style" Value="{StaticResource UnselectedTabButton}"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+            </Grid>
+
+            <Grid x:Name="GridDespesasDados" Grid.Row="4"
+                  IsVisible="{Binding Model.IsDespesa}">
+                <Label Text="Histórico de Despesas"/>
+            </Grid>
+
+            <Grid x:Name="GridRendaDados" Grid.Row="4"
+                  IsVisible="{Binding Model.IsRenda}">
+                <Label Text="Histórico de Rendas"/>
+            </Grid>
+
+            <Grid x:Name="GridPoupancaDados" Grid.Row="4"
+                  IsVisible="{Binding Model.IsPoupanca}">
+                <Label Text="Histórico de Poupança"/>
+            </Grid>
+        </Grid>
+    </ScrollView>
 
 </base:BasePages>

@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FluxoDeCaixa.Domain.Entities;
 
-namespace FluxoDeCaixa.Data.Repositories
+namespace FluxoDeCaixa.Data.Repositories;
+
+public class TransactionRepository : BaseRepository<Transacao>
 {
-    public class TransactionRepository
+    public TransactionRepository(DbConnection dbConnection) : base(dbConnection)
     {
+
     }
 }

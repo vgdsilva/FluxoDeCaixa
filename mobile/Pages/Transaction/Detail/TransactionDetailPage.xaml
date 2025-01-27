@@ -19,22 +19,104 @@
 
     <Grid RowDefinitions="*,Auto,Auto">
         <ScrollView>
-            <componentes:DataFormGrid x:Name="FormGrid" RowDefinitions="Auto,Auto"
-                                      Padding="24">
-                <componentes:DateFormEdit Grid.Row="0"
-                                          LabelText="Data" />
-                
-                <componentes:NumericFormEdit Grid.Row="1"
+            <componentes:DataFormGrid x:Name="FormGrid" RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                                      Padding="24"
+                                      RowSpacing="16">
+
+                <Grid Grid.Row="0"
+                      ColumnDefinitions="*,*,*"
+                      ColumnSpacing="8" 
+                      Padding="6"
+                      BackgroundColor="#F2F5FA">
+
+                    <Button Grid.Column="0" 
+                            Text="Despesa" 
+                            Command="{Binding Model.SetTipoTransacaoCommand}" 
+                            CommandParameter="Despesa">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding Model.IsDespesa}"
+                                         Value="True">
+                                <Setter Property="Style" Value="{StaticResource ButtonSelectionSelectedButton}"/>
+                            </DataTrigger>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding Model.IsDespesa}"
+                                         Value="False">
+                                <Setter Property="Style" Value="{StaticResource ButtonSelectionUnselectedButton}"/>
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    
+                    <Button Grid.Column="1" 
+                            Text="Renda"
+                            Command="{Binding Model.SetTipoTransacaoCommand}" 
+                            CommandParameter="Renda">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding Model.IsRenda}"
+                                         Value="True">
+                                <Setter Property="Style" Value="{StaticResource ButtonSelectionSelectedButton}"/>
+                            </DataTrigger>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding Model.IsRenda}"
+                                         Value="False">
+                                <Setter Property="Style" Value="{StaticResource ButtonSelectionUnselectedButton}"/>
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                    
+                    <Button Grid.Column="2" 
+                            Text="Poupança"
+                            Command="{Binding Model.SetTipoTransacaoCommand}" 
+                            CommandParameter="Poupança">
+                        <Button.Triggers>
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding Model.IsPoupanca}"
+                                         Value="True">
+                                <Setter Property="Style" Value="{StaticResource ButtonSelectionSelectedButton}"/>
+                            </DataTrigger>
+                            
+                            <DataTrigger TargetType="Button"
+                                         Binding="{Binding Model.IsPoupanca}"
+                                         Value="False">
+                                <Setter Property="Style" Value="{StaticResource ButtonSelectionUnselectedButton}"/>
+                            </DataTrigger>
+                        </Button.Triggers>
+                    </Button>
+                </Grid>
+
+                <componentes:TextFormEdit Grid.Row="1"
+                                          LabelText="Descrição"
+                                          Text="{Binding Model.Descricao}" />
+
+                <componentes:NumericFormEdit Grid.Row="2"
                                              CasasDecimais="2"
                                              IsRequired="True"
                                              MinValue="0"
-                                             NeedBiggerThanZero="True"
-                                             LabelText="Valor" />
+                                             LabelText="Valor"
+                                             Value="{Binding Model.Valor}" />
+
+                <componentes:ComboBoxFormEdit Grid.Row="3" 
+                                              LabelText="Categoria"
+                                              ItemsSource="{Binding Model.CategoriasList}"
+                                              FilterTextChangedCommand="{Binding Model.SearchCategoriesFromTipoCommand}"
+                                              SelectedItem="{Binding Model.Categoria}"
+                                              SelectedValue="{Binding Model.CategoriaId}"
+                                              DisplayMember="Descricao"
+                                              ValueMember="Id" />
+
+                <componentes:DateFormEdit Grid.Row="4"
+                                          LabelText="Data"
+                                          Date="{Binding Model.Data}"/>
+                
+                
             </componentes:DataFormGrid>
         </ScrollView>
+        
         <BoxView Grid.Row="1" Style="{StaticResource SeparatorBoxView}"/>
         <Grid Grid.Row="2" BackgroundColor="White" Padding="24">
-            <componentes:ButtonForm Text="Salvar"/>
+            <componentes:ButtonForm Text="Salvar"
+                                    Command="{Binding SalvarCommand}"/>
         </Grid>
     </Grid>
 </base:BasePages>

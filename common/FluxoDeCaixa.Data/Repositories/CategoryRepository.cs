@@ -2,20 +2,19 @@
 
 namespace FluxoDeCaixa.Data.Repositories;
 
-public class CategoryRepository
+public class CategoryRepository : BaseRepository<Categoria>
 {
-    private readonly DbConnection _dbConnection;
 
-    public CategoryRepository(DbConnection dbConnection)
+    public CategoryRepository(DbConnection dbConnection) : base(dbConnection)
     {
-        _dbConnection = dbConnection;
+        
     }
 
-    public async Task<Category> SaveAsync(Category entity)
+    public async Task<Categoria> SaveAsync(Categoria entity)
     {
         await _dbConnection.Init();
 
-        if ((await _dbConnection.Database.Table<Category>().Where(x => x.Id == entity.Id).FirstOrDefaultAsync()) == null)
+        if ((await _dbConnection.Database.Table<Categoria>().Where(x => x.Id == entity.Id).FirstOrDefaultAsync()) == null)
         {
             await CreateAsync(entity);
         }
@@ -25,20 +24,23 @@ public class CategoryRepository
         }
 
         var category = await _dbConnection.Database
-            .Table<Category>()
+            .Table<Categoria>()
             .Where(c => c.Id == entity.Id)
             .FirstAsync();
 
         return category;
     }
 
-    private async Task CreateAsync(Category entity)
+    private async Task CreateAsync(Categoria entity)
     {
+        entity.Id = Guid.NewGuid();
         _ = await _dbConnection.Database.InsertAsync(entity);
     }
     
-    private async Task UpdateAsync(Category entity)
+    private async Task UpdateAsync(Categoria entity)
     {
         _ = await _dbConnection.Database.UpdateAsync(entity);
     }
+
+
 }

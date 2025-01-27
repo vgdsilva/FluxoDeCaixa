@@ -3,57 +3,57 @@ using FluxoDeCaixa.Domain.Interfaces.Builders;
 
 namespace FluxoDeCaixa.Domain.Builders;
 
-public class CashFlowBuilder : IBuilder<CashFlow>
-{
-    private readonly CashFlow _entity;
+//public class CashFlowBuilder : IBuilder<CashFlow>
+//{
+//    private readonly CashFlow _entity;
 
-    public CashFlowBuilder()
-    {
-        _entity = new CashFlow();
-    }
+//    public CashFlowBuilder()
+//    {
+//        _entity = new CashFlow();
+//    }
 
-    public CashFlowBuilder SetDescription(string description)
-    {
-        if (string.IsNullOrEmpty(description))
-            throw new Exception("cash flow description is null");
+//    public CashFlowBuilder SetDescription(string description)
+//    {
+//        if (string.IsNullOrEmpty(description))
+//            throw new Exception("cash flow description is null");
 
-        _entity.Description = description;
+//        _entity.Description = description;
 
-        return this;
-    }
+//        return this;
+//    }
 
-    public CashFlowBuilder SetStartDate(DateTime startDate)
-    {
-        _entity.StartDate = startDate;
+//    public CashFlowBuilder SetStartDate(DateTime startDate)
+//    {
+//        _entity.StartDate = startDate;
 
-        return this;
-    }
+//        return this;
+//    }
 
-    public CashFlowBuilder SetEndDate(DateTime endDate)
-    {
-        if (endDate < _entity.StartDate)
-            throw new Exception("endDate must be grather than startDate");
+//    public CashFlowBuilder SetEndDate(DateTime endDate)
+//    {
+//        if (endDate < _entity.StartDate)
+//            throw new Exception("endDate must be grather than startDate");
 
-        _entity.EndDate = endDate;
+//        _entity.EndDate = endDate;
 
-        return this;
-    }
+//        return this;
+//    }
 
-    public CashFlowBuilder SetUser(string userId, User userEntity = null)
-    {
-        if (string.IsNullOrEmpty(userId)) 
-            throw new Exception("cash flow UserId is null");
+//    public CashFlowBuilder SetUser(string userId, User userEntity = null)
+//    {
+//        if (string.IsNullOrEmpty(userId)) 
+//            throw new Exception("cash flow UserId is null");
 
-        _entity.UserID = userId;
+//        _entity.UserID = userId;
 
-        if (userEntity != null)
-            _entity.UserEntity = userEntity;
+//        if (userEntity != null)
+//            _entity.UserEntity = userEntity;
 
-        return this;
-    }
+//        return this;
+//    }
 
-    public CashFlow Build()
-    {
-        return _entity;
-    }
-}
+//    public CashFlow Build()
+//    {
+//        return _entity;
+//    }
+//}

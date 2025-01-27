@@ -30,7 +30,8 @@ namespace FluxoDeCaixa.MAUI.Utils.Validators
                 isValidForm = true;
                 var source = GetBaseModelValue(page.BindingContext);
                 source.ValidateForm();
-                ValidateInDataFormGrid(source, gridDataForm);
+                isValidForm = ValidateInDataFormGrid(source, gridDataForm);
+                return isValidForm;
             }
             catch (Exception ex)
             {
