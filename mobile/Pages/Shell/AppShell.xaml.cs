@@ -2,6 +2,7 @@
 
 using System.Reflection;
 using FluxoDeCaixa.MAUI.Pages.Base;
+using FluxoDeCaixa.MAUI.Pages.Transaction.Detail;
 
 namespace FluxoDeCaixa.MAUI.Pages.Shell;
 
@@ -10,18 +11,13 @@ namespace FluxoDeCaixa.MAUI.Pages.Shell;
         public Dictionary<string, Type> Routes { get; private set; } = new Dictionary<string, Type>();
         public AppShell()
         {
-            InitializeComponent();
             RegisterRoutes();
+            InitializeComponent();
         }
 
         void RegisterRoutes()
         {
-            
-            //registra automaticamente sem a necessidade da forma manual
-            IEnumerable<Type> listTypePages = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsSubclassOf(typeof(BasePages)));
-            foreach (Type typePage in listTypePages)
-                if (!Routes.ContainsKey(typePage.Name))
-                    Routes.Add(typePage.Name, typePage);
+            Routes.Add(nameof(TransactionDetailPage), typeof(TransactionDetailPage));
 
             foreach (KeyValuePair<string, Type> item in Routes)
                 Routing.RegisterRoute(item.Key, item.Value);

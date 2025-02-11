@@ -1,9 +1,12 @@
-﻿using FluxoDeCaixa.Data.Repositories;
+﻿using FluxoDeCaixa.Data.Context;
+using FluxoDeCaixa.MAUI.Pages.Shell;
 
 namespace FluxoDeCaixa.MAUI
 {
     public partial class App : Application
     {
+        public static string databasePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DeviceInfo.Current.Platform == DevicePlatform.Android ? ".local/share" : string.Empty, "database.db");
+
         public App(IServiceProvider serviceProvider)
         {
             InitializeComponent();
@@ -12,7 +15,10 @@ namespace FluxoDeCaixa.MAUI
 
             RepositoryProvider.Initialize(serviceProvider);
 
-            MainPage = new NavigationPage(new Pages.Onboarding.OnboardingPage());
+            MobileContext.Initialize(databasePath);
+
+            //MainPage = new NavigationPage(new Pages.Onboarding.OnboardingPage());
+            MainPage = new AppShell();
         }
     }
 
@@ -25,8 +31,8 @@ namespace FluxoDeCaixa.MAUI
             _serviceProvider = serviceProvider ?? throw new ArgumentNullException(nameof(serviceProvider));
         }
 
-        public static CategoryRepository Category => _serviceProvider.GetRequiredService<CategoryRepository>();
-        public static TransactionRepository Transaction => _serviceProvider.GetRequiredService<TransactionRepository>();
+        //public static CategoryRepository Category => _serviceProvider.GetRequiredService<CategoryRepository>();
+        //public static TransactionRepository Transaction => _serviceProvider.GetRequiredService<TransactionRepository>();
 
     }
 }

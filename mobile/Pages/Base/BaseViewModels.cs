@@ -1,7 +1,9 @@
 ﻿
+using FluxoDeCaixa.MAUI.Componentes;
 using FluxoDeCaixa.MAUI.Core.Utils.Classes;
 using FluxoDeCaixa.MAUI.Utils.Classes;
 using FluxoDeCaixa.MAUI.Utils.Validators;
+using RGPopup.Maui.Pages;
 
 namespace FluxoDeCaixa.MAUI.Pages.Base;
 
@@ -17,21 +19,77 @@ public partial class BaseViewModels : ObservableObject
     public T FindByName<T>(string name) => Page.FindByName<T>(name);
     public string Id { get; set; }
 
-    private static DatabaseController _DatabaseController = null;
-    public static DatabaseController Controller = _DatabaseController ?? new DatabaseController();
+
+    const string callIDLoaging = "LOADING_TRANSICAO_TELAS";
 
     public BaseViewModels() { }
 
-    public virtual void Init() { }
 
-    public async void OnAppearing() =>
-        await Execute.Task(Init);
+    #region OnAppearing
+    public virtual async Task Init() { }
+
+    public async Task BeforeOnAppearing()
+    {
+    }
     
+    public async void OnAppearing()
+    {
+        try
+        {
+            await BeforeOnAppearing();
 
-    public virtual void End() { }
+            await Init();
 
-    public async void OnDisappearing() =>
-        await Execute.Task(End);
+            await AfterOnAppearing();
+        }
+        catch (Exception ex) { OnAppearingException(ex); }
+    }
+    
+    public async Task AfterOnAppearing()
+    {
+        await LoadingScreen.Instance.Stop(callIDLoaging);
+    }
+
+    public void OnAppearingException(Exception ex)
+    {
+    }
+    #endregion
+
+
+    #region OnDisappearing
+    public virtual async Task End() { }
+
+    public async Task BeforeOnDisappearing()
+    {
+    }
+    
+    public async void OnDisappearing()
+    {
+        //Faça suas implementações no método End
+
+        try
+        {
+            await BeforeOnDisappearing();
+
+            await End();
+
+            await AfterOnDisappearing();
+        }
+        catch (Exception ex) { OnDisppearingException(ex); }
+    }
+
+    public async Task AfterOnDisappearing()
+    {
+        if (Page is PopupPage)
+            await LoadingScreen.Instance.Stop(callIDLoaging);
+        else
+            await LoadingScreen.Instance.Start(callIDLoaging);
+    }
+
+    public void OnDisppearingException(Exception ex)
+    {
+    }
+    #endregion
 
 
     public void SetInstancePage(Page page) => this.Page = page;

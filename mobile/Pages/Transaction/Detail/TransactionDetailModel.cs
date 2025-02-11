@@ -26,17 +26,6 @@ public partial class TransactionDetailModel : BaseModels
     public bool IsPoupanca => Tipo?.ToLower().Equals("Poupança".ToLower()) ?? false;
 
 
-    [ObservableProperty]
-    Guid categoriaId;
-
-    [ObservableProperty]
-    Categoria categoria;
-
-    [ObservableProperty]
-    List<Categoria> categoriasList;
-
-
-
     public TransactionDetailModel()
     {
         
@@ -47,11 +36,5 @@ public partial class TransactionDetailModel : BaseModels
     void SetTipoTransacao(string tipo)
     {
         Tipo = tipo;
-    }
-
-    [RelayCommand]
-    async void SearchCategoriesFromTipo()
-    {
-        CategoriasList = (await RepositoryProvider.Category.GetAllAsync()).Where(x => x.TipoTransacao == Tipo).ToList();
     }
 }

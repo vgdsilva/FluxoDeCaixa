@@ -10,7 +10,7 @@
                 Shell.TabBarIsVisible="False">
 
     <base:BasePages.Behaviors>
-        <toolkit:StatusBarBehavior StatusBarColor="#E6F7E5" StatusBarStyle="DarkContent" />
+        <toolkit:StatusBarBehavior StatusBarColor="#F8F8F8" StatusBarStyle="DarkContent" />
     </base:BasePages.Behaviors>
 
     <base:BasePages.BindingContext>
@@ -24,7 +24,7 @@
                                       RowSpacing="16">
 
                 <Grid Grid.Row="0"
-                      ColumnDefinitions="*,*,*"
+                      ColumnDefinitions="*,*"
                       ColumnSpacing="8" 
                       Padding="6"
                       BackgroundColor="#F2F5FA">
@@ -65,7 +65,7 @@
                         </Button.Triggers>
                     </Button>
                     
-                    <Button Grid.Column="2" 
+                    <!--<Button Grid.Column="2" 
                             Text="Poupança"
                             Command="{Binding Model.SetTipoTransacaoCommand}" 
                             CommandParameter="Poupança">
@@ -82,7 +82,7 @@
                                 <Setter Property="Style" Value="{StaticResource ButtonSelectionUnselectedButton}"/>
                             </DataTrigger>
                         </Button.Triggers>
-                    </Button>
+                    </Button>-->
                 </Grid>
 
                 <componentes:TextFormEdit Grid.Row="1"
@@ -96,18 +96,10 @@
                                              LabelText="Valor"
                                              Value="{Binding Model.Valor}" />
 
-                <componentes:ComboBoxFormEdit Grid.Row="3" 
-                                              LabelText="Categoria"
-                                              ItemsSource="{Binding Model.CategoriasList}"
-                                              FilterTextChangedCommand="{Binding Model.SearchCategoriesFromTipoCommand}"
-                                              SelectedItem="{Binding Model.Categoria}"
-                                              SelectedValue="{Binding Model.CategoriaId}"
-                                              DisplayMember="Descricao"
-                                              ValueMember="Id" />
-
                 <componentes:DateFormEdit Grid.Row="4"
                                           LabelText="Data"
-                                          Date="{Binding Model.Data}"/>
+                                          Date="{Binding Model.Data}"
+                                          DisplayFormat="dd/MM/yyyy" />
                 
                 
             </componentes:DataFormGrid>

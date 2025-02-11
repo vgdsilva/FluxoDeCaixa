@@ -1,6 +1,8 @@
 ﻿using DevExpress.Maui;
 using FluxoDeCaixa.Data;
 using Microsoft.Extensions.Logging;
+using Microsoft.Maui.Controls.Compatibility.Hosting;
+using RGPopup.Maui.Extensions;
 
 namespace FluxoDeCaixa.MAUI
 {
@@ -15,6 +17,12 @@ namespace FluxoDeCaixa.MAUI
                 .UseDevExpress(useLocalization: false)
                 .UseDevExpressControls()
                 .UseDevExpressCollectionView()
+                .UseDevExpressCharts()
+                .UseMauiRGPopup(config =>
+                {
+                    config.BackPressHandler = null;
+                    config.FixKeyboardOverlap = true;
+                })
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("Mulish-Bold.ttf", "MulishBold");
@@ -28,7 +36,8 @@ namespace FluxoDeCaixa.MAUI
                     fonts.AddFont("FontAwesome6Brands.otf", "FontAwesomeBrands");
                     fonts.AddFont("FontAwesome6Regular.otf", "FontAwesomeRegular");
                     fonts.AddFont("FontAwesome6Solid.otf", "FontAwesomeSolid");
-                });
+                })
+                .UseMauiCompatibility();
 
             AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
 
@@ -36,12 +45,12 @@ namespace FluxoDeCaixa.MAUI
             builder.Logging.AddDebug();
 #endif
 
-            var sqliteDatabaseConfiguration = new SQLiteDatabaseConfiguration
-            {
-                AppDirectoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DeviceInfo.Current.Platform == DevicePlatform.Android ? ".local/share" : string.Empty)
-            };
+            //var sqliteDatabaseConfiguration = new SQLiteDatabaseConfiguration
+            //{
+            //    AppDirectoryPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), DeviceInfo.Current.Platform == DevicePlatform.Android ? ".local/share" : string.Empty)
+            //};
 
-            builder.Services.RegisterInfrastructureServices(sqliteDatabaseConfiguration);
+            //builder.Services.RegisterInfrastructureServices(sqliteDatabaseConfiguration);
 
             return builder.Build();
         }

@@ -90,6 +90,7 @@ namespace FluxoDeCaixa.MAUI.Utils.Validators
                             isValidForm = false;
                             continue;
                         }
+
                     if (((object)itemEditBase).HasProperty("IsRequired"))
                         if ((bool)((object)itemEditBase).GetPropertyValue("IsRequired") && Valid(source, itemEditBase.PropertyName))
                         {
@@ -97,22 +98,6 @@ namespace FluxoDeCaixa.MAUI.Utils.Validators
                             itemEditBase.ErrorText = "Campo é obrigatório";
                             isValidForm = false;
                             continue;
-                        }
-                    if (((object)itemEditBase).HasProperty("NeedBiggerThanZero"))
-                        if ((bool)((object)itemEditBase).GetPropertyValue("NeedBiggerThanZero"))
-                        {
-                            var valor = source.GetPropertyValue(((string)itemEditBase.PropertyName), true);
-
-                            if (valor is string && ((string)valor).IsNullOrEmpty() || valor is decimal)
-                            {
-                                if (Convert.ToDecimal(valor) <= 0)
-                                {
-                                    itemEditBase.HasError = true;
-                                    //itemEditBase.ErrorText = TZ.MSG_VALOR_DEVE_SER_MAIOR_QUE_ZERO().ApenasPrimeiraLetraMaiuscula();
-                                    isValidForm = false;
-                                    continue;
-                                }
-                            }
                         }
                     itemEditBase.HasError = false;
                 }

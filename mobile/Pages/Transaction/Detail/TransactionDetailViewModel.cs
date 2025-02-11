@@ -15,14 +15,11 @@ public partial class TransactionDetailViewModel : BaseViewModels
         Model = new();
     }
 
-    public override async void Init()
+    public override async Task Init()
     {
-        base.Init();
-
         if (!string.IsNullOrEmpty(Id))
         {
-            Transacao currentEntity = await Controller.TransactionRepository.GetByIdAsync(Guid.Parse(Id));
-            Model = new Mapper().Map<Transacao, TransactionDetailModel>(currentEntity);
+
         }
     }
 
@@ -36,6 +33,5 @@ public partial class TransactionDetailViewModel : BaseViewModels
             
             var entity = new Mapper().Map<TransactionDetailModel, Transacao>(model);
 
-            await Controller.TransactionRepository.SaveAsync(entity);
         });
 }
