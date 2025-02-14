@@ -60,12 +60,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AndroidResource Remove="Pages\Transaction\**" />
-	  <Compile Remove="Pages\Transaction\**" />
-	  <EmbeddedResource Remove="Pages\Transaction\**" />
-	  <MauiCss Remove="Pages\Transaction\**" />
-	  <MauiXaml Remove="Pages\Transaction\**" />
-	  <None Remove="Pages\Transaction\**" />
+	  <AndroidResource Remove="Views\Pages\Transaction\**" />
+	  <Compile Remove="Views\Pages\Transaction\**" />
+	  <EmbeddedResource Remove="Views\Pages\Transaction\**" />
+	  <MauiCss Remove="Views\Pages\Transaction\**" />
+	  <MauiXaml Remove="Views\Pages\Transaction\**" />
+	  <None Remove="Views\Pages\Transaction\**" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -99,15 +99,9 @@
 	  <MauiXaml Update="Componentes\NumericFormEdit.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\Home\HomePage.xaml">
+	  <MauiXaml Update="Views\Pages\Home\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="Pages\Home\HomePage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </None>
 	</ItemGroup>
 
 </Project>

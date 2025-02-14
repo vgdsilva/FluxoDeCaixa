@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FluxoDeCaixa.MAUI.Pages.Base
+namespace FluxoDeCaixa.MAUI.Views.Pages.Base
 {
     public class BaseModels : ObservableValidator
     {
@@ -12,7 +12,7 @@ namespace FluxoDeCaixa.MAUI.Pages.Base
 
         public bool ValidateForm()
         {
-            base.ValidateAllProperties();
+            ValidateAllProperties();
             var errors = GetErrors();
             return errors.Count() > 0;
         }

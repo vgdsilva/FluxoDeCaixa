@@ -95,6 +95,12 @@ namespace FluxoDeCaixa.MAUI
             var type = objectToCheck.GetType();
             return type.GetProperty(methodName) != null;
         }
+
+        public static ActivityIndicator color(this ActivityIndicator indicator, Color color)
+        {
+            indicator.Color = color;
+            return indicator;
+        }
     }
 
     public static class ViewsExtencions
@@ -245,7 +251,7 @@ namespace FluxoDeCaixa.MAUI
 
     public static class LabelExtencions
     {
-        public static Label Text(this Label label, string text)
+        public static Label text(this Label label, string text)
         {
             label.Text = text;
             return label;
@@ -289,7 +295,7 @@ namespace FluxoDeCaixa.MAUI
             return label;
         }
 
-        public static Label FontSize(this Label label, int fontSize)
+        public static Label fontSize(this Label label, int fontSize)
         {
             label.FontSize = fontSize;
             return label;

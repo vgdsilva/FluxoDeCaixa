@@ -15,13 +15,24 @@ public class Transacao : EntityControl
     public DateTime Data { get; set; } = DateTime.UtcNow;
 
     [Column("tipo")]
-    public string Tipo { get; set; } = "Despesa";
+    public int Tipo { get; set; } = 1;
 
-    [Column("categoriaid")]
-    public Guid? CategoriaId { get; set; }
+    public Transacao()
+    {
+        
+    }
 
+    public Transacao(string descricao, decimal valor, DateTime data, int tipo)
+    {
+        Tipo = tipo;
+        Descricao = descricao;
+        Valor = valor;
+        Data = data;
+    }
 
-    [ForeignKey(nameof(CategoriaId))]
-    public virtual Categoria Categoria { get; set; }
-
+    public override string ToString()
+    {
+        string tipo = Tipo == 0 ? "Renda" : "Despesa";
+        return $"{Data.ToShortDateString()} - {Descricao}: {Valor:C} ({tipo})";
+    }
 }

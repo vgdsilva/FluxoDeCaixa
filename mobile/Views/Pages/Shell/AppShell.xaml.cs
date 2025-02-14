@@ -1,12 +1,8 @@
-﻿
-
-using System.Reflection;
-using FluxoDeCaixa.MAUI.Pages.Base;
-using FluxoDeCaixa.MAUI.Pages.Transaction.Detail;
+﻿using FluxoDeCaixa.MAUI.Views.Pages.Base;
 
 namespace FluxoDeCaixa.MAUI.Pages.Shell;
 
-    public partial class AppShell : Microsoft.Maui.Controls.Shell
+public partial class AppShell : Microsoft.Maui.Controls.Shell
     {
         public Dictionary<string, Type> Routes { get; private set; } = new Dictionary<string, Type>();
         public AppShell()
@@ -17,8 +13,6 @@ namespace FluxoDeCaixa.MAUI.Pages.Shell;
 
         void RegisterRoutes()
         {
-            Routes.Add(nameof(TransactionDetailPage), typeof(TransactionDetailPage));
-
             foreach (KeyValuePair<string, Type> item in Routes)
                 Routing.RegisterRoute(item.Key, item.Value);
         }

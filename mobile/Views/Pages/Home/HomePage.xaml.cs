@@ -1,4 +1,4 @@
-using FluxoDeCaixa.MAUI.Pages.Base;
+using FluxoDeCaixa.MAUI.Views.Pages.Base;
 
 namespace FluxoDeCaixa.MAUI.Pages.Home;
 

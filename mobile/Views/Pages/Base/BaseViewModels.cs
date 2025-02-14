@@ -1,11 +1,10 @@
-﻿
-using FluxoDeCaixa.MAUI.Componentes;
+﻿using FluxoDeCaixa.MAUI.Componentes;
 using FluxoDeCaixa.MAUI.Core.Utils.Classes;
 using FluxoDeCaixa.MAUI.Utils.Classes;
 using FluxoDeCaixa.MAUI.Utils.Validators;
 using RGPopup.Maui.Pages;
 
-namespace FluxoDeCaixa.MAUI.Pages.Base;
+namespace FluxoDeCaixa.MAUI.Views.Pages.Base;
 
 public partial class BaseViewModels : ObservableObject
 {
@@ -31,7 +30,7 @@ public partial class BaseViewModels : ObservableObject
     public async Task BeforeOnAppearing()
     {
     }
-    
+
     public async void OnAppearing()
     {
         try
@@ -44,7 +43,7 @@ public partial class BaseViewModels : ObservableObject
         }
         catch (Exception ex) { OnAppearingException(ex); }
     }
-    
+
     public async Task AfterOnAppearing()
     {
         await LoadingScreen.Instance.Stop(callIDLoaging);
@@ -62,7 +61,7 @@ public partial class BaseViewModels : ObservableObject
     public async Task BeforeOnDisappearing()
     {
     }
-    
+
     public async void OnDisappearing()
     {
         //Faça suas implementações no método End
@@ -92,7 +91,9 @@ public partial class BaseViewModels : ObservableObject
     #endregion
 
 
-    public void SetInstancePage(Page page) => this.Page = page;
+
+
+    public void SetInstancePage(Page page) => Page = page;
 
     protected bool ValidateForm(string dataFormGridName, bool showRequiredFieldsMessageError = false)
     {

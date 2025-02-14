@@ -1,7 +1,7 @@
 ﻿using DevExpress.Maui.Editors;
 using FluxoDeCaixa.MAUI.Componentes;
-using FluxoDeCaixa.MAUI.Pages.Base;
 using FluxoDeCaixa.MAUI.Utils.Classes;
+using FluxoDeCaixa.MAUI.Views.Pages.Base;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;

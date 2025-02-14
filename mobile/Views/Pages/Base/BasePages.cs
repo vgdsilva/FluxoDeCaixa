@@ -1,6 +1,6 @@
 ﻿using FluxoDeCaixa.MAUI.Componentes;
 
-namespace FluxoDeCaixa.MAUI.Pages.Base;
+namespace FluxoDeCaixa.MAUI.Views.Pages.Base;
 
 public partial class BasePages : ContentPage
 {

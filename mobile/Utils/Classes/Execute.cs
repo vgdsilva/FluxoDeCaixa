@@ -1,4 +1,5 @@
-﻿using FluxoDeCaixa.MAUI.Utils.Classes;
+﻿using FluxoDeCaixa.MAUI.Componentes;
+using FluxoDeCaixa.MAUI.Utils.Classes;
 
 namespace FluxoDeCaixa.MAUI.Core.Utils.Classes;
 
@@ -21,6 +22,25 @@ public static class Execute
         {
             if (onSuccessCommand != null)
                 await onSuccessCommand();
+        }
+    }
+
+    public static async Task TaskWithLoading(Action action)
+    {
+        string callID = LoadingScreen.GenerateCallId();
+        await LoadingScreen.Instance.Start(callID);
+
+        try
+        {
+            action();
+        }
+        catch (Exception ex)
+        {
+            await SnackBar.ShowError(ex.Message);
+        }
+        finally
+        {
+            await LoadingScreen.Instance.Stop(callID);
         }
     }
 }
